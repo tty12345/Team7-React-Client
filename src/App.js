@@ -1,9 +1,6 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import StudentList from './Component/StudentList'
-import CreateStudent from './Component/CreateStudent'
-import EditStudent from './Component/EditStudent'
 import test from './Component/test'
 
 function App() {
@@ -64,10 +61,8 @@ function App() {
         </div>
         <div className="container mt-3">
         <Switch>
-          <Route exact path='/CreateStudent' component={CreateStudent} />
-          <Route exact path='/StudentList' component={StudentList} />
-          <Route path='/students/:id' component={EditStudent} />
-          <Route path='/' component={test} />
+          {/* <Route path='/students/:id' component={EditStudent} /> */}
+          <Route exac path='/' component={test} />
         </Switch>
 </div>
       </Router>
