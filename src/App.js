@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import test from './Component/test'
+import CreatePost from './Component/CreatePost'
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
                         <a href="#">Buy Car</a>
                     </li>
                     <li>
-                        <a href="#">Sell Car</a>
+                    <li className="nav-item">
+                        <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
+                    </li>
                     </li>
                     <li>
                         <a>Login/Register</a>
@@ -61,8 +64,8 @@ function App() {
         </div>
         <div className="container mt-3">
         <Switch>
-          {/* <Route path='/students/:id' component={EditStudent} /> */}
-          <Route exac path='/' component={test} />
+          <Route exact path='/' component={test} />
+          <Route exact path='/CreatePost' component={CreatePost} />
         </Switch>
 </div>
       </Router>
