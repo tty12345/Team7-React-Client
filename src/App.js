@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import test from './Component/test'
+import LogIn from './Component/LogIn';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -28,25 +30,23 @@ function App() {
                         <a href="#">Home</a>
                     </li>
                     <li>
-                        <a href="#">Buy Car</a>
+                        <a href="#">Buy/Sell</a>
                     </li>
-                    <li>
-                        <a href="#">Sell Car</a>
+                    <li className="dropdown">
+                      <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn/SignUp<span className="caret"></span></a>
+                      <ul className="dropdown-menu" aria-labelledby="about-us">
+                        <li><Link to={"/LogIn"} className="nav-link">Log In</Link></li>
+                        <li><Link to={"/SignUp"} className="nav-link">Sign Up</Link></li>
+                      </ul>
                     </li>
-                    <li>
-                        <a>Login/Register</a>
+                    <li className="dropdown">
+                      <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span className="caret"></span></a>
+                      <ul className="dropdown-menu" aria-labelledby="about-us">
+                        <li><a href="#">Loan Calculator</a></li>
+                        <li><a href="#">Blog</a></li>
+                      </ul>
                     </li>
-                    <li>
-                        <a>Logout</a>
-                    </li>
-              <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span className="caret"></span></a>
-                <ul className="dropdown-menu" aria-labelledby="about-us">
-                  <li><a href="#">Loan Calculator</a></li>
-                  <li><a href="#">Blog</a></li>
                 </ul>
-              </li>
-                    </ul>
 
             <form className="navbar-form navbar-right" role="search">
               <div className="form-group">
@@ -62,7 +62,8 @@ function App() {
         <div className="container mt-3">
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
-          <Route exac path='/' component={test} />
+          <Route exact path='/' component={test} />
+          <Route exact path='/LogIn' component={LogIn}/>
         </Switch>
 </div>
       </Router>
