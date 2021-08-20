@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import test from './Component/test'
 import LogIn from './Component/LogIn';
-import car_list from './Component/car_list';
+import CarList from './Component/CarList';
 
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/' component={test} />
           <Route exact path='/LogIn' component={LogIn}/>
-          <Route exact path='/listPost' component={car_list}/>
+          <Route exact path='/listPost' component={CarList}/>
         </Switch>
 </div>
       </Router>

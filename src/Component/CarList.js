@@ -1,25 +1,25 @@
 
 import React, { Component } from "react";
-import CarPostingDataService from "../Services/CarPostService.js";
+import CarPostDataService from "../Services/CarPostService.js";
+import { Link } from "react-router-dom";
 
 export default class CarList extends Component {
     constructor(props) {
         super(props);
-        this.retrieveCars = this.retrieveCars.bind(this);
+        this.retrieveCarsPost = this.retrieveCarsPost.bind(this);
         
     
         this.state = {
-          cars: [],
+          cars: []
         };
       }
 
     componentDidMount() {
-        console.log("TESTING")
-        this.retrieveCars();
+        this.retrieveCarsPost();
    }
 
-   retrieveCars() {
-    CarPostingDataService.getCars()
+   retrieveCarsPost() {
+    CarPostDataService.getCarPost()
       .then(
         response => {
         this.setState({
@@ -34,7 +34,7 @@ export default class CarList extends Component {
   }
   
     render(){
-        const cars  = this.state;
+        const {cars}  = this.state;
 
         return(
             <div>
