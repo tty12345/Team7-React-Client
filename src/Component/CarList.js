@@ -37,18 +37,37 @@ export default class CarList extends Component {
         const {cars}  = this.state;
 
         return(
-            <div>
-                <ul className="list-group"
-                >{cars &&
+        <div>
+          <table>
+             <thead>
+                  <th>Id</th>
+                  <th >Price</th>
+                  <th >Description</th>
+                  <th >Brand</th>
+                  <th >Engine Capacity</th>
+                  <th >Registration Date</th>
+                  <th >Mileage</th>
+                  <th >Category</th>
+                  <th >Image</th>
+		          </thead>
+              <tbody>
+                    {cars &&
                     cars.map((car, index) => (
-                      <li key={index}                      >
-                        {car.description}
-                      </li>
+                  <tr key={index}>
+                        <td>{car.postId}</td>
+                        <td>{car.price}</td>
+                        <td>{car.description}</td>
+                        <td>{car.brand}</td>
+                        <td>{car.engineCapacity}</td>
+                        <td>{car.registeredDate}</td>
+                        <td>{car.mileage}</td>
+                        <td>{car.category}</td>
+                        <td><img src={car.photoUrl}></img></td>
+                  </tr>
                     ))}
-                </ul>
-                <div>test</div>
-            </div>
-            
+              </tbody>
+          </table>
+        </div>
         )
     }
   
