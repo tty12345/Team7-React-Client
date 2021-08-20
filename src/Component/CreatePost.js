@@ -7,12 +7,21 @@ export default class CreatePost extends Component {
       super(props);
       this.onChangePrice = this.onChangePrice.bind(this);
       this.onChangeDescription = this.onChangeDescription.bind(this);
+      this.onChangeBrand = this.onChangeBrand.bind(this);
+      this.onChangeEngineCapacity = this.onChangeEngineCapacity.bind(this);
+      this.onChangeRegisteredDate = this.onChangeRegisteredDate.bind(this);
+      this.onChangeMileage = this.onChangeMileage.bind(this);
+      this.onChangeCategory = this.onChangeCategory.bind(this);
+      this.onChangePhotoUrl = this.onChangePhotoUrl.bind(this);
+      this.savePost = this.savePost.bind(this);
+      this.newPost = this.newPost.bind(this);
 
       this.state = {
         postId: null,
         price: 0,
         description: "",
         brand: "",
+        engineCapacity: "",
         registeredDate: new Date(),
         mileage: 0,
         category: "",
@@ -35,6 +44,12 @@ export default class CreatePost extends Component {
     onChangeBrand(e) {
       this.setState({
         brand: e.target.value
+      })
+    }
+
+    onChangeEngineCapacity(e) {
+      this.setState({
+        engineCapacity: e.target.value
       })
     }
 
@@ -65,10 +80,11 @@ export default class CreatePost extends Component {
 
     savePost() {
         var data = {
-            postId: this.state.postId,
+            //postId: this.state.postId,
             price: this.state.price,
             description: this.state.description,
             brand: this.state.brand,
+            engineCapacity: this.state.engineCapacity,
             registeredDate: this.state.registeredDate,
             mileage: this.state.mileage,
             category: this.state.category,
@@ -82,6 +98,7 @@ export default class CreatePost extends Component {
                     price: response.data.price,
                     description: response.data.description,
                     brand: response.data.brand,
+                    engineCapacity: response.data.engineCapacity,
                     registeredDate: response.data.registeredDate,
                     mileage: response.data.mileage,
                     category: response.data.category,
@@ -100,6 +117,7 @@ export default class CreatePost extends Component {
             price: 0,
             description: "",
             brand: "",
+            engineCapacity: "",
             registeredDate: new Date(),
             mileage: 0,
             category: "",
@@ -109,17 +127,8 @@ export default class CreatePost extends Component {
   
     render() {
       return (
-        <div className="submit-form">
-        {this.state.submitted ? (
-          <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newPost}>
-              Add
-            </button>
-          </div>
-        ) : (
-            <div>
-              <div className="form-group">
+        <div>
+            <div className="form-group">
                 <label htmlFor="price">Price</label>
                 <input
                   type="text"
@@ -130,7 +139,7 @@ export default class CreatePost extends Component {
                   onChange={this.onChangePrice}
                   name="price"
                 />
-              </div>
+            </div>
 
               <div className="form-group">
                 <label htmlFor="description">Description</label>
@@ -153,6 +162,18 @@ export default class CreatePost extends Component {
                   required
                   value={this.state.brand}
                   onChange={this.onChangeBrand}
+                  name="brand"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="engineCapacity">Engine Capacity</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="engineCapacity"
+                  required
+                  value={this.state.engineCapacity}
+                  onChange={this.onChangeEngineCapacity}
                   name="brand"
                 />
               </div>
@@ -194,14 +215,21 @@ export default class CreatePost extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="photoUrl">Photo URL</label>
+                <input 
+                  type="text"
+                  className="form-control"
+                  id="photoUrl"
+                  required
+                  value={this.state.photoUrl}
+                  onChange={this.onChangePhotoUrl}
+                  name="photoUrl"
+                />
               </div>
               
               <button onClick={this.savePost} className="btn btn-success">
                 Submit
             </button>
             </div>
-          )}
-      </div>
       );
     }
   }
