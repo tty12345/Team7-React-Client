@@ -32,15 +32,15 @@ function App() {
                     <li>
                         <a href="#">Buy/Sell</a>
                     </li>
-                    <li className="dropdown">
-                      <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn/SignUp<span className="caret"></span></a>
-                      <ul className="dropdown-menu" aria-labelledby="about-us">
+                    <li>
+                      <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn/SignUp</a>
+                      <ul className="dropdown-menu" >
                         <li><Link to={"/LogIn"} className="nav-link">Log In</Link></li>
                         <li><Link to={"/SignUp"} className="nav-link">Sign Up</Link></li>
                       </ul>
                     </li>
-                    <li className="dropdown">
-                      <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span className="caret"></span></a>
+                    <li>
+                      <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
                         <li><a href="#">Loan Calculator</a></li>
                         <li><a href="#">Blog</a></li>

@@ -12,7 +12,8 @@ export default class LogIn extends Component {
         this.state = {
             username: "",
             password: "",
-            submitted: false
+            submitted: false,
+            message: ""
         };
     }
     onChangeUsername(e) {
@@ -35,14 +36,19 @@ export default class LogIn extends Component {
 
         UserService.login(data)
         .then(response => {
-            if (response.status === 200){
+            if (response.status === 200) {
                 this.setState({
-                submitted: true
-          });}
-          console.log(response.data);
+                    submitted: true,
+                })
+            } 
+            console.log(response.data);
         })
         .catch(e => {
-          console.log(e);
+            this.setState({
+                submitted: false,
+                message: "Invalid username or password. Please try again"
+            })
+            console.log(e);
         });
     }
 
@@ -54,6 +60,7 @@ export default class LogIn extends Component {
                 ) : (
                     <div>
                         <div className="form-group">
+                            <h4 className="text-danger">{this.state.message}</h4>
                             <label htmlFor="title">Username: </label>
                             <input
                                 type="text"
