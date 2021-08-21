@@ -16,24 +16,7 @@ export default class CarList extends Component {
         // };
       }
 
-  //   componentDidMount() {
-  //       this.retrieveCarsPost();
-  //  }
 
-  //  retrieveCarsPost() {
-  //   CarPostDataService.getCarPost()
-  //     .then(
-  //       response => {
-  //       this.setState({
-  //           cars: response.data
-  //       });
-  //       console.log(response.data);
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-
-  // }
   
     render(){
         // const {cars}  = this.state;

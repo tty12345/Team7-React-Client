@@ -4,20 +4,6 @@ import {COLUMNS} from './columns'
 import axios from "axios";
 import React, { useMemo, useState, useEffect } from "react";
 
-// export class carList extends Component{
-//     constructor(props) {
-//         super(props);
-    
-//         this.state = {
-//             data: []
-//         };
-//       }
-//     returndata(){
-//         return this.state.data;
-//     }
-
-// }
-
 export const BasicTable = () => {
 
     const [loadingData, setLoadingData] = useState(true);

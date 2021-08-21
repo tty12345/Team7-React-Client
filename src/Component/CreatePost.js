@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
-import{ImageUploader} from "./imageUploader/ImageUploader"
 
 export default class CreatePost extends Component {
     constructor(props) {
@@ -294,7 +293,6 @@ export default class CreatePost extends Component {
                 Submit
             </button>
             <div className = "uplaodImage">
-                <ImageUploader/>
               </div>
             </div>
       );
