@@ -6,6 +6,7 @@ import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
+import CreatePost from './Component/CreatePost'
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
                     </li>
                     <li>
                     <Link to={"/listPost"} className="nav-link">Sell</Link>
+                    <li className="nav-item">
+                        <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
+                    </li>
                     </li>
                     <li>
                         <Link to={"/LogIn"} className="nav-link">Log In</Link>
@@ -74,6 +78,8 @@ function App() {
           <Route exact path='/listPost' component={CarList}/>
           <Route exact path='/SignUp' component={SignUp}/>
           <Route path='/carDetail/:id' component={CarDetail} />
+          <Route exact path='/' component={test} />
+          <Route exact path='/CreatePost' component={CreatePost} />
         </Switch>
       </div>
       </Router>
