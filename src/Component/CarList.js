@@ -7,36 +7,36 @@ import{BasicTable} from "./table/BasicTable"
 export default class CarList extends Component {
     constructor(props) {
         super(props);
-        this.retrieveCarsPost = this.retrieveCarsPost.bind(this);
+        // this.retrieveCarsPost = this.retrieveCarsPost.bind(this);
 
         
     
-        this.state = {
-          cars: []
-        };
+        // this.state = {
+        //   cars: []
+        // };
       }
 
-    componentDidMount() {
-        this.retrieveCarsPost();
-   }
+  //   componentDidMount() {
+  //       this.retrieveCarsPost();
+  //  }
 
-   retrieveCarsPost() {
-    CarPostDataService.getCarPost()
-      .then(
-        response => {
-        this.setState({
-            cars: response.data
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  //  retrieveCarsPost() {
+  //   CarPostDataService.getCarPost()
+  //     .then(
+  //       response => {
+  //       this.setState({
+  //           cars: response.data
+  //       });
+  //       console.log(response.data);
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
 
-  }
+  // }
   
     render(){
-        const {cars}  = this.state;
+        // const {cars}  = this.state;
 
         return(
               <div>

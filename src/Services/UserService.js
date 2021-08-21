@@ -18,6 +18,9 @@ class UserDataService {
   getCar(id){
     return axios.get(USER_API_BASE_URL + "/getOne/" + id);
   }
+  getCarPost() {
+    return axios.get("http://localhost:8080/post/listPost2");
+  }
 }
 
 export default new UserDataService();
