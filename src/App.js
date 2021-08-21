@@ -5,7 +5,7 @@ import test from './Component/test'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
-
+import SignUp from './Component/SignUp';
 
 function App() {
   return (
@@ -35,11 +35,10 @@ function App() {
                         <a href="www.google.com">Buy/Sell</a>
                     </li>
                     <li>
-                      <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn/SignUp</a>
-                      <ul className="dropdown-menu" >
-                        <li><Link to={"/LogIn"} className="nav-link">Log In</Link></li>
-                        <li><Link to={"/SignUp"} className="nav-link">Sign Up</Link></li>
-                      </ul>
+                        <Link to={"/LogIn"} className="nav-link">Log In</Link>
+                    </li>
+                    <li>
+                      <Link to={"/SignUp"} className="nav-link">Sign Up</Link>
                     </li>
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
@@ -47,6 +46,9 @@ function App() {
                         <li><a href="www.google.com">Loan Calculator</a></li>
                         <li><a href="www.google.com">Blog</a></li>
                       </ul>
+                    </li>
+                    <li>
+                     <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
                 </ul>
 
@@ -67,6 +69,7 @@ function App() {
           <Route exact path='/' component={test} />
           <Route exact path='/LogIn' component={LogIn}/>
           <Route exact path='/listPost' component={CarList}/>
+          <Route exact path='/SignUp' component={SignUp}/>
           <Route path='/carDetail/:id' component={CarDetail} />
         </Switch>
       </div>

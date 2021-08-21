@@ -1,5 +1,5 @@
 import React, { Component,useEffect } from "react";
-import UserService from "../Services/UserService.js";
+import UserDataService from "../Services/UserService.js";
 import '../App.css';
 
 export default class CarDetail extends Component {
@@ -13,17 +13,16 @@ export default class CarDetail extends Component {
         this.state = {
           car: null,
           id: props.match.params.id,
-          offer: 0,
-          currentOffer: null
+          offer: null
         };
-      }
+    }
 
     componentDidMount() {
         this.getCar();
-   }
+    }
 
-   getCar() {
-    UserService.getCar(this.state.id)
+    getCar() {
+    UserDataService.getCar(this.state.id)
       .then(
         response => {
         this.setState({
@@ -33,8 +32,7 @@ export default class CarDetail extends Component {
       .catch(e => {
         console.log(e);
       });
-
-  }
+    }
 
 
     onChangeOffer(e) {
@@ -47,18 +45,8 @@ export default class CarDetail extends Component {
         var data = {
             offer: this.state.offer,
           };
-          console.log(data);
-          UserService.submitOffer(data);
-        //   .then(response =>{
-        //       this.setState({
-        //         currentOffer: response.data
-        //       });
-
-        //       console.log(response.data)
-        //   })
-        //   .catch(e => {
-        //     console.log(e);
-        //   });
+        console.log(data);
+        UserDataService.submitOffer(data);
     }
 
   
@@ -104,7 +92,7 @@ export default class CarDetail extends Component {
                         type="text"
                         className="form-control"
                         id="offer"
-                        value={this.state.offer}
+                        // value={this.state.offer}
                         onChange={this.onChangeOffer}
                         name="offer"
                         />

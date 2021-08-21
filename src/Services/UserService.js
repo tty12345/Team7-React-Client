@@ -6,15 +6,17 @@ class UserDataService {
   login(user) {
     return axios.post(USER_API_BASE_URL + "/authenticate", user);
   }
-
-  getCar(id){
-    console.log("WTF")
-    return axios.get("http://localhost:8080/post/getOne/"+id);
+  logout(){
+    return axios.post(USER_API_BASE_URL + "/logout");
   }
-
+  save(user) {
+    return axios.post(USER_API_BASE_URL + "/signup", user);
+  }
   submitOffer(currentOffer){
-    console.log("TEST");
-    return axios.post("http://localhost:8080/post/saveOffer",currentOffer);
+    return axios.post(USER_API_BASE_URL + "/saveOffer",currentOffer);
+  }
+  getCar(id){
+    return axios.get(USER_API_BASE_URL + "/getOne/" + id);
   }
 }
 
