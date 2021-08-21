@@ -36,10 +36,7 @@ function App() {
                     <Link to={"/listPost"} className="nav-link">Buy</Link>
                     </li>
                     <li>
-                    <Link to={"/listPost"} className="nav-link">Sell</Link>
-                    <li className="nav-item">
-                        <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
-                    </li>
+                    <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
                     </li>
                     <li>
                         <Link to={"/LogIn"} className="nav-link">Log In</Link>
@@ -79,7 +76,7 @@ function App() {
           <Route exact path='/SignUp' component={SignUp}/>
           <Route path='/carDetail/:id' component={CarDetail} />
           <Route exact path='/' component={test} />
-          <Route exact path='/CreatePost' component={CreatePost} />
+          <Route exact path='/CreatePost' component={CreatePost}/>
         </Switch>
       </div>
       </Router>

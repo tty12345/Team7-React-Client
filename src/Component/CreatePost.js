@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
-
+import{ImageUploader} from "./imageUploader/ImageUploader"
 
 export default class CreatePost extends Component {
     constructor(props) {
@@ -13,6 +13,10 @@ export default class CreatePost extends Component {
       this.onChangeMileage = this.onChangeMileage.bind(this);
       this.onChangeCategory = this.onChangeCategory.bind(this);
       this.onChangePhotoUrl = this.onChangePhotoUrl.bind(this);
+      this.onChangePhotoByte = this.onChangePhotoByte.bind(this);
+      this.saveImage = this.saveImage.bind(this);
+      // this.convertBase64 = this.convertBase64.bind(this);
+      // this.convert = this.convert.bind(this);
       this.savePost = this.savePost.bind(this);
       this.newPost = this.newPost.bind(this);
 
@@ -26,6 +30,7 @@ export default class CreatePost extends Component {
         mileage: 0,
         category: "",
         photoUrl: "",
+        photoByte: null
       };
     }
 
@@ -77,6 +82,48 @@ export default class CreatePost extends Component {
       })
     }
 
+    onChangePhotoByte(e) {
+      this.setState({
+        photoByte: e.target.files[0]
+      })
+      console.log(e.target.files[0]);
+    }
+
+    // convert(file){
+    //   var reader = new FileReader();
+    //   if(file)
+    //     reader.readAsDataURL(file);
+    //     reader.onload = () =>{
+    //       var Base64 = reader.result;
+    //       this.setState({
+    //         photoByte: Base64
+    //       })
+    //     };
+    //     reader.onerror = (error) => {
+    //       console.log("error:", error);
+    //     }
+    // }
+
+    // async convert(file){
+    //       const base64 = await this.convertBase64(file);
+    //       return base64;
+    //     }
+      
+
+    // convertBase64(file){
+    //   return new Promise((resolve,reject)=> {
+
+    //     const fileReader = new FileReader();
+    //     fileReader.readAsDataURL(file);
+    //     fileReader.onloadend  = ()=>{
+    //       resolve(fileReader.result);
+    //     };
+
+    //     fileReader.onerror = (error)=>{
+    //         reject(error);
+    //     };
+    //   });
+    // }
 
     savePost() {
         var data = {
@@ -90,7 +137,7 @@ export default class CreatePost extends Component {
             category: this.state.category,
             photoUrl: this.state.photoUrl,
         };
-
+        console.log(data);
         PostService.createPost(data)
             .then(response => {
                 this.setState({
@@ -110,6 +157,23 @@ export default class CreatePost extends Component {
                 console.log(e);
             });
     }
+
+    saveImage() {
+      var data = {
+          photoByte: this.state.photoByte
+      };
+      console.log(data);
+      PostService.uploadImage(data)
+          .then(response => {
+              this.setState({
+                  photoByte: response.data.photoByte
+              });
+              console.log(response.data);
+          })
+          .catch(e => {
+              console.log(e);
+          });
+  }
     
     newPost() {
         this.setState({
@@ -122,6 +186,7 @@ export default class CreatePost extends Component {
             mileage: 0,
             category: "",
             photoUrl: "",
+            photoByte: null
           });
     }
   
@@ -225,10 +290,12 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
-              
               <button onClick={this.savePost} className="btn btn-success">
                 Submit
             </button>
+            <div className = "uplaodImage">
+                <ImageUploader/>
+              </div>
             </div>
       );
     }
