@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import test from './Component/test'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
+import CarDetail from './Component/CarDetail';
 
 
 function App() {
@@ -66,8 +67,9 @@ function App() {
           <Route exact path='/' component={test} />
           <Route exact path='/LogIn' component={LogIn}/>
           <Route exact path='/listPost' component={CarList}/>
+          <Route path='/carDetail/:id' component={CarDetail} />
         </Switch>
-</div>
+      </div>
       </Router>
     </div>
   );
