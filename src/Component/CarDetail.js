@@ -2,18 +2,19 @@ import React, { Component,useEffect } from "react";
 import UserService from "../Services/UserService.js";
 import '../App.css';
 
-export default class CarList extends Component {
+export default class CarDetail extends Component {
     constructor(props) {
         super(props);
         this.getCar = this.getCar.bind(this);
-        this.onChangeOffer = this.onChangeOffer(this);
-
+        this.onChangeOffer = this.onChangeOffer.bind(this);
+        this.submitNewOffer = this.submitNewOffer.bind(this);
         
     
         this.state = {
           car: null,
           id: props.match.params.id,
-          offer:{offer}
+          offer: 0,
+          currentOffer: null
         };
       }
 
@@ -36,22 +37,33 @@ export default class CarList extends Component {
   }
 
 
-  onChangeOffer(e) {
-    const offer = e.target.value;
+    onChangeOffer(e) {
+        this.setState({
+            offer: e.target.value
+          });
+    }
 
-    this.setState(function (prevState) {
-        return {
-            offer: {
-                ...prevState.offer,
-                marks: marks
-            }
-        };
-    });
-}
+    submitNewOffer() {
+        var data = {
+            offer: this.state.offer,
+          };
+          console.log(data);
+          UserService.submitOffer(data);
+        //   .then(response =>{
+        //       this.setState({
+        //         currentOffer: response.data
+        //       });
+
+        //       console.log(response.data)
+        //   })
+        //   .catch(e => {
+        //     console.log(e);
+        //   });
+    }
+
   
     render(){
         const {car}  = this.state;
-        console.log(car);
         if(car!=null)
         return(
               <div>
@@ -86,7 +98,18 @@ export default class CarList extends Component {
                   </table>
                   <br/>
                   <div align = "center">
-                  <button align = "center" >Leave Offer</button>
+                    <div className="form-group">
+                    <label htmlFor="nickName">Offer</label>
+                        <input
+                        type="text"
+                        className="form-control"
+                        id="offer"
+                        value={this.state.offer}
+                        onChange={this.onChangeOffer}
+                        name="offer"
+                        />
+                    </div>
+                  <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
                   </div>
               </div>
         )
