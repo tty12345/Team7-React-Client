@@ -13,7 +13,9 @@ export default class CarDetail extends Component {
         this.state = {
           car: null,
           id: props.match.params.id,
-          offer: null
+          offer: null,
+          offerBefore: false,
+          currentOffer: null
         };
     }
 
@@ -46,12 +48,22 @@ export default class CarDetail extends Component {
             offer: this.state.offer,
           };
         console.log(data);
-        UserDataService.submitOffer(data);
+        UserDataService.submitOffer(data)
+        .then(response => {
+            this.setState({
+                currentOffer: response.data
+            });
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+
     }
 
   
     render(){
-        const {car}  = this.state;
+        const {car,currentOffer}  = this.state;
         if(car!=null)
         return(
               <div>
@@ -85,20 +97,26 @@ export default class CarDetail extends Component {
                   </tr>
                   </table>
                   <br/>
-                  <div align = "center">
-                    <div className="form-group">
-                    <label htmlFor="nickName">Offer</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="offer"
-                        // value={this.state.offer}
-                        onChange={this.onChangeOffer}
-                        name="offer"
-                        />
-                    </div>
-                  <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
+                  {currentOffer?(
+                  <div>
+                      Your Offer: {currentOffer.offer}
                   </div>
+                  ):(                  
+                    <div align = "center">
+                      <div className="form-group">
+                      <label htmlFor="nickName">Offer</label>
+                          <input
+                          type="text"
+                          className="form-control"
+                          id="offer"
+                          // value={this.state.offer}
+                          onChange={this.onChangeOffer}
+                          name="offer"
+                          />
+                      </div>
+                    <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
+                    </div>)}
+
               </div>
         )
         else

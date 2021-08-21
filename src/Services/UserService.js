@@ -13,13 +13,10 @@ class UserDataService {
     return axios.post(USER_API_BASE_URL + "/signup", user);
   }
   submitOffer(currentOffer){
-    return axios.post(USER_API_BASE_URL + "/saveOffer",currentOffer);
+    return axios.post("http://localhost:8080/post/saveOffer",currentOffer);
   }
   getCar(id){
-    return axios.get(USER_API_BASE_URL + "/getOne/" + id);
-  }
-  getCarPost() {
-    return axios.get("http://localhost:8080/post/listPost2");
+    return axios.get("http://localhost:8080/post/getOne/" + id);
   }
 }
 

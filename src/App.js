@@ -29,10 +29,13 @@ function App() {
             <div className="collapse navbar-collapse" id="navbar">
                 <ul className="nav navbar-nav">
                     <li className="active">
-                        <a href="www.google.com">Home</a>
+                    <Link to={"/"} className="nav-link">Home</Link>
                     </li>
                     <li>
-                        <a href="www.google.com">Buy/Sell</a>
+                    <Link to={"/listPost"} className="nav-link">Buy</Link>
+                    </li>
+                    <li>
+                    <Link to={"/listPost"} className="nav-link">Sell</Link>
                     </li>
                     <li>
                         <Link to={"/LogIn"} className="nav-link">Log In</Link>
