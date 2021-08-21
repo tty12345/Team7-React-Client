@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import test from './Component/test'
 import LogIn from './Component/LogIn';
-import "bootstrap/dist/css/bootstrap.min.css";
+import SignUp from './Component/SignUp';
+import CarDetail from './Component/CarDetail';
 
 function App() {
   return (
@@ -33,11 +34,10 @@ function App() {
                         <a href="#">Buy/Sell</a>
                     </li>
                     <li>
-                      <a href="" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn/SignUp</a>
-                      <ul className="dropdown-menu" >
-                        <li><Link to={"/LogIn"} className="nav-link">Log In</Link></li>
-                        <li><Link to={"/SignUp"} className="nav-link">Sign Up</Link></li>
-                      </ul>
+                        <Link to={"/LogIn"} className="nav-link">Log In</Link>
+                    </li>
+                    <li>
+                      <Link to={"/SignUp"} className="nav-link">Sign Up</Link>
                     </li>
                     <li>
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
@@ -45,6 +45,9 @@ function App() {
                         <li><a href="#">Loan Calculator</a></li>
                         <li><a href="#">Blog</a></li>
                       </ul>
+                    </li>
+                    <li>
+                     <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
                 </ul>
 
@@ -64,6 +67,8 @@ function App() {
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/' component={test} />
           <Route exact path='/LogIn' component={LogIn}/>
+          <Route exact path='/SignUp' component={SignUp}/>
+          <Route path='/carDetail/:id' component={CarDetail} />
         </Switch>
 </div>
       </Router>
