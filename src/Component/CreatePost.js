@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
+import { Redirect } from 'react-router-dom';
 
 export default class CreatePost extends Component {
     constructor(props) {
@@ -29,7 +30,8 @@ export default class CreatePost extends Component {
         mileage: 0,
         category: "",
         photoUrl: "",
-        photoByte: null
+        photoByte: null,
+        submitted: false
       };
     }
 
@@ -125,6 +127,7 @@ export default class CreatePost extends Component {
     // }
 
     savePost() {
+        this.saveImage();
         var data = {
             //postId: this.state.postId,
             price: this.state.price,
@@ -149,6 +152,7 @@ export default class CreatePost extends Component {
                     mileage: response.data.mileage,
                     category: response.data.category,
                     photoUrl: response.data.photoUrl,
+                    submitted: true
                 });
                 console.log(response.data);
             })
@@ -158,20 +162,19 @@ export default class CreatePost extends Component {
     }
 
     saveImage() {
-      var data = {
-          photoByte: this.state.photoByte
-      };
-      console.log(data);
-      PostService.uploadImage(data)
-          .then(response => {
-              this.setState({
-                  photoByte: response.data.photoByte
-              });
-              console.log(response.data);
-          })
-          .catch(e => {
-              console.log(e);
-          });
+      const newFile = new FormData();
+      newFile.append("photoParam", this.state.photoByte, this.state.photoByte.name);
+      console.log(newFile);
+      PostService.uploadImage(newFile)
+          // .then(response => {
+          //     this.setState({
+          //         photoByte: response.data.photoByte
+          //     });
+          //     console.log(response.data);
+          // })
+          // .catch(e => {
+          //     console.log(e);
+          // });
   }
     
     newPost() {
@@ -191,6 +194,8 @@ export default class CreatePost extends Component {
   
     render() {
       return (
+        <div>
+        {this.state.submitted?(<Redirect to='/CarList'/>):(
         <div>
             <div className="form-group">
                 <label htmlFor="price">Price</label>
@@ -289,12 +294,23 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
-              <button onClick={this.savePost} className="btn btn-success">
+              <div className="form-group">
+                <label htmlFor="photoByte">Upload Photo</label>
+                <input 
+                  type="file"
+                  className="form-control"
+                  id="photoByte"
+                  required
+                  // value={this.state.photoByte}
+                  onChange={this.onChangePhotoByte}
+                  name="photoByte"
+                />
+              </div>
+              <button onClick={this.savePost} className="btn btn-success" >
                 Submit
             </button>
-            <div className = "uplaodImage">
-              </div>
             </div>
+            )}</div>
       );
     }
   }

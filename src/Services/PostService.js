@@ -13,7 +13,7 @@ class PostDataService {
     }
 
     uploadImage(ImageFile) {
-      return axios.put(CARPOST_API_BASE_URL + "/saveImage", ImageFile);
+      return axios.post(CARPOST_API_BASE_URL + "/saveImage", ImageFile);
     }
     
     getPostById(id) {

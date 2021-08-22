@@ -73,7 +73,7 @@ function App() {
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/' component={test} />
           <Route exact path='/LogIn' component={LogIn}/>
-          <Route exact path='/listPost' component={CarList}/>
+          <Route exact path='/CarList' component={CarList}/>
           <Route exact path='/SignUp' component={SignUp}/>
           <Route path='/carDetail/:id' component={CarDetail} />
           <Route exact path='/' component={test} />
