@@ -39,6 +39,13 @@ export const COLUMNS = [
     },
     {
         Header: '',
+        accessor: 'carPostImage.carpostImage',
+        Cell: ({ cell: { value }}) => (
+              <img src={"data:image/png;base64," + value} className ="base64Image"/>
+            )
+    },
+    {
+        Header: '',
         accessor: 'postId',
         Cell: ({ cell: { value }}) => (
             <Link to={{ pathname:'/carDetail/'+`${value}`}}>More Details</Link>

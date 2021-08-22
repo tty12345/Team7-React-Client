@@ -8,8 +8,9 @@ class PostDataService {
       return axios.get(CARPOST_API_BASE_URL + "/listPost");
     }
 
-    createPost(carPosting) {
-      return axios.post(CARPOST_API_BASE_URL + "/savePost", carPosting);
+    createPost(carPosting, Id) {
+      console.log(Id);
+      return axios.post(CARPOST_API_BASE_URL + "/savePost/" + Id, carPosting);
     }
 
     uploadImage(ImageFile) {

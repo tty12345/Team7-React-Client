@@ -4,7 +4,7 @@ const STUDENT_API_BASE_URL = "http://localhost:8080/post";
 
 class CarPostDataService {
   getCarPost() {
-    return axios.get("http://localhost:8080/post/listPost2");
+    return axios.get("http://localhost:8080/post/listPost");
   }
   // createStudent(student) {
   //   return axios.post(STUDENT_API_BASE_URL, student);

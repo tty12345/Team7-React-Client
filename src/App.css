@@ -32,3 +32,8 @@
   height: Auto;
   width: 300px;
 }
+
+.base64Image{
+  height: 100px;
+  width: 100px;
+}

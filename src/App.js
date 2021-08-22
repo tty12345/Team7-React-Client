@@ -34,7 +34,7 @@ function App() {
                     <Link to={"/"} className="nav-link">Home</Link>
                     </li>
                     <li>
-                    <Link to={"/listPost"} className="nav-link">Buy</Link>
+                    <Link to={"/CarList"} className="nav-link">Buy</Link>
                     </li>
                     <li>
                     <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>

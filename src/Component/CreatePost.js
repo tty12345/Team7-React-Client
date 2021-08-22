@@ -31,7 +31,10 @@ export default class CreatePost extends Component {
         category: "",
         photoUrl: "",
         photoByte: null,
-        submitted: false
+        submitted: false,
+        currentPhoto: null,
+        carpostimage: 0,
+        imageUploadStatus: false
       };
     }
 
@@ -85,7 +88,8 @@ export default class CreatePost extends Component {
 
     onChangePhotoByte(e) {
       this.setState({
-        photoByte: e.target.files[0]
+        photoByte: e.target.files[0],
+        currentPhoto: URL.createObjectURL(e.target.files[0])
       })
       console.log(e.target.files[0]);
     }
@@ -127,7 +131,7 @@ export default class CreatePost extends Component {
     // }
 
     savePost() {
-        this.saveImage();
+        // this.saveImage();
         var data = {
             //postId: this.state.postId,
             price: this.state.price,
@@ -138,9 +142,10 @@ export default class CreatePost extends Component {
             mileage: this.state.mileage,
             category: this.state.category,
             photoUrl: this.state.photoUrl,
+            carpostimage: this.state.carpostimage
         };
         console.log(data);
-        PostService.createPost(data)
+        PostService.createPost(data,this.state.carpostimage)
             .then(response => {
                 this.setState({
                     postId: response.data.postId,
@@ -166,15 +171,15 @@ export default class CreatePost extends Component {
       newFile.append("photoParam", this.state.photoByte, this.state.photoByte.name);
       console.log(newFile);
       PostService.uploadImage(newFile)
-          // .then(response => {
-          //     this.setState({
-          //         photoByte: response.data.photoByte
-          //     });
-          //     console.log(response.data);
-          // })
-          // .catch(e => {
-          //     console.log(e);
-          // });
+          .then(response => {
+              this.setState({
+                carpostimage: response.data,
+                imageUploadStatus: true
+              });
+          })
+          .catch(e => {
+              console.log(e);
+          });
   }
     
     newPost() {
@@ -294,8 +299,14 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
+              {this.state.imageUploadStatus?(
+              <div>
+              <span>Upload Sucessful!</span>
+              <img src = {this.state.currentPhoto}/>
+              </div>):(
               <div className="form-group">
                 <label htmlFor="photoByte">Upload Photo</label>
+                <img src = {this.state.currentPhoto}/>
                 <input 
                   type="file"
                   className="form-control"
@@ -305,10 +316,14 @@ export default class CreatePost extends Component {
                   onChange={this.onChangePhotoByte}
                   name="photoByte"
                 />
-              </div>
-              <button onClick={this.savePost} className="btn btn-success" >
+                <br/>
+                <button onClick={this.saveImage} className="btn btn-success" >Upload Image</button>
+              </div>)}
+              <br/>
+              {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-success" >
                 Submit
-            </button>
+            </button>):(
+              <span>Please Upload an Image only in png format beacause we are noobs</span>)}
             </div>
             )}</div>
       );
