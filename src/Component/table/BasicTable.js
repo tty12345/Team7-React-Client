@@ -25,6 +25,7 @@ export const BasicTable = () => {
     const [brand, setBrand] = useState("");
     const [priceLabel, setPriceLabel] = useState("");
     const [description, setDescription] = useState("");
+    
 
     useEffect(() => {
         getData()

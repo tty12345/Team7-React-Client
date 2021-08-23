@@ -2,6 +2,7 @@ import React, { Component,useEffect } from "react";
 import UserDataService from "../Services/UserService.js";
 import '../App.css';
 
+
 export default class CarDetail extends Component {
     constructor(props) {
         super(props);
