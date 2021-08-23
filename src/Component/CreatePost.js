@@ -94,41 +94,6 @@ export default class CreatePost extends Component {
       console.log(e.target.files[0]);
     }
 
-    // convert(file){
-    //   var reader = new FileReader();
-    //   if(file)
-    //     reader.readAsDataURL(file);
-    //     reader.onload = () =>{
-    //       var Base64 = reader.result;
-    //       this.setState({
-    //         photoByte: Base64
-    //       })
-    //     };
-    //     reader.onerror = (error) => {
-    //       console.log("error:", error);
-    //     }
-    // }
-
-    // async convert(file){
-    //       const base64 = await this.convertBase64(file);
-    //       return base64;
-    //     }
-      
-
-    // convertBase64(file){
-    //   return new Promise((resolve,reject)=> {
-
-    //     const fileReader = new FileReader();
-    //     fileReader.readAsDataURL(file);
-    //     fileReader.onloadend  = ()=>{
-    //       resolve(fileReader.result);
-    //     };
-
-    //     fileReader.onerror = (error)=>{
-    //         reject(error);
-    //     };
-    //   });
-    // }
 
     savePost() {
         // this.saveImage();

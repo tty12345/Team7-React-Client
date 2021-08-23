@@ -2,35 +2,38 @@
 import {useTable, usePagination } from 'react-table'
 import {COLUMNS} from './columns'
 import axios from "axios";
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import PostService from "../../Services/PostService";
+
+
+// class Table {
+
+//     constructor(){
+//         this.state={
+//             parameter:[],
+//             brand: "",
+//             priceLabel: "",
+//             description:""
+//             }
+//         }
+
+// }
 
 export const BasicTable = () => {
 
-    const [loadingData, setLoadingData] = useState(true);
-    const [data, setData] = useState([]);
+    const [data1, setData] = useState([]);
+    const [brand, setBrand] = useState("");
+    const [priceLabel, setPriceLabel] = useState("");
+    const [description, setDescription] = useState("");
 
     useEffect(() => {
-        async function getData() {
-          await axios
-            .get("http://localhost:8080/post/listPost2")
-            .then((response) => {
-              // check if the data is populated
-              console.log(response.data);
-              setData(response.data);
-              // you tell it that you had the result
-              setLoadingData(false);
-            });
-        }
-        if (loadingData) {
-          // if the result is not ready so you make the axios call
-          getData();
-        }
+        getData()
+        function example(){}
       }, []);
-
 
     const tableInstance = useTable({
         columns: COLUMNS,
-        data: data
+        data: data1
     },
     usePagination)
 
@@ -39,8 +42,66 @@ export const BasicTable = () => {
 
     const {pageIndex, pageSize} = state
 
+    function onChangeBrand(e) {
+
+            setBrand(e.target.value);
+
+    }
+
+    function onChangePriceLabel(e) {
+
+        setPriceLabel(e.target.value);
+    }
+
+    function onChangeDescription(e) {
+
+        setDescription(e.target.value);
+    }
+
+    function getData(){        
+        var data = {
+        //postId: this.state.postId,
+        brand: brand,
+        priceLabel: priceLabel,
+        description: description
+    };
+    console.log(data);
+    PostService.search(data).then(response => {
+        setData(response.data);
+    })
+    .catch(e => {
+        console.log(e);
+    });}
+    
     return (
     <div>
+    <br/>
+    <div>
+        <table>
+			<tr>
+				<th>Brand<select name = "brand" onChange = {onChangeBrand}>
+					<option></option>
+					<option value = "toyota">Toyota</option>
+					<option value = "honda">Honda</option>
+					<option value = "Mercedes-Benz">Mercedes</option>
+					<option value = "porsche">Porsche</option>
+					<option value = "mazda">Mazda</option>
+					<option value = "suzuki">Suzuki</option>
+					<option value = "others">Others</option>
+				</select></th>
+				<th>Price<select name = "priceLabel" onChange = {onChangePriceLabel}>
+					<option></option>
+					<option value = "0">$0 to $50,000</option>
+					<option value = "1">$50,001 to $100,000</option>
+					<option value = "2">$100,001 to $150,000</option>
+					<option value = "3">$150,000 and above</option>
+				</select></th>
+				<th>Model<input type="text" name = "description" onChange = {onChangeDescription}/></th>
+				<th><input type="submit" value = "Submit" onClick={getData}/></th>
+			</tr>
+		</table>
+    </div>
+    <br/>
     <div>
     <table {...getTableProps()} id = "cartable">
         <thead>

@@ -28,6 +28,11 @@ class PostDataService {
     deletePost(id) {
       return axios.delete(CARPOST_API_BASE_URL + "/deletePost/" + id);
     }
+
+    search(searchobject){
+      console.log(searchobject);
+      return axios.post(CARPOST_API_BASE_URL+"/listPost",searchobject);
+    }
 }
 
 export default new PostDataService();
