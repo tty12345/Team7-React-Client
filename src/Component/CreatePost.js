@@ -7,6 +7,7 @@ export default class CreatePost extends Component {
       super(props);
       this.onChangePrice = this.onChangePrice.bind(this);
       this.onChangeDescription = this.onChangeDescription.bind(this);
+      this.onChangeDepreciation = this.onChangeDepreciation.bind(this);
       this.onChangeBrand = this.onChangeBrand.bind(this);
       this.onChangeEngineCapacity = this.onChangeEngineCapacity.bind(this);
       this.onChangeRegisteredDate = this.onChangeRegisteredDate.bind(this);
@@ -19,17 +20,20 @@ export default class CreatePost extends Component {
       // this.convert = this.convert.bind(this);
       this.savePost = this.savePost.bind(this);
       this.newPost = this.newPost.bind(this);
+      this.onClickPriceEstimate = this.onClickPriceEstimate.bind(this);
 
       this.state = {
         postId: null,
         price: 0,
+        depreciation: 0,
         description: "",
         brand: "",
         engineCapacity: "",
-        registeredDate: new Date(),
+        registeredDate: "",
         mileage: 0,
         category: "",
         photoUrl: "",
+        priceEstimate: 0,
         photoByte: null,
         submitted: false,
         currentPhoto: null,
@@ -42,6 +46,12 @@ export default class CreatePost extends Component {
       this.setState({
         price: e.target.value
       });
+    }
+
+    onChangeDepreciation(e) {
+      this.setState({
+        depreciation: e.target.value
+      })
     }
 
     onChangeDescription(e) {
@@ -92,6 +102,24 @@ export default class CreatePost extends Component {
         currentPhoto: URL.createObjectURL(e.target.files[0])
       })
       console.log(e.target.files[0]);
+    }
+
+    onClickPriceEstimate() {
+      let to_estimate = [
+        this.state.depreciation,
+        this.state.registeredDate,
+        this.state.mileage,
+        this.state.engineCapacity,
+        this.state.brand,
+        this.state.category,
+      ]
+
+    PostService.getEstimate(to_estimate)
+      .then(response => {
+        this.setState({
+          priceEstimate: response.data
+        });
+      });
     }
 
 
@@ -180,6 +208,19 @@ export default class CreatePost extends Component {
                 />
             </div>
 
+            <div className="form-group">
+                <label htmlFor="depreciation">Depreciation</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="depreciation"
+                  required
+                  value={this.state.depreciation}
+                  onChange={this.onChangeDepreciation}
+                  name="depreciation"
+                />
+            </div>
+
               <div className="form-group">
                 <label htmlFor="description">Description</label>
                 <input
@@ -219,7 +260,7 @@ export default class CreatePost extends Component {
               <div className="form-group">
                 <label htmlFor="registeredDate">Registered Date</label>
                 <input
-                  type="date"
+                  type="text"
                   className="form-control"
                   id="registeredDate"
                   required
@@ -264,6 +305,17 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
+
+              <div>
+                <label htmlFor="priceEstimate">Price Estimate</label>
+                <p>{this.state.priceEstimate}</p>
+                <button
+                  onClick={this.onClickPriceEstimate}>
+                  Get Estimate
+                </button>
+              </div>
+              <br></br>
+
               {this.state.imageUploadStatus?(
               <div>
               <span>Upload Sucessful!</span>
