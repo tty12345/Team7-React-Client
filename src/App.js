@@ -7,7 +7,8 @@ import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
-
+import{ NotificationTable } from "./Component/table/NotificationTable"
+import { FaBell } from 'react-icons/fa';
 
 function App() {
   return (
@@ -55,14 +56,13 @@ function App() {
                     <li>
                      <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
+                    <li>
+                    <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><FaBell/></a>
+                      <ul className="dropdown-menu" aria-labelledby="about-us">
+                        <li><div><NotificationTable/></div></li>
+                      </ul>
+                    </li>
                 </ul>
-
-            <form className="navbar-form navbar-right" role="search">
-              <div className="form-group">
-                <input type="text" className="form-control"/>
-              </div>
-              <button type="submit" className="btn btn-default">Search</button>
-            </form>
 
                 </div>
             </div>
