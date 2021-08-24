@@ -245,6 +245,15 @@ export default class CreatePost extends Component {
     }
   
     render() {
+      //condition
+      if(!sessionStorage.getItem("status")){
+
+        window.alert("Please Log In First!");
+
+        return(<Redirect to='/LogIn'/>);
+      }
+      //it not logged direct to login
+      else{
       return (
         <div>
           <div>
@@ -429,6 +438,6 @@ export default class CreatePost extends Component {
             </form>
             </div>
             )}</div>
-      );
+      );}
     }
   }

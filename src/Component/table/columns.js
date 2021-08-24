@@ -45,11 +45,19 @@ export const COLUMNS = [
             )
     },
     {
-        Header: '',
+        Header: 'More Details',
         accessor: 'postId',
         Cell: ({ cell: { value }}) => (
             <Link to={{ pathname:'/carDetail/'+`${value}`}}>More Details</Link>
             )
     }
+    // ,
+    // {
+    //     Header: 'More Details',
+    //     accessor: 'postId',
+    //     Cell: ({ cell: { value }}) => (
+    //         <Link to={{ pathname:'/carDetail/'+`${value}`}}>More Details</Link>
+    //         )
+    // }
 
 ]

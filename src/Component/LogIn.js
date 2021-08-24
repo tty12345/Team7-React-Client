@@ -42,7 +42,10 @@ export default class LogIn extends Component {
             if (response.status === 200) {
                 this.setState({
                     isLoggedIn: true,
-                })
+                });
+                sessionStorage.setItem("status", "true");
+                sessionStorage.removeItem("form");
+                window.location.reload();
             } 
             console.log(response.data);
         })
@@ -59,7 +62,7 @@ export default class LogIn extends Component {
         return (
             <div className="submit-form">
                 {this.state.isLoggedIn ? (
-                    <Redirect to='/'  />
+                    <Redirect to='/CarList'  />
                 ) : (
                     <div>
                         <div className="form-group">

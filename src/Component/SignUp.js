@@ -11,7 +11,8 @@ export default class SignUp extends Component {
 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            isCreated: false
         };
     }
 
@@ -32,44 +33,50 @@ export default class SignUp extends Component {
           username: this.state.username,
           password: this.state.password,
         };
-        UserService.save(data);
-        // .then(response => {
-        //     if (response.status === 201) {
-        //         <Redirect to='/LogIn'  />
-        //     } 
-        // });
+        UserService.save(data)
+        .then(response => {
+            if (response.status === 201) {
+                this.setState({
+                    isCreated: true
+                });
+            } 
+        });
     }
 
     render() {
         return (
             <div className="submit-form">
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="username"
-                            required
-                            value={this.state.username}
-                            onChange={this.onChangeUsername}
-                            name="username"
-                        />
+                {this.state.isCreated ? (
+                    <Redirect to='/LogIn'  />
+                ) : (
+                    <div>
+                        <div className="form-group">
+                            <label htmlFor="username">Username:</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="username"
+                                required
+                                value={this.state.username}
+                                onChange={this.onChangeUsername}
+                                name="username"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="password"
+                                required
+                                value={this.state.password}
+                                onChange={this.onChangePassword}
+                                name="password"
+                            />
+                        </div>
+                        <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            required
-                            value={this.state.password}
-                            onChange={this.onChangePassword}
-                            name="password"
-                        />
-                    </div>
-                    <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
-                </div>
+                )}
             </div>
         );
     }

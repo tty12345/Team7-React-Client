@@ -7,9 +7,21 @@ import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
-
+import{ NotificationTable } from "./Component/table/NotificationTable"
+import { FaBell } from 'react-icons/fa';
 
 function App() {
+
+  function logout(){
+    if (sessionStorage.getItem("status") != null) {
+      console.log(sessionStorage.getItem("status"));
+      sessionStorage.removeItem("status");
+      // sessionStorage.setItem("loggedout",);
+    } 
+    window.location.reload();
+  }
+
+
   return (
     <div className="App">
       <Router>
@@ -40,10 +52,15 @@ function App() {
                     <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
                     </li>
                     <li>
-                        <Link to={"/LogIn"} className="nav-link">Log In</Link>
+                     { sessionStorage.getItem("status") == null ?
+                        <Link to={"/login"} className="nav-link">Log In</Link>
+                        :
+                       <Link onClick={logout} className="nav-link">Log Out</Link> }
                     </li>
                     <li>
-                      <Link to={"/SignUp"} className="nav-link">Sign Up</Link>
+                      { sessionStorage.getItem("status") == null ?
+                         <Link to={"/signup"} className="nav-link">Sign Up</Link>
+                         : <div></div> } 
                     </li>
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
@@ -55,14 +72,15 @@ function App() {
                     <li>
                      <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
+                    {sessionStorage.getItem("status") ?(
+                    <li>
+                    <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><FaBell/></a>
+                      <ul className="dropdown-menu" aria-labelledby="about-us">
+                        <li><div><NotificationTable/></div></li>
+                      </ul>
+                    </li>):
+                    (<li></li>)}
                 </ul>
-
-            <form className="navbar-form navbar-right" role="search">
-              <div className="form-group">
-                <input type="text" className="form-control"/>
-              </div>
-              <button type="submit" className="btn btn-default">Search</button>
-            </form>
 
                 </div>
             </div>

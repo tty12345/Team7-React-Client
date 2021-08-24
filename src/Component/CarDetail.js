@@ -2,6 +2,7 @@ import React, { Component,useEffect } from "react";
 import UserDataService from "../Services/UserService.js";
 import '../App.css';
 
+
 export default class CarDetail extends Component {
     constructor(props) {
         super(props);
@@ -44,21 +45,25 @@ export default class CarDetail extends Component {
     }
 
     submitNewOffer() {
-        var data = {
-            offer: this.state.offer,
-          };
-        console.log(data);
-        UserDataService.submitOffer(data)
-        .then(response => {
-            this.setState({
-                currentOffer: response.data
+        if(!sessionStorage.getItem("state")){
+            window.alert("Please Log In First To Leave Offer")
+        }
+        else{
+            var data = {
+                offer: this.state.offer,
+            };
+            console.log(data);
+            UserDataService.submitOffer(data)
+            .then(response => {
+                this.setState({
+                    currentOffer: response.data
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
             });
-            console.log(response.data);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-
+        }
     }
 
   
