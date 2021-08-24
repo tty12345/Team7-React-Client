@@ -7,6 +7,7 @@ import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
+import Calculator from './Component/Calculator'
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 
@@ -65,7 +66,7 @@ function App() {
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
-                        <li><a href="www.google.com">Loan Calculator</a></li>
+                        <li><Link to={"/Calculator"}>Loan Calculator</Link></li>
                         <li><a href="www.google.com">Blog</a></li>
                       </ul>
                     </li>
@@ -96,6 +97,7 @@ function App() {
           <Route path='/carDetail/:id' component={CarDetail} />
           <Route exact path='/' component={test} />
           <Route exact path='/CreatePost' component={CreatePost}/>
+          <Route exact path='/Calculator' component={Calculator}/>
         </Switch>
       </div>
       </Router>

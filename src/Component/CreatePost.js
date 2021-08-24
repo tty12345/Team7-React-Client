@@ -257,7 +257,7 @@ export default class CreatePost extends Component {
       return (
         <div>
           <div>
-          <h3>Create your car post</h3>
+          <h2>Create your car post</h2>
         </div>
         {this.state.submitted?(<Redirect to='/CarList'/>):(
           
