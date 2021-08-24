@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
 import { Redirect } from 'react-router-dom';
+import { breakStatement } from "@babel/types";
 
 export default class CreatePost extends Component {
     constructor(props) {
@@ -24,13 +25,13 @@ export default class CreatePost extends Component {
 
       this.state = {
         postId: null,
-        price: 0,
-        depreciation: 0,
+        price: "",
+        depreciation: "",
         description: "",
         brand: "",
         engineCapacity: "",
         registeredDate: new Date(),
-        mileage: 0,
+        mileage: "",
         category: "",
         photoUrl: "",
         priceEstimate: 0,
@@ -130,10 +131,18 @@ export default class CreatePost extends Component {
 
 
     savePost() {
-        // this.saveImage();
+        // this.saveImage()
+
+        if (this.state.price === "" || this.state.depreciation === "" || this.state.brand === ""
+          || this.state.description === "" || this.state.engineCapacity === ""
+          || this.state.registeredDate === "" || this.state.mileage === "" || this.state.category === "") {
+          return;
+        }
+
         var data = {
             //postId: this.state.postId,
             price: this.state.price,
+            depreciation: this.state.depreciation,
             description: this.state.description,
             brand: this.state.brand,
             engineCapacity: this.state.engineCapacity,
@@ -149,6 +158,7 @@ export default class CreatePost extends Component {
                 this.setState({
                     postId: response.data.postId,
                     price: response.data.price,
+                    depreciation: response.data.depreciation,
                     description: response.data.description,
                     brand: response.data.brand,
                     engineCapacity: response.data.engineCapacity,
@@ -199,10 +209,14 @@ export default class CreatePost extends Component {
     render() {
       return (
         <div>
+          <div>
+          <h3>Create your car post</h3>
+        </div>
         {this.state.submitted?(<Redirect to='/CarList'/>):(
+          <form>
         <div>
             <div className="form-group">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">Price (Get an estimate of your car's price below)</label>
                 <input
                   type="text"
                   className="form-control"
@@ -228,18 +242,6 @@ export default class CreatePost extends Component {
             </div>
 
               <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="description"
-                  required
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  name="description"
-                />
-              </div>
-              <div className="form-group">
                 <label htmlFor="brand">Brand</label>
                 <br></br>
                 <select name="category" onChange={this.onChangeBrand}>
@@ -255,7 +257,7 @@ export default class CreatePost extends Component {
                   <option value='8'>Kia</option>
                   <option value='9'>Lexus</option>
                   <option value='10'>Mini</option>
-                  <option value='11'>Mercedes</option>
+                  <option value='11'>Mercedes-Benz</option>
                   <option value='12'>Mitsubishi</option>
                   <option value='13'>Morris</option>
                   <option value='14'>Nissan</option>
@@ -271,7 +273,19 @@ export default class CreatePost extends Component {
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="engineCapacity">Engine Capacity</label>
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="description"
+                  required
+                  value={this.state.description}
+                  onChange={this.onChangeDescription}
+                  name="description"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
                 <input
                   type="text"
                   className="form-control"
@@ -378,6 +392,7 @@ export default class CreatePost extends Component {
                 Submit
             </button>
             </div>
+            </form>
             )}</div>
       );
     }
