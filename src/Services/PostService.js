@@ -42,8 +42,8 @@ class PostDataService {
 
       formData.append("depreciation", to_estimate[0]);
       formData.append('age', to_estimate[1]);
-      formData.append('mileage_bin', to_estimate[2]);
-      formData.append('ec_bin', to_estimate[3]);
+      formData.append('mileage', to_estimate[2]);
+      formData.append('engineCapacity', to_estimate[3]);
       formData.append('brand', to_estimate[4]);
       formData.append('category', to_estimate[5]);
 
