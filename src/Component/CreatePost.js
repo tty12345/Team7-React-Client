@@ -30,7 +30,7 @@ export default class CreatePost extends Component {
         description: "",
         brand: "",
         engineCapacity: "",
-        registeredDate: new Date(),
+        registeredDate: "",
         mileage: "",
         category: "",
         photoUrl: "",
@@ -112,11 +112,49 @@ export default class CreatePost extends Component {
 
       var difference = Math.floor((today - registered) / 60 / 60 / 24);
 
+      // one hot encoding for mileage
+      var mileage_bin = this.state.mileage
+      if (mileage_bin >= 0 && mileage_bin < 24000) {
+        mileage_bin = 0;
+      } else if (mileage_bin >= 24000 && mileage_bin < 48000) {
+        mileage_bin = 1;
+      } else if (mileage_bin >= 48000 && mileage_bin < 72000) {
+        mileage_bin = 2;
+      } else if (mileage_bin >= 72000 && mileage_bin < 96000) {
+        mileage_bin = 3;
+      } else if (mileage_bin >= 96000 && mileage_bin < 120000) {
+        mileage_bin = 4;
+      } else if (mileage_bin >= 120000 && mileage_bin < 144000) {
+        mileage_bin = 5;
+      } else if (mileage_bin >= 144000 && mileage_bin < 168000) {
+        mileage_bin = 6;
+      } else if (mileage_bin >= 168000 && mileage_bin < 192000) {
+        mileage_bin = 7;
+      } else if (mileage_bin >= 192000 && mileage_bin < 216000) {
+        mileage_bin = 8;
+      } else {
+        mileage_bin = 9;
+      }
+
+      // one hot encoding for engine capacity
+      var engineCap = this.state.engineCapacity;
+      if (engineCap >= 0 && engineCap < 600) {
+        engineCap = 0;
+      } else if (engineCap >= 600 && engineCap < 1200) {
+        engineCap = 1;
+      } else if (engineCap >= 1200 && engineCap < 1800) {
+        engineCap = 2;
+      } else if (engineCap >= 1800 && engineCap < 2400) {
+        engineCap = 3;
+      } else {
+        engineCap = 4;
+      }
+
       let to_estimate = [
         this.state.depreciation,
-        difference,
-        this.state.mileage,
-        this.state.engineCapacity,
+        difference.toString(),
+        mileage_bin,
+        engineCap,
         this.state.brand,
         this.state.category,
       ]
@@ -213,23 +251,10 @@ export default class CreatePost extends Component {
           <h3>Create your car post</h3>
         </div>
         {this.state.submitted?(<Redirect to='/CarList'/>):(
-          <form>
+          
         <div>
             <div className="form-group">
-                <label htmlFor="price">Price (Get an estimate of your car's price below)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="price"
-                  required
-                  value={this.state.price}
-                  onChange={this.onChangePrice}
-                  name="price"
-                />
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="depreciation">Depreciation</label>
+                <label htmlFor="depreciation">Depreciation (Annual)</label>
                 <input
                   type="text"
                   className="form-control"
@@ -309,7 +334,7 @@ export default class CreatePost extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="mileage">Mileage</label>
+                <label htmlFor="mileage">Mileage (in km)</label>
                 <input
                   type="text"
                   className="form-control"
@@ -338,28 +363,40 @@ export default class CreatePost extends Component {
                 </select>
               </div>
               <br></br>
+              <div>
+                <label htmlFor="priceEstimate">Price Estimate</label>
+                <p>${this.state.priceEstimate}</p>
+                <button
+                  onClick={this.onClickPriceEstimate} type="button" class="btn btn-primary">
+                  Get Estimate
+                </button>
+              </div>
+              <br></br>
+            <form>
+              <div className="form-group">
+                <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="price"
+                  required
+                  value={this.state.price}
+                  onChange={this.onChangePrice}
+                  name="price"
+                />
+            </div>
+
               <div className="form-group">
                 <label htmlFor="photoUrl">Photo URL</label>
                 <input 
                   type="text"
                   className="form-control"
                   id="photoUrl"
-                  required
                   value={this.state.photoUrl}
                   onChange={this.onChangePhotoUrl}
                   name="photoUrl"
                 />
               </div>
-
-              <div>
-                <label htmlFor="priceEstimate">Price Estimate</label>
-                <p>{this.state.priceEstimate}</p>
-                <button
-                  onClick={this.onClickPriceEstimate}>
-                  Get Estimate
-                </button>
-              </div>
-              <br></br>
 
               {this.state.imageUploadStatus?(
               <div>
@@ -373,26 +410,24 @@ export default class CreatePost extends Component {
                   type="file"
                   className="form-control"
                   id="photoByte"
-                  required
                   // value={this.state.photoByte}
                   onChange={this.onChangePhotoByte}
                   name="photoByte"
                 />
                 <br/>
-                <button onClick={this.saveImage} className="btn btn-success" >Upload Image</button>
+                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>
               </div>)}
-              <br/>
-              {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-success" >
+              {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
                 Submit
             </button>):(
               <span>Please Upload an Image only in png format beacause we are noobs</span>)}
             <br></br>
             <br></br>
             <button onClick={this.savePost} className="btn btn-success">
-                Submit
+                Submit Post
             </button>
-            </div>
             </form>
+            </div>
             )}</div>
       );
     }
