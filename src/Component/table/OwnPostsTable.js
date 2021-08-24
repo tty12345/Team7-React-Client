@@ -1,39 +1,24 @@
 
 import {useTable, usePagination } from 'react-table'
-import {COLUMNS} from './columns'
-import axios from "axios";
+import { OWNPOSTCOLUMNS } from './OwnPostsColumn'
 import React, { useState, useEffect } from "react";
-import PostService from "../../Services/PostService";
+import CarPostDataService from "../../Services/CarPostService";
 
-
-// class Table {
-
-//     constructor(){
-//         this.state={
-//             parameter:[],
-//             brand: "",
-//             priceLabel: "",
-//             description:""
-//             }
-//         }
-
-// }
-
-export const BasicTable = () => {
+export const OwnPostsTable = () => {
 
     const [data1, setData] = useState([]);
-    const [brand, setBrand] = useState("");
-    const [priceLabel, setPriceLabel] = useState("");
-    const [description, setDescription] = useState("");
+    // const [brand, setBrand] = useState("");
+    // const [priceLabel, setPriceLabel] = useState("");
+    // const [description, setDescription] = useState("");
     
 
     useEffect(() => {
-        getData()
-        function example(){}
+        getOwnPosts()
+        // function example(){}
       }, []);
 
     const tableInstance = useTable({
-        columns: COLUMNS,
+        columns: OWNPOSTCOLUMNS,
         data: data1
     },
     usePagination)
@@ -43,43 +28,40 @@ export const BasicTable = () => {
 
     const {pageIndex, pageSize} = state
 
-    function onChangeBrand(e) {
+    // function onChangeBrand(e) {
+    //     setBrand(e.target.value);
+    // }
 
-            setBrand(e.target.value);
+    // function onChangePriceLabel(e) {
+    //     setPriceLabel(e.target.value);
+    // }
 
+    // function onChangeDescription(e) {
+    //     setDescription(e.target.value);
+    // }
+
+    function getOwnPosts(){        
+        // var data = {
+        //     brand: brand,
+        //     priceLabel: priceLabel,
+        //     description: description
+        // };
+        console.log(sessionStorage.getItem("userId"));
+        CarPostDataService.getOwnCars(sessionStorage.getItem("userId"))
+        .then(response => {
+            setData(response.data);
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
     }
-
-    function onChangePriceLabel(e) {
-
-        setPriceLabel(e.target.value);
-    }
-
-    function onChangeDescription(e) {
-
-        setDescription(e.target.value);
-    }
-
-    function getData(){        
-        var data = {
-        //postId: this.state.postId,
-        brand: brand,
-        priceLabel: priceLabel,
-        description: description
-    };
-    console.log(data);
-    PostService.search(data).then(response => {
-        setData(response.data);
-        console.log(response.data);
-    })
-    .catch(e => {
-        console.log(e);
-    });}
     
     return (
     <div>
     <br/>
     <div>
-        <table>
+        {/* <table>
 			<tr>
 				<th>Brand<select name = "brand" onChange = {onChangeBrand}>
 					<option></option>
@@ -99,9 +81,9 @@ export const BasicTable = () => {
 					<option value = "3">$150,000 and above</option>
 				</select></th>
 				<th>Model<input type="text" name = "description" onChange = {onChangeDescription}/></th>
-				<th><input type="submit" value = "Submit" onClick={getData}/></th>
+				<th><input type="submit" value = "Submit" onClick={getOwnPosts}/></th>
 			</tr>
-		</table>
+		</table> */}
     </div>
     <br/>
     <div>

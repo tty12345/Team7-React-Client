@@ -25,10 +25,6 @@ class PostDataService {
       return axios.put(CARPOST_API_BASE_URL + "/editPost/" + id, carPosting);
     }
 
-    deletePost(id) {
-      return axios.delete(CARPOST_API_BASE_URL + "/deletePost/" + id);
-    }
-
     search(searchobject){
       console.log(searchobject);
       return axios.post(CARPOST_API_BASE_URL+"/listPost",searchobject);
@@ -55,6 +51,22 @@ class PostDataService {
         headers: {
           'content-type': 'multipart/form-data'
         }});
+    }
+
+    deletePost(id){
+      return axios.delete(CARPOST_API_BASE_URL + "/deletePost/" + id);
+    }
+
+    likePost(user,id){
+      return axios.post("http://localhost:8080/like" + "/addLike/" + id, user);
+    }
+
+    unLikePost(user,id){
+      return axios.post("http://localhost:8080/like" + "/deleteLike/" + id,user);
+    }
+
+    checkLikeStatus(user,id){
+      return axios.post("http://localhost:8080/like" + "/checkLike/" + id,user);
     }
 }
 

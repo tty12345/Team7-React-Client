@@ -135,7 +135,8 @@ export default class CreatePost extends Component {
             mileage: this.state.mileage,
             category: this.state.category,
             photoUrl: this.state.photoUrl,
-            carpostimage: this.state.carpostimage
+            carpostimage: this.state.carpostimage,
+            userId: sessionStorage.getItem("userId")
         };
         console.log(data);
         PostService.createPost(data,this.state.carpostimage)
@@ -196,7 +197,7 @@ export default class CreatePost extends Component {
 
         window.alert("Please Log In First!");
 
-        return(<Redirect to='/LogIn'/>);
+        return(<Redirect to='/login'/>);
       }
       //it not logged direct to login
       else{

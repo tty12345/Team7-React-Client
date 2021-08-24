@@ -47,7 +47,7 @@ export default class SignUp extends Component {
         return (
             <div className="submit-form">
                 {this.state.isCreated ? (
-                    <Redirect to='/LogIn'  />
+                    <Redirect to='/login'  />
                 ) : (
                     <div>
                         <div className="form-group">

@@ -1,13 +1,13 @@
-* {
+/* * {
   margin: 0;
   padding: 0x;
-}
+} */
 
 #cartable {
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  border: 3px solid #ddd;
+  border: 15px solid #ddd;
   width: 100%;
 }
 
@@ -36,4 +36,15 @@
 .base64Image{
   height: 100px;
   width: 100px;
+}
+
+.individualImage {
+  position: relative;
+}
+
+.inner-image {
+  
+  top: 15px;
+  right: 30px;
+  
 }

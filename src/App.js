@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link,Redirect } from 'react-router-dom';
 import test from './Component/test'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
+import OwnCarPosts from './Component/OwnCarPosts'
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 
 function App() {
 
+  const [loginStatus, setLoginStatus] = useState(true);
+
   function logout(){
     if (sessionStorage.getItem("status") != null) {
       console.log(sessionStorage.getItem("status"));
       sessionStorage.removeItem("status");
+      sessionStorage.removeItem("userId");
       // sessionStorage.setItem("loggedout",);
     } 
     window.location.reload();
@@ -55,12 +59,17 @@ function App() {
                      { sessionStorage.getItem("status") == null ?
                         <Link to={"/login"} className="nav-link">Log In</Link>
                         :
-                       <Link onClick={logout} className="nav-link">Log Out</Link> }
+                       <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link> }
                     </li>
                     <li>
                       { sessionStorage.getItem("status") == null ?
                          <Link to={"/signup"} className="nav-link">Sign Up</Link>
                          : <div></div> } 
+                    </li>
+                    <li>
+                      { sessionStorage.getItem("status") == null ?
+                         <div></div> :
+                         <Link to={"/ownpost"} className="nav-link">See Own Posts</Link> } 
                     </li>
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
@@ -90,12 +99,12 @@ function App() {
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/' component={test} />
-          <Route exact path='/LogIn' component={LogIn}/>
-          <Route exact path='/CarList' component={CarList}/>
-          <Route exact path='/SignUp' component={SignUp}/>
-          <Route path='/carDetail/:id' component={CarDetail} />
-          <Route exact path='/' component={test} />
-          <Route exact path='/CreatePost' component={CreatePost}/>
+          <Route exact path='/login' component={LogIn}/>
+          <Route exact path='/carlist' component={CarList}/>
+          <Route exact path='/signup' component={SignUp}/>
+          <Route path='/cardetail/:id' component={CarDetail} />
+          <Route exact path='/ownpost' component={OwnCarPosts} />
+          <Route exact path='/createpost' component={CreatePost}/>
         </Switch>
       </div>
       </Router>

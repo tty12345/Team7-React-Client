@@ -1,7 +1,8 @@
 import React, { Component,useEffect } from "react";
 import UserDataService from "../Services/UserService.js";
 import '../App.css';
-
+import PostService from "../Services/PostService.js";
+import { Link, Redirect } from 'react-router-dom';
 
 export default class CarDetail extends Component {
     constructor(props) {
@@ -9,19 +10,28 @@ export default class CarDetail extends Component {
         this.getCar = this.getCar.bind(this);
         this.onChangeOffer = this.onChangeOffer.bind(this);
         this.submitNewOffer = this.submitNewOffer.bind(this);
-        
-    
+        this.deletePost = this.deletePost.bind(this);
+        this.likePost = this.likePost.bind(this);
+        this.unLikePost = this.unLikePost.bind(this);
+        this.checkLikeStatus = this.checkLikeStatus.bind(this);
+
         this.state = {
           car: null,
           id: props.match.params.id,
           offer: null,
           offerBefore: false,
-          currentOffer: null
+          currentOffer: null,
+          ownerId : -1,
+          deleted : false,
+          likeStatus: false
         };
+
     }
 
     componentDidMount() {
         this.getCar();
+        this.checkLikeStatus()
+
     }
 
     getCar() {
@@ -29,8 +39,10 @@ export default class CarDetail extends Component {
       .then(
         response => {
         this.setState({
-            car: response.data
+            car: response.data,
+            ownerId : response.data.owner.userId
         });
+     
       })
       .catch(e => {
         console.log(e);
@@ -45,8 +57,9 @@ export default class CarDetail extends Component {
     }
 
     submitNewOffer() {
-        if(!sessionStorage.getItem("state")){
+        if(!sessionStorage.getItem("status")){
             window.alert("Please Log In First To Leave Offer")
+            this.props.history.push('/login')
         }
         else{
             var data = {
@@ -66,14 +79,96 @@ export default class CarDetail extends Component {
         }
     }
 
+    deletePost(){
+        PostService.deletePost(this.state.id)
+            .then(response => {
+                if ( response.status == 204)
+                    this.setState({
+                        car : null,
+                        deleted : true
+                  }); 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    likePost(){
+        var data = {
+            userId: sessionStorage.getItem("userId")
+          };
+        PostService.likePost(data,this.state.id)
+            .then(response => {
+                console.log("HIHI")
+                if ( response.status == 200)
+                    this.setState({
+                        likeStatus: true
+                  }); 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    checkLikeStatus(){
+        var data = {
+            userId: sessionStorage.getItem("userId")
+          };
+          PostService.checkLikeStatus(data,this.state.id)
+            .then(response => {
+                console.log(response);
+                console.log(response.status);
+                if (response.status == 200)
+                    this.setState({
+                        likeStatus: true
+                    })
+                else if(response == 203)
+                    this.setState({
+                        likeStatus: false
+                    }); 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    unLikePost(){
+        var data = {
+            userId: sessionStorage.getItem("userId")
+          };
+          console.log("hi");
+        PostService.unLikePost(data,this.state.id)
+            .then(response => {
+                console.log(response.status);
+                if ( response.status == 200)
+                    this.setState({
+                        likeStatus: false
+                  }); 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
   
     render(){
-        const {car,currentOffer}  = this.state;
-        if(car!=null)
-        return(
+        const {car,currentOffer,likeStatus}  = this.state;
+       
+        return( 
+            <div>
+                { ( car ) ?  (
               <div>
+                  
                   <br/>
-                  <div><img src = {car.photoUrl} id = "carDetailImage"></img></div>
+                  <div className = "individualImage"><img src = {car.photoUrl} id = "carDetailImage"></img>
+                  {sessionStorage.getItem("userId")?
+                  (
+                  <div>    
+                  {likeStatus?
+                  <img className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
+                  <img className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}</div>):
+                  (<div></div>)}
+                  </div>
                   <br/>
                   <table id = "cartable">
                   <tr>
@@ -102,11 +197,15 @@ export default class CarDetail extends Component {
                   </tr>
                   </table>
                   <br/>
-                  {currentOffer?(
-                  <div>
+
+                  {currentOffer?
+                  ( sessionStorage.getItem("userId") == this.state.ownerId ) ? 
+                   (<div></div>) : 
+                  (<div>
                       Your Offer: {currentOffer.offer}
                   </div>
-                  ):(                  
+                  ):(    ( sessionStorage.getItem("userId") == this.state.ownerId ) ?
+                     <button onClick={this.deletePost} className="btn btn-success" >Delete</button> :           
                     <div align = "center">
                       <div className="form-group">
                       <label htmlFor="nickName">Offer</label>
@@ -119,15 +218,16 @@ export default class CarDetail extends Component {
                           name="offer"
                           />
                       </div>
-                    <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
-                    </div>)}
+                      <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
+                    </div> )}
 
-              </div>
+              </div> ) : ( ( this.state.deleted) ? <Redirect to='/ownpost' /> : <div></div> )
+            }
+            </div>
         )
-        else
-        return(
-            <div>null</div>
-        )
+       
+
+      
     }
   
 }

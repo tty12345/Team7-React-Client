@@ -1,13 +1,10 @@
-
 import React, { Component } from "react";
-import CarPostDataService from "../Services/CarPostService.js";
 import '../App.css';
-import{BasicTable} from "./table/BasicTable"
+import{OwnPostsTable} from "./table/OwnPostsTable"
 
 export default class CarList extends Component {
     constructor(props) {
         super(props);
-  
       }
 
 
@@ -15,7 +12,7 @@ export default class CarList extends Component {
     render(){
         return(
               <div>
-                <BasicTable/>
+                <OwnPostsTable/>
               </div>
         )
     }
