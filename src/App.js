@@ -47,7 +47,7 @@ function App() {
             </div>
             <div className="collapse navbar-collapse" id="navbar">
                 <ul className="nav navbar-nav">
-                    <li className="active">
+                    <li className="nav-link">
                     <Link to={"/"} className="nav-link">Home</Link>
                     </li>
                     <li>

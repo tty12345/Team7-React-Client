@@ -433,9 +433,6 @@ export default class CreatePost extends Component {
               <span>Please Upload an Image only in png format beacause we are noobs</span>)}
             <br></br>
             <br></br>
-            <button onClick={this.savePost} className="btn btn-success">
-                Submit Post
-            </button>
             </form>
             </div>
             )}</div>
