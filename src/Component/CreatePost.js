@@ -191,6 +191,15 @@ export default class CreatePost extends Component {
     }
   
     render() {
+      //condition
+      if(!sessionStorage.getItem("status")){
+
+        window.alert("Please Log In First!");
+
+        return(<Redirect to='/LogIn'/>);
+      }
+      //it not logged direct to login
+      else{
       return (
         <div>
         {this.state.submitted?(<Redirect to='/CarList'/>):(
@@ -343,6 +352,6 @@ export default class CreatePost extends Component {
               <span>Please Upload an Image only in png format beacause we are noobs</span>)}
             </div>
             )}</div>
-      );
+      );}
     }
   }
