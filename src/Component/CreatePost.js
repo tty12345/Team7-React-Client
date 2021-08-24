@@ -29,7 +29,7 @@ export default class CreatePost extends Component {
         description: "",
         brand: "",
         engineCapacity: "",
-        registeredDate: "",
+        registeredDate: new Date(),
         mileage: 0,
         category: "",
         photoUrl: "",
@@ -105,9 +105,15 @@ export default class CreatePost extends Component {
     }
 
     onClickPriceEstimate() {
+      // calculates number of days in between today and the registered date to send to ML model
+      var today = Math.floor(Date.now() / 1000);
+      var registered = Math.floor(Date.parse(this.state.registeredDate) / 1000)
+
+      var difference = Math.floor((today - registered) / 60 / 60 / 24);
+
       let to_estimate = [
         this.state.depreciation,
-        this.state.registeredDate,
+        difference,
         this.state.mileage,
         this.state.engineCapacity,
         this.state.brand,
@@ -235,15 +241,34 @@ export default class CreatePost extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="brand">Brand</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="brand"
-                  required
-                  value={this.state.brand}
-                  onChange={this.onChangeBrand}
-                  name="brand"
-                />
+                <br></br>
+                <select name="category" onChange={this.onChangeBrand}>
+                  <option value='null'>Choose one</option>
+                  <option value='0'>Audi</option>
+                  <option value='1'>Austin</option>
+                  <option value='2'>BMW</option>
+                  <option value='3'>Citron</option>
+                  <option value='4'>Ferrari</option>
+                  <option value='5'>Fiat</option>
+                  <option value='6'>Honda</option>
+                  <option value='7'>Hyundai</option>
+                  <option value='8'>Kia</option>
+                  <option value='9'>Lexus</option>
+                  <option value='10'>Mini</option>
+                  <option value='11'>Mercedes</option>
+                  <option value='12'>Mitsubishi</option>
+                  <option value='13'>Morris</option>
+                  <option value='14'>Nissan</option>
+                  <option value='15'>Opel</option>
+                  <option value='16'>Peugeot</option>
+                  <option value='17'>Porsche</option>
+                  <option value='18'>Renault</option>
+                  <option value='19'>Subaru</option>
+                  <option value='20'>Suzuki</option>
+                  <option value='21'>Toyota</option>
+                  <option value='22'>Volkswagen</option>
+                  <option value='23'>Volvo</option>
+                </select>
               </div>
               <div className="form-group">
                 <label htmlFor="engineCapacity">Engine Capacity</label>
@@ -260,7 +285,7 @@ export default class CreatePost extends Component {
               <div className="form-group">
                 <label htmlFor="registeredDate">Registered Date</label>
                 <input
-                  type="text"
+                  type="date"
                   className="form-control"
                   id="registeredDate"
                   required
@@ -281,18 +306,24 @@ export default class CreatePost extends Component {
                   name="mileage"
                 />
               </div>
-              <div className="form-group">
+              <div>
                 <label htmlFor="category">Category</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="category"
-                  required
-                  value={this.state.category}
-                  onChange={this.onChangeCategory}
-                  name="category"
-                />
+                <br></br>
+                <select name="category" onChange={this.onChangeCategory}>
+                  <option value='null'>Choose one</option>
+                  <option value='1'>Hatchback</option>
+                  <option value='2'>Luxury</option>
+                  <option value='3'>MPV</option>
+                  <option value='4'>Others</option>
+                  <option value='5'>SUV</option>
+                  <option value='6'>Sedan</option>
+                  <option value='7'>Sports</option>
+                  <option value='8'>Stationwagon</option>
+                  <option value='9'>Truck</option>
+                  <option value='10'>Van</option>
+                </select>
               </div>
+              <br></br>
               <div className="form-group">
                 <label htmlFor="photoUrl">Photo URL</label>
                 <input 
@@ -341,6 +372,11 @@ export default class CreatePost extends Component {
                 Submit
             </button>):(
               <span>Please Upload an Image only in png format beacause we are noobs</span>)}
+            <br></br>
+            <br></br>
+            <button onClick={this.savePost} className="btn btn-success">
+                Submit
+            </button>
             </div>
             )}</div>
       );
