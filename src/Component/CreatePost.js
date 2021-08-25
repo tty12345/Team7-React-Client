@@ -406,7 +406,7 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
-
+              </form>
               {this.state.imageUploadStatus?(
               <div>
               <span>Upload Sucessful!</span>
@@ -435,7 +435,7 @@ export default class CreatePost extends Component {
             <button onClick={this.savePost} className="btn btn-success">
                 Submit Post
             </button>
-            </form>
+            
             </div>
             )}</div>
       );}

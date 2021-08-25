@@ -1,10 +1,44 @@
 import React, { Component } from "react";
+import HomeService from "../Services/HomeService";
+import '../App.css';
 
-export default class StudentList extends Component {
+const header = ["Category", "Quota", "Premium"];
+
+export default class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.componentDidMount = this.componentDidMount.bind(this);
+
+    this.state = {
+      title: "",
+      categories: []
+    };
+  }
       
     //testing
+    componentDidMount() {
+      HomeService.getCoeTitle()
+        .then(response => {
+          this.setState({
+            title: response.data
+          });
+        })
+      
+      HomeService.getCoePrices()
+        .then(response => {
+          this.setState({
+            categories: response.data
+          });
+        })
+
+      // this.setState({
+      //   categories: JSON.parse(this.state.fromServer)
+      // })
+    }
     
     render() {
+      const { categories } = this.state;
+
         return (
             <div className="App">
             <div className="jumbotron feature">
@@ -13,6 +47,29 @@ export default class StudentList extends Component {
                 <p>Using algorithms to determine your car's best selling price</p>
                 <p><a className="btn btn-default" href="#">Get Estimate</a></p>
               </div>
+            </div>
+            <div className="container">
+              <div className="row">
+                <h2>{this.state.title}</h2>
+                <table>
+                    <thead>
+                    <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                    {Object.keys(categories).map((k, i) => {
+                      let data = categories[k];
+                      return (
+                        <tr key={i}>
+                          <td>{data.name}</td>
+                          <td>{data.quota}</td>
+                          <td>{data.premium}</td>
+                        </tr>
+                      );
+                    })}
+                    </tbody>
+                </table>
+              </div>
+              
             </div>
               <div className="container">
                   <div className="row">
