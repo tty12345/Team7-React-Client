@@ -66,10 +66,8 @@ export const BasicTable = () => {
         priceLabel: priceLabel,
         description: description
     };
-    console.log(data);
     PostService.search(data).then(response => {
         setData(response.data);
-        console.log(response.data);
     })
     .catch(e => {
         console.log(e);

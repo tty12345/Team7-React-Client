@@ -12,8 +12,11 @@ class UserDataService {
   save(user) {
     return axios.post(USER_API_BASE_URL + "/signup", user);
   }
-  submitOffer(currentOffer){
-    return axios.post("http://localhost:8080/post/saveOffer",currentOffer);
+  submitOffer(currentOffer,id){
+    return axios.post("http://localhost:8080/post/saveOffer/"+id,currentOffer);
+  }
+  checkOwnOffer(currentOffer, id){
+    return axios.post("http://localhost:8080/post/checkOwnOffer/"+id,currentOffer);
   }
   getCar(id){
     return axios.get("http://localhost:8080/post/getOne/" + id);

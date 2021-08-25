@@ -9,7 +9,6 @@ class PostDataService {
     }
 
     createPost(carPosting, Id) {
-      console.log(Id);
       return axios.post(CARPOST_API_BASE_URL + "/savePost/" + Id, carPosting);
     }
 
@@ -26,19 +25,18 @@ class PostDataService {
     }
 
     search(searchobject){
-      console.log(searchobject);
       return axios.post(CARPOST_API_BASE_URL+"/listPost",searchobject);
     }
 
     getEstimate(to_estimate) {
       const formData = new FormData();
 
-      console.log(to_estimate[0]);
-      console.log(to_estimate[1]);
-      console.log(to_estimate[2]);
-      console.log(to_estimate[3]);
-      console.log(to_estimate[4]);
-      console.log(to_estimate[5]);
+      // console.log(to_estimate[0]);
+      // console.log(to_estimate[1]);
+      // console.log(to_estimate[2]);
+      // console.log(to_estimate[3]);
+      // console.log(to_estimate[4]);
+      // console.log(to_estimate[5]);
 
       formData.append("depreciation", to_estimate[0]);
       formData.append('age', to_estimate[1]);
@@ -67,6 +65,14 @@ class PostDataService {
 
     checkLikeStatus(user,id){
       return axios.post("http://localhost:8080/like" + "/checkLike/" + id,user);
+    }
+
+    savePreference(preferences){
+      return axios.post("http://localhost:8080/preference/save", preferences);
+    }
+
+    checkCurrentPreference(userId){
+      return axios.get("http://localhost:8080/preference/checkPreference/"+ userId);
     }
 }
 

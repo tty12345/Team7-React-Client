@@ -11,7 +11,7 @@ import OwnCarPosts from './Component/OwnCarPosts'
 import Calculator from './Component/Calculator'
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
-
+import SavePreference from './Component/SavePreference';
 function App() {
 
   const [loginStatus, setLoginStatus] = useState(true);
@@ -70,7 +70,12 @@ function App() {
                     <li>
                       { sessionStorage.getItem("status") == null ?
                          <div></div> :
-                         <Link to={"/ownpost"} className="nav-link">See Own Posts</Link> } 
+                         <Link to={"/ownpost"} className="nav-link">Your Posts</Link> } 
+                    </li>
+                    <li>
+                      { sessionStorage.getItem("status") == null ?
+                         <div></div> :
+                         <Link to={"/SavePreference"} className="nav-link">Preference</Link> } 
                     </li>
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
@@ -107,6 +112,7 @@ function App() {
           <Route exact path='/ownpost' component={OwnCarPosts} />
           <Route exact path='/createpost' component={CreatePost}/>
           <Route exact path='/Calculator' component={Calculator}/>
+          <Route exact path='/SavePreference' component={SavePreference}/>
         </Switch>
       </div>
       </Router>

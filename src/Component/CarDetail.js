@@ -3,6 +3,7 @@ import UserDataService from "../Services/UserService.js";
 import '../App.css';
 import PostService from "../Services/PostService.js";
 import { Link, Redirect } from 'react-router-dom';
+import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 export default class CarDetail extends Component {
     constructor(props) {
@@ -14,6 +15,8 @@ export default class CarDetail extends Component {
         this.likePost = this.likePost.bind(this);
         this.unLikePost = this.unLikePost.bind(this);
         this.checkLikeStatus = this.checkLikeStatus.bind(this);
+        this.changeOfferStatus=this.changeOfferStatus.bind(this);
+        // this.checkOwnOffer = this.checkOwnOffer().bind(this);
 
         this.state = {
           car: null,
@@ -23,18 +26,20 @@ export default class CarDetail extends Component {
           currentOffer: null,
           ownerId : -1,
           deleted : false,
-          likeStatus: false
+          likeStatus: false,
+          userId: sessionStorage.getItem("userId"),
+          currentOfferStatus: false
         };
 
     }
 
     componentDidMount() {
         this.getCar();
-        this.checkLikeStatus()
-
+        this.checkLikeStatus();
     }
 
     getCar() {
+    this.checkOwnOffer();
     UserDataService.getCar(this.state.id)
       .then(
         response => {
@@ -64,14 +69,15 @@ export default class CarDetail extends Component {
         else{
             var data = {
                 offer: this.state.offer,
+                userId: this.state.userId
+                
             };
-            console.log(data);
-            UserDataService.submitOffer(data)
+            UserDataService.submitOffer(data, this.state.id)
             .then(response => {
                 this.setState({
-                    currentOffer: response.data
+                    currentOffer: response.data,
+                    currentOfferStatus: true
                 });
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -99,7 +105,6 @@ export default class CarDetail extends Component {
           };
         PostService.likePost(data,this.state.id)
             .then(response => {
-                console.log("HIHI")
                 if ( response.status == 200)
                     this.setState({
                         likeStatus: true
@@ -116,8 +121,6 @@ export default class CarDetail extends Component {
           };
           PostService.checkLikeStatus(data,this.state.id)
             .then(response => {
-                console.log(response);
-                console.log(response.status);
                 if (response.status == 200)
                     this.setState({
                         likeStatus: true
@@ -136,10 +139,8 @@ export default class CarDetail extends Component {
         var data = {
             userId: sessionStorage.getItem("userId")
           };
-          console.log("hi");
         PostService.unLikePost(data,this.state.id)
             .then(response => {
-                console.log(response.status);
                 if ( response.status == 200)
                     this.setState({
                         likeStatus: false
@@ -150,9 +151,40 @@ export default class CarDetail extends Component {
             });
     }
 
+    changeOfferStatus(){
+        this.setState({
+            currentOfferStatus: false
+        })
+    }
+
+    checkOwnOffer(){
+        var data = {
+            userId: sessionStorage.getItem("userId")
+          };
+          UserDataService.checkOwnOffer(data,this.state.id)
+            .then(response => {
+                console.log(response.status);
+                if(response.status == 200){
+                console.log("true")
+                this.setState({
+                    currentOffer: response.data,
+                    currentOfferStatus: true
+                    })}
+                else{
+                console.log("false")
+                this.setState({
+                    currentOffer: response.data,
+                    currentOfferStatus: false
+                    })}; 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
   
     render(){
-        const {car,currentOffer,likeStatus}  = this.state;
+        const {car,currentOffer,likeStatus, currentOfferStatus}  = this.state;
        
         return( 
             <div>
@@ -198,14 +230,16 @@ export default class CarDetail extends Component {
                   </table>
                   <br/>
 
-                  {currentOffer?
+                  {currentOfferStatus?
                   ( sessionStorage.getItem("userId") == this.state.ownerId ) ? 
                    (<div></div>) : 
                   (<div>
-                      Your Offer: {currentOffer.offer}
+                      Your Offer: {currentOffer.offer} <button onClick={this.changeOfferStatus}>Edit</button>
                   </div>
-                  ):(    ( sessionStorage.getItem("userId") == this.state.ownerId ) ?
-                     <button onClick={this.deletePost} className="btn btn-success" >Delete</button> :           
+                  ):(    ( sessionStorage.getItem("userId") == this.state.ownerId ) ?(
+                     <div>
+                     <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
+                     <Link to="/" className="btn btn-primary">Edit</Link></div>):           
                     <div align = "center">
                       <div className="form-group">
                       <label htmlFor="nickName">Offer</label>
@@ -213,7 +247,7 @@ export default class CarDetail extends Component {
                           type="text"
                           className="form-control"
                           id="offer"
-                          // value={this.state.offer}
+                          value={this.state.offer}
                           onChange={this.onChangeOffer}
                           name="offer"
                           />
