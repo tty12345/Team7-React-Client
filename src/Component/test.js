@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 
 export default class StudentList extends Component {
-      
+  constructor(props) {
+    super(props);
+    this.logoutreload = this.logoutreload.bind(this);
+  }
     //testing
-    
+    componentDidMount(){
+      this.logoutreload();
+    }
+
+    logoutreload() {
+      if (sessionStorage.getItem("logout")){
+        window.location.reload();
+        sessionStorage.removeItem("logout");
+      }
+    }
+
     render() {
         return (
             <div className="App">
