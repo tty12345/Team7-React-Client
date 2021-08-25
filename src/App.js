@@ -8,6 +8,7 @@ import CarDetail from './Component/CarDetail';
 import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
 import Calculator from './Component/Calculator'
+import Estimate from './Component/Estimate'
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 
@@ -97,6 +98,7 @@ function App() {
           <Route path='/carDetail/:id' component={CarDetail} />
           <Route exact path='/CreatePost' component={CreatePost}/>
           <Route exact path='/Calculator' component={Calculator}/>
+          <Route exact path='/Estimate' component={Estimate} />
         </Switch>
       </div>
       </Router>

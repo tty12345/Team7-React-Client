@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import HomeService from "../Services/HomeService";
 import '../App.css';
 
@@ -14,8 +15,8 @@ export default class HomePage extends Component {
       categories: []
     };
   }
-      
-    //testing
+    
+    // this method runs automatically when the page is loaded
     componentDidMount() {
       HomeService.getCoeTitle()
         .then(response => {
@@ -30,14 +31,10 @@ export default class HomePage extends Component {
             categories: response.data
           });
         })
-
-      // this.setState({
-      //   categories: JSON.parse(this.state.fromServer)
-      // })
     }
     
     render() {
-      const { categories } = this.state;
+      const { title, categories } = this.state;
 
         return (
             <div className="App">
@@ -45,12 +42,14 @@ export default class HomePage extends Component {
               <div className="container">
                 <h1><span className="glyphicon glyphicon-equalizer"></span>Prices Updated Monthly</h1>
                 <p>Using algorithms to determine your car's best selling price</p>
-                <p><a className="btn btn-default" href="#">Get Estimate</a></p>
+                <button><Link to={"/Estimate/"}>
+                  Get Estimate
+                </Link></button>
               </div>
             </div>
             <div className="container">
               <div className="row">
-                <h2>{this.state.title}</h2>
+                <h2>{title}</h2>
                 <table>
                     <thead>
                     <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
@@ -142,7 +141,6 @@ export default class HomePage extends Component {
                   </div>
             </footer>
           </div>
-
         )
     }
 }

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
-import { Redirect } from 'react-router-dom';
-import { breakStatement } from "@babel/types";
 
-export default class CreatePost extends Component {
+
+export default class Estimate extends Component {
     constructor(props) {
       super(props);
-      this.onChangePrice = this.onChangePrice.bind(this);
       this.onChangeDescription = this.onChangeDescription.bind(this);
       this.onChangeDepreciation = this.onChangeDepreciation.bind(this);
       this.onChangeBrand = this.onChangeBrand.bind(this);
@@ -14,18 +12,9 @@ export default class CreatePost extends Component {
       this.onChangeRegisteredDate = this.onChangeRegisteredDate.bind(this);
       this.onChangeMileage = this.onChangeMileage.bind(this);
       this.onChangeCategory = this.onChangeCategory.bind(this);
-      this.onChangePhotoUrl = this.onChangePhotoUrl.bind(this);
-      this.onChangePhotoByte = this.onChangePhotoByte.bind(this);
-      this.saveImage = this.saveImage.bind(this);
-      // this.convertBase64 = this.convertBase64.bind(this);
-      // this.convert = this.convert.bind(this);
-      this.savePost = this.savePost.bind(this);
-      this.newPost = this.newPost.bind(this);
       this.onClickPriceEstimate = this.onClickPriceEstimate.bind(this);
 
       this.state = {
-        postId: null,
-        price: "",
         depreciation: "",
         description: "",
         brand: "",
@@ -33,21 +22,10 @@ export default class CreatePost extends Component {
         registeredDate: "",
         mileage: "",
         category: "",
-        photoUrl: "",
         priceEstimate: 0,
-        photoByte: null,
-        submitted: false,
-        currentPhoto: null,
-        carpostimage: 0,
-        imageUploadStatus: false
       };
     }
 
-    onChangePrice(e) {
-      this.setState({
-        price: e.target.value
-      });
-    }
 
     onChangeDepreciation(e) {
       this.setState({
@@ -89,20 +67,6 @@ export default class CreatePost extends Component {
       this.setState({
         category: e.target.value
       })
-    }
-
-    onChangePhotoUrl(e) {
-      this.setState({
-        photoUrl: e.target.value
-      })
-    }
-
-    onChangePhotoByte(e) {
-      this.setState({
-        photoByte: e.target.files[0],
-        currentPhoto: URL.createObjectURL(e.target.files[0])
-      })
-      console.log(e.target.files[0]);
     }
 
     onClickPriceEstimate() {
@@ -245,23 +209,11 @@ export default class CreatePost extends Component {
     }
   
     render() {
-      //condition
-      if(!sessionStorage.getItem("status")){
-
-        window.alert("Please Log In First!");
-
-        return(<Redirect to='/LogIn'/>);
-      }
-      //it not logged direct to login
-      else{
       return (
         <div>
           <div>
-          <h2>Create your car post</h2>
-        </div>
-        {this.state.submitted?(<Redirect to='/CarList'/>):(
-          
-        <div>
+          <h2>Estimate the price of your car</h2>
+        </div>          
             <div className="form-group">
                 <label htmlFor="depreciation">Depreciation (Annual)</label>
                 <input
@@ -321,7 +273,7 @@ export default class CreatePost extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
+                <label htmlFor="engineCapacity">Engine Capacity</label>
                 <input
                   type="text"
                   className="form-control"
@@ -385,64 +337,9 @@ export default class CreatePost extends Component {
                 </button>
               </div>
               <br></br>
-            <form>
-              <div className="form-group">
-                <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="price"
-                  required
-                  value={this.state.price}
-                  onChange={this.onChangePrice}
-                  name="price"
-                  placeholder="S$"
-                />
-            </div>
-
-              <div className="form-group">
-                <label htmlFor="photoUrl">Photo URL</label>
-                <input 
-                  type="text"
-                  className="form-control"
-                  id="photoUrl"
-                  value={this.state.photoUrl}
-                  onChange={this.onChangePhotoUrl}
-                  name="photoUrl"
-                />
-              </div>
-              </form>
-              {this.state.imageUploadStatus?(
-              <div>
-              <span>Upload Sucessful!</span>
-              <img src = {this.state.currentPhoto}/>
-              </div>):(
-              <div className="form-group">
-                <label htmlFor="photoByte">Upload Photo</label>
-                <img src = {this.state.currentPhoto}/>
-                <input 
-                  type="file"
-                  className="form-control"
-                  id="photoByte"
-                  // value={this.state.photoByte}
-                  onChange={this.onChangePhotoByte}
-                  name="photoByte"
-                />
-                <br/>
-                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>
-              </div>)}
-              {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
-                Submit
-            </button>):(
-              <span>Please Upload an Image only in png format beacause we are noobs</span>)}
             <br></br>
             <br></br>
-            <button onClick={this.savePost} className="btn btn-success">
-                Submit Post
-            </button>
-            
             </div>
-            )}</div>
-      );}
+        )
     }
-  }
+}
