@@ -8,6 +8,7 @@ export default class Calculator extends Component {
         this.onChangeInterestRate = this.onChangeInterestRate.bind(this);
         this.onChangeLoanPeriod = this.onChangeLoanPeriod.bind(this);
         this.calculateLoan = this.calculateLoan.bind(this);
+        this.onClear = this.onClear.bind(this);
 
   
         this.state = {
@@ -46,6 +47,15 @@ export default class Calculator extends Component {
         var months = this.state.loanPeriod * 12;
         this.setState({
             monthlyInstallment: Math.floor(totalLoan / months)
+        })
+    }
+
+    onClear() {
+        this.setState({
+            loanAmount: 0,
+            interestRate: 0,
+            loanPeriod: 1,
+            monthlyInstallment: 0
         })
     }
 
@@ -100,6 +110,9 @@ export default class Calculator extends Component {
                 <div>
                     <label>Monthly Installment:</label>
                     <p>S${this.state.monthlyInstallment}</p>
+                </div>
+                <div>
+                    <button onClick={this.onClear} class="btn btn-secondary">Clear</button>
                 </div>
             </div>
         )
