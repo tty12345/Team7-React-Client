@@ -3,7 +3,7 @@ import UserDataService from "../Services/UserService.js";
 import '../App.css';
 import PostService from "../Services/PostService.js";
 import { Link, Redirect } from 'react-router-dom';
-
+//remember to specify who to send notification
 export default class CarDetail extends Component {
     constructor(props) {
         super(props);

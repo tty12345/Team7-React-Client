@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import{ DefaultCarsTable } from "./table/DefaultCarsTable";
 
 export default class StudentList extends Component {
   constructor(props) {
@@ -67,6 +68,9 @@ export default class StudentList extends Component {
                       </article>
                   </div>
               </div>
+            <div>
+              <DefaultCarsTable />
+            </div>
             <footer>
               <div className="footer-blurb">
                 <div className="container">

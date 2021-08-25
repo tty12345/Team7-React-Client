@@ -7,8 +7,10 @@ class CarPostDataService {
     return axios.get(CAR_API_BASE_URL + "/listPost");
   }
   getOwnCars(ownerId){
-    console.log(ownerId);
     return axios.get(CAR_API_BASE_URL + "/getowncars/" + ownerId);
+  }
+  getTopCars() {
+    return axios.get(CAR_API_BASE_URL + "/hotcars");
   }
 }
 
