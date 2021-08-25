@@ -17,8 +17,6 @@ export default class CreatePost extends Component {
       this.onChangePhotoUrl = this.onChangePhotoUrl.bind(this);
       this.onChangePhotoByte = this.onChangePhotoByte.bind(this);
       this.saveImage = this.saveImage.bind(this);
-      // this.convertBase64 = this.convertBase64.bind(this);
-      // this.convert = this.convert.bind(this);
       this.savePost = this.savePost.bind(this);
       this.newPost = this.newPost.bind(this);
       this.onClickPriceEstimate = this.onClickPriceEstimate.bind(this);
@@ -169,8 +167,6 @@ export default class CreatePost extends Component {
 
 
     savePost() {
-        // this.saveImage()
-
         if (this.state.price === "" || this.state.depreciation === "" || this.state.brand === ""
           || this.state.description === "" || this.state.engineCapacity === ""
           || this.state.registeredDate === "" || this.state.mileage === "" || this.state.category === "") {
@@ -407,6 +403,9 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
+                          <br></br>
+            <br></br>
+            </form>
 
               {this.state.imageUploadStatus?(
               <div>
@@ -425,15 +424,13 @@ export default class CreatePost extends Component {
                   name="photoByte"
                 />
                 <br/>
-                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>
               </div>)}
               {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
                 Submit
             </button>):(
-              <span>Please Upload an Image only in png format beacause we are noobs</span>)}
-            <br></br>
-            <br></br>
-            </form>
+              <div>
+              <span>Please Upload an Image only in png format beacause we are noobs</span>
+              <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button></div>)}
             </div>
             )}</div>
       );}
