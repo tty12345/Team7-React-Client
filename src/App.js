@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import test from './Component/test'
+import homepage from './Component/Homepage'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
@@ -71,12 +71,12 @@ function App() {
         <div className="container mt-3">
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
-          <Route exact path='/' component={test} />
+          <Route exact path='/' component={homepage} />
           <Route exact path='/LogIn' component={LogIn}/>
           <Route exact path='/CarList' component={CarList}/>
           <Route exact path='/SignUp' component={SignUp}/>
           <Route path='/carDetail/:id' component={CarDetail} />
-          <Route exact path='/' component={test} />
+          <Route exact path='/' component={homepage} />
           <Route exact path='/CreatePost' component={CreatePost}/>
         </Switch>
       </div>
