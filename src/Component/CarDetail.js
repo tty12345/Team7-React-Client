@@ -47,13 +47,7 @@ export default class CarDetail extends Component {
             car: response.data,
             ownerId : response.data.owner.userId
         });
-     
-      })
-      .catch(e => {
-        console.log(e);
-      });
-    }
-
+    })}
 
     onChangeOffer(e) {
         this.setState({
@@ -64,7 +58,6 @@ export default class CarDetail extends Component {
     submitNewOffer() {
         if(!sessionStorage.getItem("status")){
             window.alert("Please Log In First To Leave Offer")
-            this.props.history.push('/login')
         }
         else{
             var data = {
@@ -255,13 +248,8 @@ export default class CarDetail extends Component {
                       <button onClick={this.submitNewOffer} className="btn btn-success" >Leave Offer</button>
                     </div> )}
 
-              </div> ) : ( ( this.state.deleted) ? <Redirect to='/ownpost' /> : <div></div> )
-            }
+              </div> ) : ( ( this.state.deleted ) ? <Redirect to='/ownpost' /> : <div></div> ) }
             </div>
-        )
-       
-
-      
+        ) 
     }
-  
 }

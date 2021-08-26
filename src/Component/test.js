@@ -1,9 +1,23 @@
 import React, { Component } from "react";
+import{ DefaultCarsTable } from "./table/DefaultCarsTable";
 
 export default class StudentList extends Component {
-      
+  constructor(props) {
+    super(props);
+    this.logoutreload = this.logoutreload.bind(this);
+  }
     //testing
-    
+    componentDidMount(){
+      this.logoutreload();
+    }
+
+    logoutreload() {
+      if (sessionStorage.getItem("logout")){
+        window.location.reload();
+        sessionStorage.removeItem("logout");
+      }
+    }
+
     render() {
         return (
             <div className="App">
@@ -54,6 +68,9 @@ export default class StudentList extends Component {
                       </article>
                   </div>
               </div>
+            <div>
+              <DefaultCarsTable />
+            </div>
             <footer>
               <div className="footer-blurb">
                 <div className="container">

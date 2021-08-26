@@ -230,7 +230,7 @@ export default class CreatePost extends Component {
           .catch(e => {
               console.log(e);
           });
-  }
+    }
     
   
 

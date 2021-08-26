@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link,Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import test from './Component/test'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
@@ -17,16 +17,14 @@ function App() {
   const [loginStatus, setLoginStatus] = useState(true);
 
   function logout(){
-    if (sessionStorage.getItem("status") != null) {
-      console.log(sessionStorage.getItem("status"));
-      sessionStorage.removeItem("status");
-      sessionStorage.removeItem("userId");
-      // sessionStorage.setItem("loggedout",);
-    } 
-    window.location.reload();
+    sessionStorage.removeItem("status");
+    sessionStorage.removeItem("userId");
+    sessionStorage.setItem("logout", "true");
+    return(
+          <Redirect to="/"/>
+    )
   }
-
-
+  
   return (
     <div className="App">
       <Router>

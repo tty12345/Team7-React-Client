@@ -1,29 +1,24 @@
-
 import { useTable, usePagination } from 'react-table'
 import { OWNPOSTCOLUMNS } from './OwnPostsColumn'
 import React, { useState, useEffect } from "react";
 import CarPostDataService from "../../Services/CarPostService";
 
-export const OwnPostsTable = () => {
+export const DefaultCarsTable = () => {
 
     const [data1, setData] = useState([]);
     
-    useEffect(() => { getOwnPosts() }, []);
+    useEffect(() => { getmostviewed() }, []);
 
     const tableInstance = useTable({
         columns: OWNPOSTCOLUMNS,
         data: data1
     },
-    usePagination)
+    usePagination);
 
-    const { getTableProps, getTableBodyProps, headerGroups, page,nextPage,
-        previousPage,canPreviousPage,canNextPage,pageOptions,state, prepareRow,setPageSize} = tableInstance
+    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } = tableInstance
 
-    const {pageIndex, pageSize} = state
-
-    function getOwnPosts(){        
-        console.log(sessionStorage.getItem("userId"));
-        CarPostDataService.getOwnCars(sessionStorage.getItem("userId"))
+    function getmostviewed(){        
+        CarPostDataService.getTopCars()
         .then(response => {
             setData(response.data);
             console.log(response.data);
@@ -66,23 +61,6 @@ export const OwnPostsTable = () => {
                         }
                     </tbody>
                 </table>
-            </div>
-            <div align ="center">
-                <select value={pageSize} onChange = {e=> setPageSize(Number(e.target.value))}>
-                        {
-                            [5,10,50,100].map(pageSize => (
-                                <option key = {pageSize} value = {pageSize}>Show {pageSize}</option>
-                            ))
-                        }
-                </select>
-                <button onClick={() =>previousPage()} disabled ={!canPreviousPage}>Previous</button>
-                <span>
-                    Page {' '}
-                    <strong>
-                        {pageIndex +1} of {pageOptions.length}
-                    </strong>{' '}
-                </span>
-                <button onClick={() =>nextPage()} disabled ={!canNextPage}>Next</button>
             </div>
         </div>
     )
