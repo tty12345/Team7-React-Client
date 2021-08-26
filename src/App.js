@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import test from './Component/test'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import HomePage from './Component/HomePage'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
 import CarDetail from './Component/CarDetail';
@@ -9,6 +11,7 @@ import SignUp from './Component/SignUp';
 import CreatePost from './Component/CreatePost'
 import OwnCarPosts from './Component/OwnCarPosts'
 import Calculator from './Component/Calculator'
+import Estimate from './Component/Estimate'
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
@@ -102,7 +105,6 @@ function App() {
         <div className="container mt-3">
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
-          <Route exact path='/' component={test} />
           <Route exact path='/login' component={LogIn}/>
           <Route exact path='/carlist' component={CarList}/>
           <Route exact path='/signup' component={SignUp}/>
@@ -111,6 +113,8 @@ function App() {
           <Route exact path='/createpost' component={CreatePost}/>
           <Route exact path='/Calculator' component={Calculator}/>
           <Route exact path='/SavePreference' component={SavePreference}/>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/Estimate' component={Estimate} />
         </Switch>
       </div>
       </Router>
