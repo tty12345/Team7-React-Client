@@ -19,7 +19,7 @@ export default class HomePage extends Component {
     
     // this method runs automatically when the page is loaded
     componentDidMount() {
-      logoutreload()
+      this.logoutreload()
       HomeService.getCoeTitle()
         .then(response => {
           this.setState({

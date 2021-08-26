@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import test from './Component/test'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HomePage from './Component/HomePage'
 import LogIn from './Component/LogIn';
 import CarList from './Component/CarList';
