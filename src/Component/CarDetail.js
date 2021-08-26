@@ -16,7 +16,7 @@ export default class CarDetail extends Component {
         this.unLikePost = this.unLikePost.bind(this);
         this.checkLikeStatus = this.checkLikeStatus.bind(this);
         this.changeOfferStatus=this.changeOfferStatus.bind(this);
-        // this.checkOwnOffer = this.checkOwnOffer().bind(this);
+        this.sendToEdit=this.sendToEdit.bind(this);
 
         this.state = {
           car: null,
@@ -163,15 +163,12 @@ export default class CarDetail extends Component {
           };
           UserDataService.checkOwnOffer(data,this.state.id)
             .then(response => {
-                console.log(response.status);
                 if(response.status == 200){
-                console.log("true")
                 this.setState({
                     currentOffer: response.data,
                     currentOfferStatus: true
                     })}
                 else{
-                console.log("false")
                 this.setState({
                     currentOffer: response.data,
                     currentOfferStatus: false
@@ -182,9 +179,12 @@ export default class CarDetail extends Component {
             });
     }
 
+    sendToEdit(){
+        sessionStorage.setItem("editPostItem",this.state.id);
+        }
   
     render(){
-        const {car,currentOffer,likeStatus, currentOfferStatus}  = this.state;
+        const {car,currentOffer,likeStatus, currentOfferStatus, id}  = this.state;
        
         return( 
             <div>
@@ -239,7 +239,7 @@ export default class CarDetail extends Component {
                   ):(    ( sessionStorage.getItem("userId") == this.state.ownerId ) ?(
                      <div>
                      <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
-                     <Link to="/" className="btn btn-primary">Edit</Link></div>):           
+                     <Link to="/CreatePost" className="btn btn-primary" onClick={this.sendToEdit}>Edit</Link></div>):           
                     <div align = "center">
                       <div className="form-group">
                       <label htmlFor="nickName">Offer</label>

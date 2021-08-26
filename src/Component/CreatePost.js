@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PostService from "../Services/PostService";
 import { Redirect } from 'react-router-dom';
 import { breakStatement } from "@babel/types";
+import UserDataService from "../Services/UserService";
+
 
 export default class CreatePost extends Component {
     constructor(props) {
@@ -18,7 +20,7 @@ export default class CreatePost extends Component {
       this.onChangePhotoByte = this.onChangePhotoByte.bind(this);
       this.saveImage = this.saveImage.bind(this);
       this.savePost = this.savePost.bind(this);
-      this.newPost = this.newPost.bind(this);
+      // this.newPost = this.newPost.bind(this);
       this.onClickPriceEstimate = this.onClickPriceEstimate.bind(this);
 
       this.state = {
@@ -27,6 +29,8 @@ export default class CreatePost extends Component {
         depreciation: "",
         description: "",
         brand: "",
+        realBrand: "",
+        realCategory: "",
         engineCapacity: "",
         registeredDate: "",
         mileage: "",
@@ -37,7 +41,9 @@ export default class CreatePost extends Component {
         submitted: false,
         currentPhoto: null,
         carpostimage: 0,
-        imageUploadStatus: false
+        imageUploadStatus: false,
+        imgExist: false,
+        IMAGE: null
       };
     }
 
@@ -98,9 +104,9 @@ export default class CreatePost extends Component {
     onChangePhotoByte(e) {
       this.setState({
         photoByte: e.target.files[0],
-        currentPhoto: URL.createObjectURL(e.target.files[0])
+        currentPhoto: URL.createObjectURL(e.target.files[0]),
+        imageExist: true
       })
-      console.log(e.target.files[0]);
     }
 
     onClickPriceEstimate() {
@@ -174,7 +180,7 @@ export default class CreatePost extends Component {
         }
 
         var data = {
-            //postId: this.state.postId,
+            postId: this.state.postId,
             price: this.state.price,
             depreciation: this.state.depreciation,
             description: this.state.description,
@@ -226,21 +232,75 @@ export default class CreatePost extends Component {
           });
   }
     
-    newPost() {
-        this.setState({
-            postId: 0,
-            price: 0,
-            description: "",
-            brand: "",
-            engineCapacity: "",
-            registeredDate: new Date(),
-            mileage: 0,
-            category: "",
-            photoUrl: "",
-            photoByte: null
-          });
-    }
   
+
+    checkPostStatus(){
+        const postId = sessionStorage.getItem("editPostItem");
+        if(postId != null)
+        UserDataService.getCar(postId)
+          .then(response => {
+            this.setState({
+              postId:postId,
+              price: response.data.price,
+              depreciation: response.data.depreciation,
+              description: response.data.description,
+              brand: response.data.brand,
+              realBrand: response.data.brand,
+              engineCapacity: response.data.engineCapacity,
+              registeredDate: response.data.registeredDate,
+              mileage: response.data.mileage,
+              category: response.data.category,
+              realCategory: response.data.category,
+              photoUrl: response.data.photoUrl,
+              // carpostimage:response.data.carPostImage.imgId,   
+              // IMAGE: response.data.carPostImage.carpostImage,
+              // imageUploadStatus: true
+            });
+            if(response.data.carPostImage != null)
+              this.setState({
+                carpostimage:response.data.carPostImage.imgId,   
+                IMAGE: response.data.carPostImage.carpostImage
+              });
+            
+            this.setBrandHotToReal(this.state.brand);
+            this.setCategoryHotToReal(this.state.category);
+            sessionStorage.removeItem("editPostItem");
+          })
+          .catch(e => {
+              console.log(e);
+          });
+  }
+
+  componentDidMount() {
+    this.checkPostStatus();
+}
+    
+      setBrandHotToReal(hotBrand){
+
+        const brands =["Audi", "Austin", "BMW", "Citron","Ferrari", "Fiat", "Honda", "Hyundai", "Kia", "Lexus"
+      ,"Mini","Mercedes-Benz","Mitsubishi","Morris","Nissan","Opel","Peugeot","Porsche","Renault","Subaru","Suzuki"
+      ,"Toyota","Volkswagen","Volvo"];
+
+        for (var i = 0; i < 23; i++){
+          if (brands[i] == hotBrand){
+            this.setState({brand: i+1});
+          }
+        }
+      }
+
+    setCategoryHotToReal(hotCategory){
+
+      const category =["Hatchback", "Luxury", "MPV", "Others","SUV", "Sedan", "Sports", "Stationwagon", "Truck", "Van"];
+
+      for (var i = 0; i < 10; i++){
+        if (category[i] == hotCategory){
+          this.setState({category: i+1});
+        }
+      }
+
+
+    }
+
     render() {
       //condition
       if(!sessionStorage.getItem("status")){
@@ -276,7 +336,7 @@ export default class CreatePost extends Component {
                 <label htmlFor="brand">Brand</label>
                 <br></br>
                 <select name="category" onChange={this.onChangeBrand}>
-                  <option value='null'>Choose one</option>
+                  <option value={this.state.brand}>{this.state.realBrand}</option>
                   <option value='0'>Audi</option>
                   <option value='1'>Austin</option>
                   <option value='2'>BMW</option>
@@ -355,7 +415,7 @@ export default class CreatePost extends Component {
                 <label htmlFor="category">Category</label>
                 <br></br>
                 <select name="category" onChange={this.onChangeCategory}>
-                  <option value='null'>Choose one</option>
+                  <option value={this.state.category}>{this.state.realCategory}</option>
                   <option value='1'>Hatchback</option>
                   <option value='2'>Luxury</option>
                   <option value='3'>MPV</option>
@@ -373,7 +433,7 @@ export default class CreatePost extends Component {
                 <label htmlFor="priceEstimate">Price Estimate</label>
                 <p>${this.state.priceEstimate}</p>
                 <button
-                  onClick={this.onClickPriceEstimate} type="button" class="btn btn-primary">
+                  onClick={this.onClickPriceEstimate} type="button" className="btn btn-primary">
                   Get Estimate
                 </button>
               </div>
@@ -403,18 +463,25 @@ export default class CreatePost extends Component {
                   name="photoUrl"
                 />
               </div>
-                          <br></br>
-            <br></br>
             </form>
+        
 
               {this.state.imageUploadStatus?(
               <div>
               <span>Upload Sucessful!</span>
-              <img src = {this.state.currentPhoto}/>
+              {/* <img src = {"data:image/png;base64,"+this.state.IMAGE}/> */}
               </div>):(
               <div className="form-group">
+                {this.state.IMAGE?
+                <div>
+                <label htmlFor="photoByte">Current Image:</label>
+                <img src = {"data:image/png;base64,"+this.state.IMAGE}/>
+                </div>:
+                <div>
                 <label htmlFor="photoByte">Upload Photo</label>
                 <img src = {this.state.currentPhoto}/>
+                </div>}
+
                 <input 
                   type="file"
                   className="form-control"
@@ -430,9 +497,16 @@ export default class CreatePost extends Component {
             </button>):(
               <div>
               <span>Please Upload an Image only in png format beacause we are noobs</span>
-              <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button></div>)}
+
+              {this.state.imageExist?
+              <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}
+
+
+              </div>
+              )}
             </div>
-            )}</div>
+            )}
+            </div>
       );}
     }
   }
