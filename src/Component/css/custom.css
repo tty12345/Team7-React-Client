@@ -44,3 +44,49 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 100%;
 	overflow-x: scroll;
 }
+.page-header {
+    height: 400px;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/bg-banner.jpg);
+    background-attachment: fixed;
+}
+
+@media (max-width: 991.98px) {
+    .page-header {
+        height: 300px;
+    }
+}
+.bg-banner {
+    background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/bg-banner.jpg);
+    background-attachment: fixed;
+}
+
+.glyphicon-equalizer{
+	color: #fcfaf8 ;
+}
+
+.py-5{
+    color:rgba(28, 30, 50, .9);
+	flex-shrink: 0;
+	padding-bottom:3rem !important}
+	
+.px-0{padding-right:0 !important}
+	
+.px-0{padding-left:0 !important}
+	
+.img-fluid{max-width:100%;height:auto}
+	
+.mx-0{margin-left:0 !important}
+
+.mx-0{margin-right:0 !important}
+
+.root {
+	--primary: #F77D0A;
+	--secondary: #2B2E4A;
+	--light: #F4F5F8;
+	--dark: #1C1E32;
+}

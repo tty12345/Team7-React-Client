@@ -580,7 +580,7 @@ aside.left-panel {
   margin-left: 83px; }
 
 .navbar {
-  background: #fff;
+  background: rgb(250, 248, 248);
   border-radius: 0;
   border: none;
   display: inline-block;
@@ -592,7 +592,7 @@ aside.left-panel {
     padding: 0;
     padding-bottom: 50px; }
   .navbar .menu-title {
-    color: #41434d;
+    color: #2b2e4a;
     clear: both;
     display: block;
     font-family: 'Open Sans';
@@ -609,7 +609,7 @@ aside.left-panel {
       padding-left: 30px;
       padding-right: 30px; }
       .navbar .navbar-nav > li.active {
-        background: #fafafa; }
+        background: #f8f6f6; }
     .navbar .navbar-nav li {
       width: 100%; }
       .navbar .navbar-nav li.active .menu-icon, .navbar .navbar-nav li:hover .toggle_nav_button:before,
