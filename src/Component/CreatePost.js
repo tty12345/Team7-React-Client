@@ -190,7 +190,6 @@ export default class CreatePost extends Component {
             mileage: this.state.mileage,
             category: this.state.category,
             photoUrl: this.state.photoUrl,
-            carpostimage: this.state.carpostimage,
             userId: sessionStorage.getItem("userId")
         };
         console.log(data);
