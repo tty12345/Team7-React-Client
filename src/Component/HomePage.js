@@ -244,31 +244,31 @@ export default class HomePage extends Component {
                 <div class="col-lg-5 mb-2">
                     <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" styles="height: 435px;">
                         <div class="d-flex mb-3">
-                            <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
+                            <i class="glyphicon glyphicon-equalizer"></i>
                             <div class="mt-n1">
-                                <h5 class="text-light">Head Office</h5>
-                                <p>123 Street, New York, USA</p>
+                                <h3 class="text-light"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
+                                <p>25 Heng Mui Keng Terrace, Singapore 119615</p>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
                             <i class="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
                             <div class="mt-n1">
-                                <h5 class="text-light">Branch Office</h5>
-                                <p>123 Street, New York, USA</p>
+                                <h3 class="text-light"><span className="glyphicon glyphicon-briefcase"></span><span> &nbsp;</span><b>Branch Office</b></h3>
+                                <p>25 Heng Mui Keng Terrace, Singapore 119615</p>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
                             <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
                             <div class="mt-n1">
-                                <h5 class="text-light">Customer Service</h5>
-                                <p>customer@example.com</p>
+                                <h3 class="text-light"><span className="glyphicon glyphicon-user"></span><span> &nbsp;</span><b>Customer Service</b></h3>
+                                <p>CarExchangeCS@carexchange.com</p>
                             </div>
                         </div>
                         <div class="d-flex">
                             <i class="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
                             <div class="mt-n1">
-                                <h5 class="text-light">Return & Refund</h5>
-                                <p class="m-0">refund@example.com</p>
+                                <h3 class="text-light"><span className="glyphicon glyphicon-envelope"></span><span> &nbsp;</span><b>Return & Refund</b></h3>
+                                <p class="m-0">CarExchangeRefund@carexchange.com</p>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@ export default class HomePage extends Component {
                 <div className="container">
                   <div className="row">
                     <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-user"></span> Loan Calculator</h3>
+                      <h3><span className="glyphicon glyphicon-plus-sign"></span> Loan Calculator</h3>
                       <p>Calculator your loan here</p>
                       <p><a class="btn btn-default"><Link to={"/Calculator/"}>
                  Calculator Now
@@ -296,7 +296,7 @@ export default class HomePage extends Component {
                     </div>
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
-                      <p>Common queries</p>
+                      <p>Calculate car depreciation</p>
                       <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
                  Calculator Now
                 </Link></a></p>
