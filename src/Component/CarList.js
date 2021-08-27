@@ -7,10 +7,7 @@ import{BasicTable} from "./table/BasicTable"
 export default class CarList extends Component {
     constructor(props) {
         super(props);
-  
       }
-
-
   
     render(){
         return(

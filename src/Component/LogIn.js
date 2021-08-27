@@ -32,6 +32,8 @@ export default class LogIn extends Component {
     }
 
     login() {
+        sessionStorage.setItem("status", "true");
+
         var data = {
           username: this.state.username,
           password: this.state.password
@@ -44,11 +46,10 @@ export default class LogIn extends Component {
                     isLoggedIn: true,
                 });
                 sessionStorage.setItem("userId", response.data);
-                sessionStorage.setItem("status", "true");
-                sessionStorage.removeItem("form");
                 window.location.reload();
             } 
             console.log(response.data);
+            console.log(sessionStorage.getItem('ToWhere'));
         })
         .catch(e => {
             this.setState({
@@ -63,7 +64,9 @@ export default class LogIn extends Component {
         return (
             <div className="submit-form">
                 {this.state.isLoggedIn ? (
-                    <Redirect to='/carlist'  />
+                  (sessionStorage.getItem("ToWhere") == 'sellcar' ?
+                    <Redirect to='/createpost' /> : <Redirect to='/carlist' /> ) 
+                    // <Redirect to='/carlist' /> 
                 ) : (
                     <div>
                         <div className="form-group">

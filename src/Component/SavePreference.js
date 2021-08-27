@@ -103,7 +103,7 @@ export default class SavePreference extends Component {
       PostService.checkCurrentPreference(sessionStorage.getItem("userId"))
           .then(response => {
 
-            if(response.status == 200)
+            if(response.status === 200)
               this.setState({
                 preferenceStatus: true,
                 model: response.data.model,
