@@ -345,7 +345,7 @@ Googel Fonts  */
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
 
-body {
+body {  min-height: 100%;
   display: table;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -2501,5 +2501,12 @@ footer.site-footer {
   #cellPaiChart #pieLabel0 {
     left: inherit !important;
     right: 20px !important; }
+
+    .root {
+      --primary: #F77D0A;
+      --secondary: #2B2E4A;
+      --light: #F4F5F8;
+      --dark: #1C1E32;
+  }
 
 /*# sourceMappingURL=style.css.map */

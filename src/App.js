@@ -96,14 +96,14 @@ function App() {
                         {/* <li><div><NotificationTable/></div></li> */}
                       </ul>
                     </li>):
-                    (<li></li>)}
+                   (<li></li>)}
                 </ul>
 
                 </div>
             </div>
         </nav>
         </div>
-        <div className="container mt-3">
+        <div >
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/login' component={LogIn}/>

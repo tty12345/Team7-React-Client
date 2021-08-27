@@ -3,6 +3,8 @@ import PostService from "../Services/PostService";
 import { Redirect } from 'react-router-dom';
 import { breakStatement } from "@babel/types";
 import UserDataService from "../Services/UserService";
+import '../App.css';
+import { Link } from 'react-router-dom';
 
 
 export default class CreatePost extends Component {
@@ -313,7 +315,7 @@ export default class CreatePost extends Component {
             
           <div>
               <div className="form-group">
-                  <label htmlFor="depreciation">Depreciation (Annual)</label>
+                  <label htmlFor="depreciation">Depreciation (Annual)</label> 
                   <input
                     type="text"
                     className="form-control"
@@ -324,8 +326,15 @@ export default class CreatePost extends Component {
                     name="depreciation"
                     placeholder="S$"
                   />
+                  <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
+                 Depreciation Calculator
+                </Link></a></p>
               </div>
-
+{/* <div>
+              <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
+                    Calculate your car depreciation
+                   </Link></a></p>
+</div> */}
                 <div className="form-group">
                   <label htmlFor="brand">Brand</label>
                   <br></br>
