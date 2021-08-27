@@ -40,10 +40,10 @@ h1, h2, h3, h4, h5, h6 {
 .glyphicon-equalizer{
 	color: black;
 }
-.container{
+/* .container{
 	max-width: 100%;
 	overflow-x: scroll;
-}
+} */
 .page-header {
     height: 400px;
     margin-bottom: 90px;
@@ -84,9 +84,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .mx-0{margin-right:0 !important}
 
-.root {
-	--primary: #F77D0A;
-	--secondary: #2B2E4A;
-	--light: #F4F5F8;
-	--dark: #1C1E32;
+:root {
+    --primary: #F77D0A;
+    --secondary: #2B2E4A;
+    --light: #F4F5F8;
+    --dark: #1C1E32;
+}
+/* .container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto};
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto} */
+/* @media (min-width:768px){.container{width:750px}}
+@media (min-width:992px){.container{width:970px}}
+@media (min-width:1200px){.container{width:1170px}} */
+
+.container,.container-fluid,.container-sm,.container-md,.container-lg,
+.container-xl{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+@media (min-width: 576px){.container,.container-sm{max-width:540px}}
+@media (min-width: 768px){.container,.container-sm,.container-md{max-width:720px}}
+@media (min-width: 992px){.container,.container-sm,.container-md,.container-lg{max-width:960px}}
+@media (min-width: 1200px){.container,.container-sm,.container-md,.container-lg,.container-xl{max-width:1140px}}
+.row{display:flex;flex-wrap:wrap;margin: right 0px;margin: left 0px}
+.page-middle{
+    height: 400px;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+	 background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/about.png);
+    background-attachment: fixed;
+  
 }
