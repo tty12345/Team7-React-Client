@@ -121,7 +121,7 @@ export default class HomePage extends Component {
                   </div>
               </div>
             <div>
-              <DefaultCarsTable />
+              <DefaultCarsTable/>
             </div>
             <footer>
               <div className="footer-blurb">

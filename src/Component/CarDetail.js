@@ -3,7 +3,6 @@ import UserDataService from "../Services/UserService.js";
 import '../App.css';
 import PostService from "../Services/PostService.js";
 import { Link, Redirect } from 'react-router-dom';
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 export default class CarDetail extends Component {
     constructor(props) {
@@ -130,16 +129,14 @@ export default class CarDetail extends Component {
           };
           PostService.checkLikeStatus(data,this.state.id)
             .then(response => {
-            //     if (response.status === 200)
-            //         this.setState({
-            //             likeStatus: true
-            //         })
-            //     else if(response === 203)
-            //         this.setState({
-            //             likeStatus: false
-            //         }); 
-            // })
-            console.log("back");
+                if (response.status === 200)
+                    this.setState({
+                        likeStatus: true
+                    })
+                else if(response === 203)
+                    this.setState({
+                        likeStatus: false
+                    }); 
             })
             .catch(e => {
                 console.log(e);
@@ -164,7 +161,8 @@ export default class CarDetail extends Component {
 
     changeOfferStatus(){
         this.setState({
-            currentOfferStatus: false
+            currentOfferStatus: false,
+            currentOffer: null
         })
     }
 
@@ -176,17 +174,17 @@ export default class CarDetail extends Component {
           UserDataService.checkOwnOffer(data,this.state.id)
             .then(response => {
                 if(response.status === 200){
-                    console.log("cherwah new offer");
+                    console.log("REMOVE THIS");
                 }
                 else if(response.status === 201)
-                {console.log("cherwah offer b4")
+                {
                 this.setState({
                     currentOffer: response.data[0],
                     currentOfferStatus: true
                 });}
                 else{
                     console.log("tin");
-                    console.log(response.data[0]);
+                    console.log(response.data);
                 this.setState({
                     currentOffer: null,
                     currentOfferStatus: false,
@@ -270,9 +268,9 @@ export default class CarDetail extends Component {
                             let data = offers[k];
                             return (
                                 <tr key={i}>
-                                <td>{data.user.username}</td>
+                                {/* <td>{data.user.username}</td> */}
                                 <td>{data.offer}</td>
-                                <td>{data.user.mobileNumber}</td>
+                                {/* <td>{data.user.mobileNumber}</td> */}
                                 </tr>
                             );
                             })}
