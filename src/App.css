@@ -6,27 +6,29 @@
 #cartable {
   text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color:#ddd;
   border-collapse: collapse;
-  border: 15px solid #ddd;
+  /* border: 5px transparent #ddd; */
   width: 100%;
 }
 
 #cartable td, #cartable th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 8px;
 }
 
-#cartable tr:nth-child(even){background-color: #f2f2f2;}
+#cartable tr:nth-child(even){background-color: rgb(59, 53, 63);}
+#cartable tr:nth-child(odd){background-color:  #767894;}
 
-#cartable tr:hover {background-color: #ddd;}
+/* #cartable tr:hover {background-color: #ddd;} */
 
 #cartable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #4CAF50;
+  background-color: #f77d0a;
   color: white;
-}
+  border-bottom: 5px solid #ddd;}
 
 #carDetailImage {
   height: Auto;

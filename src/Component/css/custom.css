@@ -45,14 +45,16 @@ h1, h2, h3, h4, h5, h6 {
 	overflow-x: scroll;
 } */
 .page-header {
-    height: 400px;
+    height: 600px;
+    width:1200px;
     margin-bottom: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/bg-banner.jpg);
-    background-attachment: fixed;
+    background: linear-gradient(rgba(28, 30, 50, 0.5), rgba(28, 30, 50, 0.5)),url(/images/carousel-2.jpg);
+    background-attachment: fixed; 
+     /* background-image: url("/images/carousel-2.jpg");*/
 }
 
 @media (max-width: 991.98px) {
@@ -104,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1200px){.container,.container-sm,.container-md,.container-lg,.container-xl{max-width:1140px}}
 .row{display:flex;flex-wrap:wrap;margin: right 0px;margin: left 0px}
 .page-middle{
-    height: 400px;
+    height: 1300x;
     margin-bottom: 90px;
     display: flex;
     flex-direction: column;

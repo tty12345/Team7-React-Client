@@ -59,39 +59,21 @@ export default class HomePage extends Component {
               </div>
             </div> */}
             <div class="container-fluid page-header">
-        <h1><span className="glyphicon glyphicon-equalizer"></span><font color = "#ffffff" >Prices Updated Monthly</font></h1>
-                <p>Using algorithms to determine your car's best selling price</p>
+            <h1 class="display-4 text-uppercase text-center mb-5"><font color="white">Welcome To</font> <font color="#F77D0A">CAR EXCHANGE</font></h1>
+             {/* <p class="center"><font color="white">Welcome to CAR EXCHANGE – Singapore’s premier online car dealership since 2001. Get estimate selling price from the calculated large data across the market. Discover the large car models in out website with a remarkable ownership experience like no other.</font></p>  */}
+            <h3><span className="glyphicon glyphicon-equalizer"></span><font color = "#ffffff" >Prices Updated Monthly</font></h3>
+                <p><font size="5" color="white">Using algorithms to determine your car's best selling price</font></p>
                 <button><Link to={"/Estimate/"}>
                   Get Estimate
                 </Link></button>
                 </div>
         
 
-            {/* <div className="container-fluid">
-              <div className="row">
-                <h2>{title}</h2>
-                <table>
-                    <thead>
-                    <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
-                    </thead>
-                    <tbody>
-                    {Object.keys(categories).map((k, i) => {
-                      let data = categories[k];
-                      return (
-                        <tr key={i}>
-                          <td>{data.name}</td>
-                          <td>{data.quota}</td>
-                          <td>{data.premium}</td>
-                        </tr>
-                      );
-                    })}
-                    </tbody>
-                </table>
-              </div>
-              </div> */}
+         
+            
               
-             
-              {/* <div className="container-fluid">
+{/*              
+              <div className="container-fluid">
                   <div className="row">
                       <div className="col-lg-12">
                           <h1 className="page-header">Best Sellers
@@ -130,51 +112,8 @@ export default class HomePage extends Component {
                           <p> text</p>
                       </article>
                   </div>
-              </div> */} 
-            {/* <div>
-              <DefaultCarsTable />
-            </div> */}
-
-      <div class="container-fluid py-5  page-middle">
-        <div class="container-fluid pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5"><font color="white">Welcome To</font> <font color="#F77D0A">CAR EXCHANGE</font></h1>
-            <div class="d-flex row justify-content-center  align-items-center">
-                <div class="col-lg-10 text-center align-items-center">
-                    <img class="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
-                    {/* <p><font color="white">Welcome to CAR EXCHANGE – Singapore’s premier online car dealership since 2001. Get estimate selling price from the calculated large data across the market. Discover the large car models in out website with a remarkable ownership experience like no other.</font></p> */}
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-headset text-secondary"></i>
-                        </div>
-                        <h4 class="text-uppercase m-0">24/7 Car Sale Support</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-secondary p-4 mb-4" styles="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-car text-secondary"></i>
-                        </div>
-                        <h4 class="text-light text-uppercase m-0">Get estimate selling price</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i class="fa fa-2x fa-map-marker-alt text-secondary"></i>
-                        </div>
-                        <h4 class="text-uppercase m-0">Lots of car models</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-           
-            <div class="container-fluid py-5">
+              </div>  */}
+               <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row mx-0">
                 <div class="col-lg-6 px-0">
@@ -204,6 +143,75 @@ export default class HomePage extends Component {
             </div>
         </div>
     </div>
+            
+
+      <div class="container-fluid py-5  page-middle">
+        <div class="container-fluid pt-5 pb-3">
+        <h1 class="display-4 text-uppercase text-center mb-5"><font color="#F77D0A">POPULAR</font> <font color="white">CAR LISTING</font></h1>
+            <div class="d-flex row justify-content-center  align-items-center">
+                <div class="col-lg-10 text-center align-items-center">
+                    <img class="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
+                   
+                </div>
+                
+            </div>
+            <div>
+                <DefaultCarsTable />
+             </div>
+            {/* <div class="row mt-3">
+                <div class="col-lg-4 mb-2">
+                    <div class="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
+                            <i class="fa fa-2x fa-headset text-secondary"></i>
+                        </div>
+                        <h4 class="text-uppercase m-0">24/7 Car Sale Support</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <div class="d-flex align-items-center bg-secondary p-4 mb-4" styles="height: 150px;">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
+                            <i class="fa fa-2x fa-car text-secondary"></i>
+                        </div>
+                        <h4 class="text-light text-uppercase m-0">Get estimate selling price</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <div class="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
+                            <i class="fa fa-2x fa-map-marker-alt text-secondary"></i>
+                        </div>
+                        <h4 class="text-uppercase m-0">Lots of car models</h4>
+                    </div>
+                </div> */}
+            {/* </div> */}
+        </div>
+    </div>
+
+  
+           
+           
+    <div className="container-fluid">
+              <div className="row">
+                <h2>{title}</h2>
+                <table>
+                    <thead>
+                    <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                    {Object.keys(categories).map((k, i) => {
+                      let data = categories[k];
+                      return (
+                        <tr key={i}>
+                          <td>{data.name}</td>
+                          <td>{data.quota}</td>
+                          <td>{data.premium}</td>
+                        </tr>
+                      );
+                    })}
+                    </tbody>
+                </table>
+              </div>
+              </div> 
     
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
