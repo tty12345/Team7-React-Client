@@ -22,11 +22,9 @@ export const OwnPostsTable = () => {
     const {pageIndex, pageSize} = state
 
     function getOwnPosts(){        
-        console.log(sessionStorage.getItem("userId"));
         CarPostDataService.getOwnCars(sessionStorage.getItem("userId"))
         .then(response => {
             setData(response.data);
-            console.log(response.data);
         })
         .catch(e => {
             console.log(e);

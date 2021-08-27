@@ -34,14 +34,14 @@ export const COLUMNS = [
         accessor: 'photoUrl',
         Cell: ({ cell: { value }}) => (
             
-              <img src={value}/>
+              <img src={value} alt=""/>
             )
     },
     {
         Header: '',
         accessor: 'carPostImage.carpostImage',
         Cell: ({ cell: { value }}) => (
-              <img src={"data:image/png;base64," + value} className ="base64Image"/>
+              <img src={"data:image/png;base64," + value} className ="base64Image" alt=""/>
             )
     },
     {

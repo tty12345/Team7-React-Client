@@ -1,4 +1,4 @@
-import React, { Component,useEffect } from "react";
+import React, { Component} from "react";
 import UserDataService from "../Services/UserService.js";
 import '../App.css';
 import PostService from "../Services/PostService.js";
@@ -170,7 +170,6 @@ export default class CarDetail extends Component {
         var data = {
             userId: this.state.userId
           };
-          
           UserDataService.checkOwnOffer(data,this.state.id)
             .then(response => {
                 if(response.status === 200){
@@ -183,8 +182,6 @@ export default class CarDetail extends Component {
                     currentOfferStatus: true
                 });}
                 else{
-                    console.log("tin");
-                    console.log(response.data);
                 this.setState({
                     currentOffer: null,
                     currentOfferStatus: false,
@@ -196,12 +193,20 @@ export default class CarDetail extends Component {
             });
     }
 
+    // checkAllOffer(){
+    //     UserDataService.checkAllOffer(this.state.id)
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+
+    // }
+
     sendToEdit(){
         sessionStorage.setItem("editPostItem",this.state.id);
         }
   
     render(){
-        const {car,currentOffer,likeStatus, currentOfferStatus, id, offers}  = this.state;
+        const {car,currentOffer,likeStatus, offers}  = this.state;
        
         return( 
             <div>
@@ -209,12 +214,12 @@ export default class CarDetail extends Component {
               <div>
                   
                   <br/>
-                  <div className = "individualImage"><img src = {car.photoUrl} id = "carDetailImage"></img>
+                  <div className = "individualImage"><img alt ="" src={"data:image/png;base64," + car.carPostImage.carpostImage} className ="individualImage" id ="carDetailImage"/>
                   { sessionStorage.getItem("userId") != this.state.ownerId ?
                     (<div>    
                         {likeStatus ?
-                        <img className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
-                        <img className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}
+                        <img  alt ="" className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
+                        <img  alt ="" className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}
                     </div>):
                     (<div></div>)}
                   </div>

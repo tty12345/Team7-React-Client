@@ -27,6 +27,9 @@ class UserDataService {
   googleRegister(){
     return axios.get("http://localhost:8080/post/getOne/")
   }
+  checkAllOffer(id){
+    return axios.post("http://localhost:8080/post/getAllOffer/"+id);
+  }
 }
 
 export default new UserDataService();

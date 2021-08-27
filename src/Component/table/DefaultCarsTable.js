@@ -21,7 +21,6 @@ export const DefaultCarsTable = () => {
         CarPostDataService.getTopCars()
         .then(response => {
             setData(response.data);
-            console.log(response.data);
         })
         .catch(e => {
             console.log(e);

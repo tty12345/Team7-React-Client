@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
 import '../App.css';
-import { FaLastfmSquare } from "react-icons/fa";
 
 
 export default class SavePreference extends Component {
@@ -102,6 +101,7 @@ export default class SavePreference extends Component {
             category: this.state.category,
           });
           this.returnBrandHotToReal(this.state.brand);
+          this.returnCategoryHotToReal(this.state.category);
         })
             .catch(e => {
                 console.log(e);
@@ -126,8 +126,6 @@ export default class SavePreference extends Component {
                 category: response.data.category
               });
               console.log(response.data);
-              this.setBrandHotToReal(this.state.brand);
-              this.setCategoryHotToReal(this.state.category);
           })
           .catch(e => {
               console.log(e);
@@ -184,13 +182,13 @@ export default class SavePreference extends Component {
       }
     }
     
-    setCategoryHotToReal(currentCategoryCode){
+    returnCategoryHotToReal(currentCategoryCode){
 
       const category =["Hatchback", "Luxury", "MPV", "Others","SUV", "Sedan", "Sports", "Stationwagon", "Truck", "Van"];
 
       for (var i = 0; i < 10; i++){
         if (i == currentCategoryCode){
-          this.setState({realCategory: category[i]});
+          this.setState({realCategory: category[i-1]});
         }
     }
   

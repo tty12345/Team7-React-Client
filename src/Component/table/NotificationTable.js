@@ -1,7 +1,6 @@
 
 import {useTable, usePagination } from 'react-table'
 import {COLUMNS} from './NotificationColumn'
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import UserService from "../../Services/UserService";
 
@@ -23,6 +22,7 @@ export const NotificationTable = () => {
 
     function getData(){        
         UserService.getNotification(sessionStorage.getItem("userId")).then(response => {
+            console.log(response.data);
             setData(response.data);
         })
         .catch(e => {

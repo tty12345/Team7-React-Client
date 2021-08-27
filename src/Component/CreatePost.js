@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
 import { Redirect } from 'react-router-dom';
-import { breakStatement } from "@babel/types";
 import UserDataService from "../Services/UserService";
 import '../App.css';
 import { Link } from 'react-router-dom';
@@ -283,7 +282,7 @@ export default class CreatePost extends Component {
       ,"Toyota","Volkswagen","Volvo"];
 
       for (var i = 0; i < 23; i++){
-        if (brands[i] == hotBrand){
+        if (brands[i] === hotBrand){
           this.setState({brand: i+1});
         }
       }
@@ -294,7 +293,7 @@ export default class CreatePost extends Component {
       const category =["Hatchback", "Luxury", "MPV", "Others","SUV", "Sedan", "Sports", "Stationwagon", "Truck", "Van"];
 
       for (var i = 0; i < 10; i++){
-        if (category[i] == hotCategory){
+        if (category[i] === hotCategory){
           this.setState({category: i+1});
         }
       }
@@ -476,13 +475,12 @@ export default class CreatePost extends Component {
                 {this.state.imageUploadStatus?(
                 <div>
                 <span>Upload Sucessful!</span>
-                {/* <img src = {"data:image/png;base64,"+this.state.IMAGE}/> */}
                 </div>):(
                 <div className="form-group">
                   {this.state.IMAGE?
                   <div>
                   <label htmlFor="photoByte">Current Image:</label>
-                  <img src = {"data:image/png;base64,"+this.state.IMAGE}/>
+                  <img alt ="" src = {"data:image/png;base64,"+this.state.IMAGE}/>
                   </div>:
                   <div>
                   <label htmlFor="photoByte">Upload Photo</label>

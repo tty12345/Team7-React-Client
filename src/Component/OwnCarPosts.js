@@ -3,10 +3,6 @@ import '../App.css';
 import{OwnPostsTable} from "./table/OwnPostsTable"
 
 export default class CarList extends Component {
-    constructor(props) {
-        super(props);
-      }
-
 
   
     render(){

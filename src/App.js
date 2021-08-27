@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import HomePage from './Component/HomePage'
@@ -16,11 +16,7 @@ import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
 function App() {
 
-  const [loginStatus, setLoginStatus] = useState(true);
- 
   function logout(){
-    // sessionStorage.removeItem("status");
-    // sessionStorage.removeItem("userId");
     sessionStorage.clear();
     sessionStorage.setItem("logout", "true");
     return(
@@ -93,7 +89,7 @@ function App() {
                     <li>
                     <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><FaBell/></a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
-                        {/* <li><div><NotificationTable/></div></li> */}
+                        <li><div><NotificationTable/></div></li>
                       </ul>
                     </li>):
                    (<li></li>)}

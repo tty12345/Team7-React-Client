@@ -56,15 +56,15 @@ class PostDataService {
     }
 
     likePost(user,id){
-      return axios.post("http://localhost:8080/like" + "/addLike/" + id, user);
+      return axios.post("http://localhost:8080/like/addLike/" + id, user);
     }
 
     unLikePost(user,id){
-      return axios.post("http://localhost:8080/like" + "/deleteLike/" + id,user);
+      return axios.post("http://localhost:8080/like/deleteLike/" + id,user);
     }
 
     checkLikeStatus(user,id){
-      return axios.post("http://localhost:8080/like" + "/checkLike/" + id,user);
+      return axios.post("http://localhost:8080/like/checkLike/" + id,user);
     }
 
     savePreference(preferences){

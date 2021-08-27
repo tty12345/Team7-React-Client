@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserService from "../Services/UserService.js";
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import '../App.css';
 
 

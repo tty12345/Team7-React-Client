@@ -1,7 +1,6 @@
 
 import {useTable, usePagination } from 'react-table'
 import {COLUMNS} from './columns'
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PostService from "../../Services/PostService";
 
@@ -12,8 +11,8 @@ export const BasicTable = () => {
     const [priceLabel, setPriceLabel] = useState("");
     const [description, setDescription] = useState("");
     
-    useEffect(async() => { 
-        await getData() 
+    useEffect(() => { 
+        getData() 
 
     }, []);
 
