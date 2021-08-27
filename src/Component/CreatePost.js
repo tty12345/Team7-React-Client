@@ -268,24 +268,24 @@ export default class CreatePost extends Component {
           .catch(e => {
               console.log(e);
           });
-  }
+    }
 
-  componentDidMount() {
-    this.checkPostStatus();
-}
+    componentDidMount() {
+      this.checkPostStatus();
+    }
     
-      setBrandHotToReal(hotBrand){
+    setBrandHotToReal(hotBrand){
 
-        const brands =["Audi", "Austin", "BMW", "Citron","Ferrari", "Fiat", "Honda", "Hyundai", "Kia", "Lexus"
+      const brands =["Audi", "Austin", "BMW", "Citron","Ferrari", "Fiat", "Honda", "Hyundai", "Kia", "Lexus"
       ,"Mini","Mercedes-Benz","Mitsubishi","Morris","Nissan","Opel","Peugeot","Porsche","Renault","Subaru","Suzuki"
       ,"Toyota","Volkswagen","Volvo"];
 
-        for (var i = 0; i < 23; i++){
-          if (brands[i] == hotBrand){
-            this.setState({brand: i+1});
-          }
+      for (var i = 0; i < 23; i++){
+        if (brands[i] == hotBrand){
+          this.setState({brand: i+1});
         }
       }
+    }
 
     setCategoryHotToReal(hotCategory){
 
@@ -302,217 +302,218 @@ export default class CreatePost extends Component {
 
     render() {
       //condition
-      if(!sessionStorage.getItem("status")){
-
-        window.alert("Please Log In First!");
-
-        return(<Redirect to='/login'/>);
-      }
       //it not logged direct to login
-      else{
-      return (
-        <div>
+      if (sessionStorage.getItem("status") == 'true'){
+        return (
           <div>
-          <h2>Create your car post</h2>
-        </div>
-        {this.state.submitted?(<Redirect to='/CarList'/>):(
+            <div>
+            <h2>Create your car post</h2>
+          </div>
+          {this.state.submitted?(<Redirect to='/CarList'/>):(
+            
+          <div>
+              <div className="form-group">
+                  <label htmlFor="depreciation">Depreciation (Annual)</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="depreciation"
+                    required
+                    value={this.state.depreciation}
+                    onChange={this.onChangeDepreciation}
+                    name="depreciation"
+                    placeholder="S$"
+                  />
+              </div>
+
+                <div className="form-group">
+                  <label htmlFor="brand">Brand</label>
+                  <br></br>
+                  <select name="category" onChange={this.onChangeBrand}>
+                    <option value={this.state.brand}>{this.state.realBrand}</option>
+                    <option value='0'>Audi</option>
+                    <option value='1'>Austin</option>
+                    <option value='2'>BMW</option>
+                    <option value='3'>Citron</option>
+                    <option value='4'>Ferrari</option>
+                    <option value='5'>Fiat</option>
+                    <option value='6'>Honda</option>
+                    <option value='7'>Hyundai</option>
+                    <option value='8'>Kia</option>
+                    <option value='9'>Lexus</option>
+                    <option value='10'>Mini</option>
+                    <option value='11'>Mercedes-Benz</option>
+                    <option value='12'>Mitsubishi</option>
+                    <option value='13'>Morris</option>
+                    <option value='14'>Nissan</option>
+                    <option value='15'>Opel</option>
+                    <option value='16'>Peugeot</option>
+                    <option value='17'>Porsche</option>
+                    <option value='18'>Renault</option>
+                    <option value='19'>Subaru</option>
+                    <option value='20'>Suzuki</option>
+                    <option value='21'>Toyota</option>
+                    <option value='22'>Volkswagen</option>
+                    <option value='23'>Volvo</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description">Description</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="description"
+                    required
+                    value={this.state.description}
+                    onChange={this.onChangeDescription}
+                    name="description"
+                    placeholder="Car Model"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="engineCapacity"
+                    required
+                    value={this.state.engineCapacity}
+                    onChange={this.onChangeEngineCapacity}
+                    name="brand"
+                    placeholder="cc"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="registeredDate">Registered Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="registeredDate"
+                    required
+                    value={this.state.registeredDate}
+                    onChange={this.onChangeRegisteredDate}
+                    name="registeredDate"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="mileage">Mileage</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="mileage"
+                    required
+                    value={this.state.mileage}
+                    onChange={this.onChangeMileage}
+                    name="mileage"
+                    placeholder="km"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="category">Category</label>
+                  <br></br>
+                  <select name="category" onChange={this.onChangeCategory}>
+                    <option value={this.state.category}>{this.state.realCategory}</option>
+                    <option value='1'>Hatchback</option>
+                    <option value='2'>Luxury</option>
+                    <option value='3'>MPV</option>
+                    <option value='4'>Others</option>
+                    <option value='5'>SUV</option>
+                    <option value='6'>Sedan</option>
+                    <option value='7'>Sports</option>
+                    <option value='8'>Stationwagon</option>
+                    <option value='9'>Truck</option>
+                    <option value='10'>Van</option>
+                  </select>
+                </div>
+                <br></br>
+                <div>
+                  <label htmlFor="priceEstimate">Price Estimate</label>
+                  <p>${this.state.priceEstimate}</p>
+                  <button
+                    onClick={this.onClickPriceEstimate} type="button" className="btn btn-primary">
+                    Get Estimate
+                  </button>
+                </div>
+                <br></br>
+              <form>
+                <div className="form-group">
+                  <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="price"
+                    required
+                    value={this.state.price}
+                    onChange={this.onChangePrice}
+                    name="price"
+                    placeholder="S$"
+                  />
+              </div>
+
+                <div className="form-group">
+                  <label htmlFor="photoUrl">Photo URL</label>
+                  <input 
+                    type="text"
+                    className="form-control"
+                    id="photoUrl"
+                    value={this.state.photoUrl}
+                    onChange={this.onChangePhotoUrl}
+                    name="photoUrl"
+                  />
+                </div>
+              </form>
           
-        <div>
-            <div className="form-group">
-                <label htmlFor="depreciation">Depreciation (Annual)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="depreciation"
-                  required
-                  value={this.state.depreciation}
-                  onChange={this.onChangeDepreciation}
-                  name="depreciation"
-                  placeholder="S$"
-                />
-            </div>
 
-              <div className="form-group">
-                <label htmlFor="brand">Brand</label>
-                <br></br>
-                <select name="category" onChange={this.onChangeBrand}>
-                  <option value={this.state.brand}>{this.state.realBrand}</option>
-                  <option value='0'>Audi</option>
-                  <option value='1'>Austin</option>
-                  <option value='2'>BMW</option>
-                  <option value='3'>Citron</option>
-                  <option value='4'>Ferrari</option>
-                  <option value='5'>Fiat</option>
-                  <option value='6'>Honda</option>
-                  <option value='7'>Hyundai</option>
-                  <option value='8'>Kia</option>
-                  <option value='9'>Lexus</option>
-                  <option value='10'>Mini</option>
-                  <option value='11'>Mercedes-Benz</option>
-                  <option value='12'>Mitsubishi</option>
-                  <option value='13'>Morris</option>
-                  <option value='14'>Nissan</option>
-                  <option value='15'>Opel</option>
-                  <option value='16'>Peugeot</option>
-                  <option value='17'>Porsche</option>
-                  <option value='18'>Renault</option>
-                  <option value='19'>Subaru</option>
-                  <option value='20'>Suzuki</option>
-                  <option value='21'>Toyota</option>
-                  <option value='22'>Volkswagen</option>
-                  <option value='23'>Volvo</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="description"
-                  required
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  name="description"
-                  placeholder="Car Model"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="engineCapacity"
-                  required
-                  value={this.state.engineCapacity}
-                  onChange={this.onChangeEngineCapacity}
-                  name="brand"
-                  placeholder="cc"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="registeredDate">Registered Date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="registeredDate"
-                  required
-                  value={this.state.registeredDate}
-                  onChange={this.onChangeRegisteredDate}
-                  name="registeredDate"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="mileage">Mileage</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="mileage"
-                  required
-                  value={this.state.mileage}
-                  onChange={this.onChangeMileage}
-                  name="mileage"
-                  placeholder="km"
-                />
-              </div>
-              <div>
-                <label htmlFor="category">Category</label>
-                <br></br>
-                <select name="category" onChange={this.onChangeCategory}>
-                  <option value={this.state.category}>{this.state.realCategory}</option>
-                  <option value='1'>Hatchback</option>
-                  <option value='2'>Luxury</option>
-                  <option value='3'>MPV</option>
-                  <option value='4'>Others</option>
-                  <option value='5'>SUV</option>
-                  <option value='6'>Sedan</option>
-                  <option value='7'>Sports</option>
-                  <option value='8'>Stationwagon</option>
-                  <option value='9'>Truck</option>
-                  <option value='10'>Van</option>
-                </select>
-              </div>
-              <br></br>
-              <div>
-                <label htmlFor="priceEstimate">Price Estimate</label>
-                <p>${this.state.priceEstimate}</p>
-                <button
-                  onClick={this.onClickPriceEstimate} type="button" className="btn btn-primary">
-                  Get Estimate
-                </button>
-              </div>
-              <br></br>
-            <form>
-              <div className="form-group">
-                <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="price"
-                  required
-                  value={this.state.price}
-                  onChange={this.onChangePrice}
-                  name="price"
-                  placeholder="S$"
-                />
-            </div>
-
-              <div className="form-group">
-                <label htmlFor="photoUrl">Photo URL</label>
-                <input 
-                  type="text"
-                  className="form-control"
-                  id="photoUrl"
-                  value={this.state.photoUrl}
-                  onChange={this.onChangePhotoUrl}
-                  name="photoUrl"
-                />
-              </div>
-            </form>
-        
-
-              {this.state.imageUploadStatus?(
-              <div>
-              <span>Upload Sucessful!</span>
-              {/* <img src = {"data:image/png;base64,"+this.state.IMAGE}/> */}
-              </div>):(
-              <div className="form-group">
-                {this.state.IMAGE?
+                {this.state.imageUploadStatus?(
                 <div>
-                <label htmlFor="photoByte">Current Image:</label>
-                <img src = {"data:image/png;base64,"+this.state.IMAGE}/>
-                </div>:
+                <span>Upload Sucessful!</span>
+                {/* <img src = {"data:image/png;base64,"+this.state.IMAGE}/> */}
+                </div>):(
+                <div className="form-group">
+                  {this.state.IMAGE?
+                  <div>
+                  <label htmlFor="photoByte">Current Image:</label>
+                  <img src = {"data:image/png;base64,"+this.state.IMAGE}/>
+                  </div>:
+                  <div>
+                  <label htmlFor="photoByte">Upload Photo</label>
+                  <img src = {this.state.currentPhoto}/>
+                  </div>}
+
+                  <input 
+                    type="file"
+                    className="form-control"
+                    id="photoByte"
+                    // value={this.state.photoByte}
+                    onChange={this.onChangePhotoByte}
+                    name="photoByte"
+                  />
+                  <br/>
+                </div>)}
+                {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
+                  Submit
+              </button>):(
                 <div>
-                <label htmlFor="photoByte">Upload Photo</label>
-                <img src = {this.state.currentPhoto}/>
-                </div>}
+                <span>Please Upload an Image only in png format beacause we are noobs</span>
 
-                <input 
-                  type="file"
-                  className="form-control"
-                  id="photoByte"
-                  // value={this.state.photoByte}
-                  onChange={this.onChangePhotoByte}
-                  name="photoByte"
-                />
-                <br/>
-              </div>)}
-              {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
-                Submit
-            </button>):(
-              <div>
-              <span>Please Upload an Image only in png format beacause we are noobs</span>
-
-              {this.state.imageExist?
-              <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}
+                {this.state.imageExist?
+                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}
 
 
+                </div>
+                )}
               </div>
               )}
-            </div>
-            )}
-            </div>
-      );}
+          </div>
+        );
+      }
+      else {
+        sessionStorage.setItem("ToWhere", "sellcar");
+        window.alert("Please Log In First!");
+        return(
+          <Redirect to='/login'/>)
+      }
     }
-  }
+}
 
   //test

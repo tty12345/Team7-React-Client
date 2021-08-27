@@ -17,6 +17,7 @@ export default class CarDetail extends Component {
         this.checkLikeStatus = this.checkLikeStatus.bind(this);
         this.changeOfferStatus=this.changeOfferStatus.bind(this);
         this.sendToEdit=this.sendToEdit.bind(this);
+        this.getOffers = this.getOffers.bind(this);
 
         this.state = {
           car: null,
@@ -28,7 +29,8 @@ export default class CarDetail extends Component {
           deleted : false,
           likeStatus: false,
           userId: sessionStorage.getItem("userId"),
-          currentOfferStatus: false
+          currentOfferStatus: false,
+          offers : []
         };
 
     }
@@ -36,17 +38,28 @@ export default class CarDetail extends Component {
     componentDidMount() {
         this.getCar();
         this.checkLikeStatus();
+        this.getOffers();
+        this.checkLastOffer();
+    }
+
+    getOffers(){
+        PostService.getOffer(this.state.id)
+        .then ( response => {
+            this.setState({
+                offers: response.data
+            });
+        })
     }
 
     getCar() {
-    this.checkOwnOffer();
-    UserDataService.getCar(this.state.id)
-      .then(
-        response => {
-        this.setState({
-            car: response.data,
-            ownerId : response.data.owner.userId
-        });
+        this.checkOwnOffer();
+        UserDataService.getCar(this.state.id)
+        .then(
+            response => {
+            this.setState({
+                car: response.data,
+                ownerId : response.data.owner.userId
+            });
     })}
 
     onChangeOffer(e) {
@@ -81,7 +94,7 @@ export default class CarDetail extends Component {
     deletePost(){
         PostService.deletePost(this.state.id)
             .then(response => {
-                if ( response.status == 204)
+                if ( response.status === 204)
                     this.setState({
                         car : null,
                         deleted : true
@@ -98,7 +111,7 @@ export default class CarDetail extends Component {
           };
         PostService.likePost(data,this.state.id)
             .then(response => {
-                if ( response.status == 200)
+                if ( response.status === 200)
                     this.setState({
                         likeStatus: true
                   }); 
@@ -114,11 +127,11 @@ export default class CarDetail extends Component {
           };
           PostService.checkLikeStatus(data,this.state.id)
             .then(response => {
-                if (response.status == 200)
+                if (response.status === 200)
                     this.setState({
                         likeStatus: true
                     })
-                else if(response == 203)
+                else if(response === 203)
                     this.setState({
                         likeStatus: false
                     }); 
@@ -134,7 +147,7 @@ export default class CarDetail extends Component {
           };
         PostService.unLikePost(data,this.state.id)
             .then(response => {
-                if ( response.status == 200)
+                if ( response.status === 200)
                     this.setState({
                         likeStatus: false
                   }); 
@@ -156,7 +169,7 @@ export default class CarDetail extends Component {
           };
           UserDataService.checkOwnOffer(data,this.state.id)
             .then(response => {
-                if(response.status == 200){
+                if(response.status === 200){
                 this.setState({
                     currentOffer: response.data,
                     currentOfferStatus: true
@@ -177,7 +190,7 @@ export default class CarDetail extends Component {
         }
   
     render(){
-        const {car,currentOffer,likeStatus, currentOfferStatus, id}  = this.state;
+        const {car,currentOffer,likeStatus, currentOfferStatus, id, offers}  = this.state;
        
         return( 
             <div>
@@ -186,13 +199,13 @@ export default class CarDetail extends Component {
                   
                   <br/>
                   <div className = "individualImage"><img src = {car.photoUrl} id = "carDetailImage"></img>
-                  {sessionStorage.getItem("userId")?
-                  (
-                  <div>    
-                  {likeStatus?
-                  <img className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
-                  <img className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}</div>):
-                  (<div></div>)}
+                  { sessionStorage.getItem("userId") != this.state.ownerId ?
+                    (<div>    
+                        {likeStatus ?
+                        <img className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
+                        <img className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}
+                    </div>):
+                    (<div></div>)}
                   </div>
                   <br/>
                   <table id = "cartable">
@@ -222,18 +235,40 @@ export default class CarDetail extends Component {
                   </tr>
                   </table>
                   <br/>
-
+                  
                   {currentOfferStatus?
                   ( sessionStorage.getItem("userId") == this.state.ownerId ) ? 
                    (<div></div>) : 
                   (<div>
                       Your Offer: {currentOffer.offer} <button onClick={this.changeOfferStatus}>Edit</button>
                   </div>
-                  ):(    ( sessionStorage.getItem("userId") == this.state.ownerId ) ?(
+                  ):(  ( sessionStorage.getItem("userId") == this.state.ownerId ) ? (
                      <div>
-                     <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
-                     <Link to="/CreatePost" className="btn btn-primary" onClick={this.sendToEdit}>Edit</Link></div>):           
-                    <div align = "center">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Offer</th>
+                                    <th>Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {Object.keys(offers).map((k, i) => {
+                            let data = offers[k];
+                            return (
+                                <tr key={i}>
+                                <td>{data.user.username}</td>
+                                <td>{data.offer}</td>
+                                <td>{data.user.mobileNumber}</td>
+                                </tr>
+                            );
+                            })}
+                            </tbody>
+                        </table>   
+                        <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
+                        <Link to="/CreatePost" className="btn btn-primary" onClick={this.sendToEdit}>Edit</Link>
+                     </div> ) :
+                     <div align = "center">
                       <div className="form-group">
                       <label htmlFor="nickName">Offer</label>
                           <input

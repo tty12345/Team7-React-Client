@@ -17,10 +17,11 @@ import SavePreference from './Component/SavePreference';
 function App() {
 
   const [loginStatus, setLoginStatus] = useState(true);
-
+ 
   function logout(){
-    sessionStorage.removeItem("status");
-    sessionStorage.removeItem("userId");
+    // sessionStorage.removeItem("status");
+    // sessionStorage.removeItem("userId");
+    sessionStorage.clear();
     sessionStorage.setItem("logout", "true");
     return(
           <Redirect to="/"/>

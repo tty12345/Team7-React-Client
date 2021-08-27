@@ -74,6 +74,10 @@ class PostDataService {
     checkCurrentPreference(userId){
       return axios.get("http://localhost:8080/preference/checkPreference/"+ userId);
     }
+
+    getOffer(carpostId){
+      return axios.get(CARPOST_API_BASE_URL + "/getoffers/" + carpostId);
+    }
 }
 
 export default new PostDataService();
