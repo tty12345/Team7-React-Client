@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .py-5{
-    color:rgba(28, 30, 50, .9);
+    color:rgba(8, 30, 50, .9);
 	flex-shrink: 0;
 	padding-bottom:3rem !important}
 	
@@ -118,3 +118,9 @@ h1, h2, h3, h4, h5, h6 {
 .form-inline
 .form-control{display:inline-block;width:auto;vertical-align:middle}
 .col-lg-7{flex:0 0 58.33333%;max-width:58.33333%}
+
+.welcome
+{
+font-family: 'Rampart One', cursive;
+}
+

@@ -137,11 +137,11 @@ export default class HomePage extends Component {
 
       <div class="container-fluid py-5  page-middle">
         <div class="container-fluid pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">Welcome To <span class="text-primary">Car Exchange</span></h1>
+            <h1 class="display-4 text-uppercase text-center mb-5"><font color="white">Welcome To</font> <font color="#F77D0A">CAR EXCHANGE</font></h1>
             <div class="d-flex row justify-content-center  align-items-center">
                 <div class="col-lg-10 text-center align-items-center">
-                    <img class="w-100 mb-4 center" src="images/about.png" alt=""/>
-                    <p>description here</p>
+                    <img class="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
+                    {/* <p><font color="white">Welcome to CAR EXCHANGE – Singapore’s premier online car dealership since 2001. Get estimate selling price from the calculated large data across the market. Discover the large car models in out website with a remarkable ownership experience like no other.</font></p> */}
                 </div>
             </div>
             <div class="row mt-3">
@@ -182,8 +182,10 @@ export default class HomePage extends Component {
                         <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="images/banner-left.png" alt=""/>
                         <div class="text-right">
                             <h3 class="text-uppercase text-light mb-3">Want to sell your car?</h3>
-                            <p class="mb-4">Lorem justo sit sit ipsum eos lorem kasd, kasd labore</p>
-                            <a class="btn btn-primary py-2 px-4" href="">Start Now</a>
+                            <p class="mb-4">Get a Quote today and sell your car at the best price!</p>
+                            <p><a class="btn btn-default"><Link to={"/CreatePost/"}>
+                 Sell Now
+                </Link></a></p>
                         </div>
                     </div>
                 </div>
@@ -191,8 +193,10 @@ export default class HomePage extends Component {
                     <div class="px-5 bg-dark d-flex align-items-center justify-content-between" styles="height: 350px;">
                         <div class="text-left">
                             <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
-                            <p class="mb-4">Lorem justo sit sit ipsum eos lorem kasd, kasd labore</p>
-                            <a class="btn btn-primary py-2 px-4" href="">Start Now</a>
+                            <p class="mb-4">Buy your dream car today!</p>
+                            <p><a class="btn btn-default"><Link to={"/CarList/"}>
+                Buy Now
+                </Link></a></p>
                         </div>
                         <img class="img-fluid flex-shrink-1 mr-n5 w-50 ml-4" src="images/banner-right.png" alt=""/>
                    </div> 
@@ -266,24 +270,28 @@ export default class HomePage extends Component {
     </div>
    
 
-            <footer>
+    <footer>
               <div className="footer-blurb">
                 <div className="container">
                   <div className="row">
                     <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-user"></span> Our Buyers</h3>
-                      <p>Buyer Reviews</p>
-                      <p><a className="btn btn-default" href="#">Buy now</a></p>
+                      <h3><span className="glyphicon glyphicon-user"></span> Loan Calculator</h3>
+                      <p>Calculator your loan here</p>
+                      <p><a class="btn btn-default"><Link to={"/Calculator/"}>
+                 Calculator Now
+                </Link></a></p>
                     </div>
                     <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-user"></span> Our Sellers</h3>
-                      <p>Seller reviews</p>
-                      <p><a className="btn btn-default" href="#">Sell now</a></p>
+                      <h3><span className="glyphicon glyphicon-usd"></span> Financial Blog</h3>
+                      <p>View tips about finanical knowledge</p>
+                      <p><a class="btn btn-default" href="http://loopholes.sg/">Tour now</a></p>
                     </div>
                     <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-question-sign"></span> FAQ</h3>
+                      <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
                       <p>Common queries</p>
-                      <p><a className="btn btn-default" href="#">Common nswers</a></p>
+                      <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
+                 Calculator Now
+                </Link></a></p>
                     </div>
                   </div>
                 </div>

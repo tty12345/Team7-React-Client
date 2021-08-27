@@ -93,10 +93,10 @@ function App() {
                     <li>
                     <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><FaBell/></a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
-                        <li><div><NotificationTable/></div></li>
+                        {/* <li><div><NotificationTable/></div></li> */}
                       </ul>
                     </li>):
-                    (<li></li>)}
+                   (<li></li>)}
                 </ul>
 
                 </div>
