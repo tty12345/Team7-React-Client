@@ -18,6 +18,8 @@ export default class CarDetail extends Component {
         this.changeOfferStatus=this.changeOfferStatus.bind(this);
         this.sendToEdit=this.sendToEdit.bind(this);
         this.getOffers = this.getOffers.bind(this);
+        this.checkOwnOffer=this.checkOwnOffer.bind(this);
+
 
         this.state = {
           car: null,
@@ -38,8 +40,10 @@ export default class CarDetail extends Component {
     componentDidMount() {
         this.getCar();
         this.checkLikeStatus();
-        this.getOffers();
-        this.checkLastOffer();
+        this.checkOwnOffer();
+        // this.getOffers();
+        // this.checkLastOffer();
+        
     }
 
     getOffers(){
@@ -52,7 +56,6 @@ export default class CarDetail extends Component {
     }
 
     getCar() {
-        this.checkOwnOffer();
         UserDataService.getCar(this.state.id)
         .then(
             response => {
@@ -127,14 +130,16 @@ export default class CarDetail extends Component {
           };
           PostService.checkLikeStatus(data,this.state.id)
             .then(response => {
-                if (response.status === 200)
-                    this.setState({
-                        likeStatus: true
-                    })
-                else if(response === 203)
-                    this.setState({
-                        likeStatus: false
-                    }); 
+            //     if (response.status === 200)
+            //         this.setState({
+            //             likeStatus: true
+            //         })
+            //     else if(response === 203)
+            //         this.setState({
+            //             likeStatus: false
+            //         }); 
+            // })
+            console.log("back");
             })
             .catch(e => {
                 console.log(e);
@@ -165,19 +170,27 @@ export default class CarDetail extends Component {
 
     checkOwnOffer(){
         var data = {
-            userId: sessionStorage.getItem("userId")
+            userId: this.state.userId
           };
+          
           UserDataService.checkOwnOffer(data,this.state.id)
             .then(response => {
                 if(response.status === 200){
+                    console.log("cherwah new offer");
+                }
+                else if(response.status === 201)
+                {console.log("cherwah offer b4")
                 this.setState({
-                    currentOffer: response.data,
+                    currentOffer: response.data[0],
                     currentOfferStatus: true
-                    })}
+                });}
                 else{
+                    console.log("tin");
+                    console.log(response.data[0]);
                 this.setState({
-                    currentOffer: response.data,
-                    currentOfferStatus: false
+                    currentOffer: null,
+                    currentOfferStatus: false,
+                    offers : response.data
                     })}; 
             })
             .catch(e => {
@@ -236,7 +249,7 @@ export default class CarDetail extends Component {
                   </table>
                   <br/>
                   
-                  {currentOfferStatus?
+                  {currentOffer?
                   ( sessionStorage.getItem("userId") == this.state.ownerId ) ? 
                    (<div></div>) : 
                   (<div>

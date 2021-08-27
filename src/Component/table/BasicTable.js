@@ -12,7 +12,10 @@ export const BasicTable = () => {
     const [priceLabel, setPriceLabel] = useState("");
     const [description, setDescription] = useState("");
     
-    useEffect(() => { getData() }, []);
+    useEffect(async() => { 
+        await getData() 
+
+    }, []);
 
     const tableInstance = useTable({
         columns: COLUMNS,

@@ -41,7 +41,7 @@ export default class LogIn extends Component {
 
         UserDataService.login(data)
         .then(response => {
-            if (response.status === 200) {
+            if (response.status === 200) {      
                 this.setState({
                     isLoggedIn: true,
                 });
@@ -65,7 +65,7 @@ export default class LogIn extends Component {
             <div className="submit-form">
                 {this.state.isLoggedIn ? (
                   (sessionStorage.getItem("ToWhere") == 'sellcar' ?
-                    <Redirect to='/createpost' /> : <Redirect to='/carlist' /> ) 
+                    <Redirect to='/createpost' /> : <Redirect to='/' /> ) 
                     // <Redirect to='/carlist' /> 
                 ) : (
                     <div>
