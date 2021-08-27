@@ -24,6 +24,9 @@ class UserDataService {
   getNotification(){
     return axios.get("http://localhost:8080/notification/listNotification");
   }
+  googleRegister(){
+    return axios.get("http://localhost:8080/post/getOne/")
+  }
 }
 
 export default new UserDataService();

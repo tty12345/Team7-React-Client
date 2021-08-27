@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserService from "../Services/UserService.js";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import '../App.css';
+
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -75,6 +77,10 @@ export default class SignUp extends Component {
                             />
                         </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
+                        <br/>
+                        <br/>
+                        <a className="btn btn-primary" href="http://localhost:8080/test">Sign up</a>
+                        {/* <button onClick = {this.google}><img className = "google" width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button> */}
                     </div>
                 )}
             </div>
