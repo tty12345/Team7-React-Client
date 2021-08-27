@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import HomeService from "../Services/HomeService";
 import '../App.css';
 
+
 const header = ["Category", "Quota", "Premium"];
 
 export default class HomePage extends Component {
@@ -122,9 +123,8 @@ export default class HomePage extends Component {
                         <div class="text-right">
                             <h3 class="text-uppercase text-light mb-3">Want to sell your car?</h3>
                             <p class="mb-4">Get a Quote today and sell your car at the best price!</p>
-                            <p><a class="btn btn-default"><Link to={"/CreatePost/"}>
-                 Sell Now
-                </Link></a></p>
+                            {/* <p><button class="btn py-3 px-5 btn-send-msg""><button onclick=""createPost()""}>Sell Now</button></p> */}
+                            <Link to="/CreatePost" className="btn py-3 px-5 btn-send-msg">Sell Now</Link>
                         </div>
                     </div>
                 </div>
@@ -133,9 +133,8 @@ export default class HomePage extends Component {
                         <div class="text-left">
                             <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
                             <p class="mb-4">Buy your dream car today!</p>
-                            <p><a class="btn btn-default"><Link to={"/CarList/"}>
-                Buy Now
-                </Link></a></p>
+                            {/* <p><a class="btn btn-primary"><Link to={"/CarList/"}>Buy Now</Link></a></p> */}
+                            <Link to="/Carlist" className="btn py-3 px-5 btn-send-msg">Buy Now</Link>
                         </div>
                         <img class="img-fluid flex-shrink-1 mr-n5 w-50 ml-4" src="images/banner-right.png" alt=""/>
                    </div> 
@@ -149,8 +148,8 @@ export default class HomePage extends Component {
         <div class="container-fluid pt-5 pb-3">
         <h1 class="display-4 text-uppercase text-center mb-5"><font color="#F77D0A">POPULAR</font> <font color="white">CAR LISTING</font></h1>
             <div class="d-flex row justify-content-center  align-items-center">
-                <div class="col-lg-10 text-center align-items-center" >
-                    <img class="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
+                <div class="col-lg-10 text-center align-items-center"  >
+                    <img class="d-flex w-100 mb-4 center align-items-center" src="images/about.png" alt=""/>
                    
                 </div>
                 
@@ -219,7 +218,7 @@ export default class HomePage extends Component {
             <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
             <div class="row">
                 <div class="col-lg-7 mb-2">
-                    <div class="contact-form bg-light mb-4" styles="padding: 30px;">
+                    <div class="contact-form bg-light mb-4" >
                         <form>
                             <div class="row">
                                 <div class="col-6 form-group">
@@ -236,15 +235,15 @@ export default class HomePage extends Component {
                                 <textarea class="form-control py-3 px-4" rows="5" placeholder="Message" required="required"></textarea>
                             </div>
                             <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                <button class="btn py-3 px-5 btn-send-msg" type="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-5 mb-2">
+                <div class="col-lg-5 mb-2 ">
                     <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" styles="height: 435px;">
                         <div class="d-flex mb-3">
-                            <i class="glyphicon glyphicon-equalizer"></i>
+                            
                             <div class="mt-n1">
                                 <h3 class="text-light"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
                                 <p>25 Heng Mui Keng Terrace, Singapore 119615</p>

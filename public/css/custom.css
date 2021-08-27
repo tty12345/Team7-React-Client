@@ -113,11 +113,12 @@ h2,
 @media (min-width: 1200px){.container,.container-sm,.container-md,.container-lg,.container-xl{max-width:1140px}}
 .row{display:flex;flex-wrap:wrap;margin-right:0px;margin-left:0px}
 .page-middle{
+	padding-top:100px;
     height: 1300px;
     margin-bottom: 90px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/about.png);
     background-attachment: fixed;
