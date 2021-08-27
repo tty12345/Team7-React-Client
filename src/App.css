@@ -305,4 +305,6 @@ button, input {
 .mb-4{
   height:400px;
 }
-
+.glyphicon-home,.glyphicon-briefcase,.glyphicon-user,.glyphicon-envelope{
+  color: #f77d0a;
+}

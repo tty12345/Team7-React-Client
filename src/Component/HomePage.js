@@ -284,9 +284,8 @@ export default class HomePage extends Component {
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-plus-sign"></span> Loan Calculator</h3>
                       <p>Calculator your loan here</p>
-                      <p><a class="btn btn-default"><Link to={"/Calculator/"}>
-                 Calculator Now
-                </Link></a></p>
+                      <Link to="/Calculator" className="btn btn-default">Calculator Now</Link>
+                      {/* <p><a class="btn btn-default"><Link to={"/Calculator/"}>Calculator Now</Link></a></p> */}
                     </div>
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-usd"></span> Financial Blog</h3>
@@ -296,9 +295,7 @@ export default class HomePage extends Component {
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
                       <p>Calculate car depreciation</p>
-                      <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
-                 Calculator Now
-                </Link></a></p>
+                      <Link to="/DepreciationCalculator" className="btn btn-default">Calculator Now</Link>
                     </div>
                   </div>
                 </div>
