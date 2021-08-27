@@ -8,10 +8,12 @@ export default class SignUp extends Component {
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.createUser = this.createUser.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
 
         this.state = {
             username: "",
             password: "",
+            email: "",
             isCreated: false
         };
     }
@@ -28,10 +30,17 @@ export default class SignUp extends Component {
         });
     }
 
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
+
     createUser() {
         var data = {
           username: this.state.username,
           password: this.state.password,
+          email: this.state.email
         };
         UserService.save(data)
         .then(response => {
@@ -39,7 +48,7 @@ export default class SignUp extends Component {
                 this.setState({
                     isCreated: true
                 });
-            } 
+            }
         });
     }
 
@@ -72,6 +81,17 @@ export default class SignUp extends Component {
                                 value={this.state.password}
                                 onChange={this.onChangePassword}
                                 name="password"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                required
+                                onChange={this.onChangeEmail}
+                                name="email"
                             />
                         </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
