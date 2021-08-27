@@ -103,7 +103,7 @@ function App() {
             </div>
         </nav>
         </div>
-        <div className="container mt-3">
+        <div >
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
           <Route exact path='/login' component={LogIn}/>

@@ -149,7 +149,7 @@ export default class HomePage extends Component {
         <div class="container-fluid pt-5 pb-3">
         <h1 class="display-4 text-uppercase text-center mb-5"><font color="#F77D0A">POPULAR</font> <font color="white">CAR LISTING</font></h1>
             <div class="d-flex row justify-content-center  align-items-center">
-                <div class="col-lg-10 text-center align-items-center">
+                <div class="col-lg-10 text-center align-items-center" >
                     <img class="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
                    
                 </div>
