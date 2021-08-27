@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import HomeService from "../Services/HomeService";
 import '../App.css';
 
+
 const header = ["Category", "Quota", "Premium"];
 
 export default class HomePage extends Component {
@@ -67,30 +68,27 @@ export default class HomePage extends Component {
                   Get Estimate
                 </Link></button>
                 </div>
-
-               <div className="container-fluid py-5">
-        <div className="container py-5">
-            <div className="row mx-0">
-                <div className="col-lg-6 px-0">
-                    <div className="px-5 bg-secondary d-flex align-items-center justify-content-between" background styles="height: 350px;">
-                        <img className="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="images/banner-left.png" alt=""/>
-                        <div className="text-right">
-                            <h3 className="text-uppercase text-light mb-3">Want to sell your car?</h3>
-                            <p className="mb-4">Get a Quote today and sell your car at the best price!</p>
-                            <p><a className="btn btn-default"><Link to={"/CreatePost/"}>
-                 Sell Now
-                </Link></a></p>
+               <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row mx-0">
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-secondary d-flex align-items-center justify-content-between" background styles="height: 350px;">
+                        <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="images/banner-left.png" alt=""/>
+                        <div class="text-right">
+                            <h3 class="text-uppercase text-light mb-3">Want to sell your car?</h3>
+                            <p class="mb-4">Get a Quote today and sell your car at the best price!</p>
+                            {/* <p><button class="btn py-3 px-5 btn-send-msg""><button onclick=""createPost()""}>Sell Now</button></p> */}
+                            <Link to="/CreatePost" className="btn py-3 px-5 btn-send-msg">Sell Now</Link>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-6 px-0">
-                    <div className="px-5 bg-dark d-flex align-items-center justify-content-between" styles="height: 350px;">
-                        <div className="text-left">
-                            <h3 className="text-uppercase text-light mb-3">Looking for a car?</h3>
-                            <p className="mb-4">Buy your dream car today!</p>
-                            <p><a className="btn btn-default"><Link to={"/CarList/"}>
-                Buy Now
-                </Link></a></p>
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-dark d-flex align-items-center justify-content-between" styles="height: 350px;">
+                        <div class="text-left">
+                            <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
+                            <p class="mb-4">Buy your dream car today!</p>
+                            {/* <p><a class="btn btn-primary"><Link to={"/CarList/"}>Buy Now</Link></a></p> */}
+                            <Link to="/Carlist" className="btn py-3 px-5 btn-send-msg">Buy Now</Link>
                         </div>
                         <img className="img-fluid flex-shrink-1 mr-n5 w-50 ml-4" src="images/banner-right.png" alt=""/>
                    </div> 
@@ -100,12 +98,12 @@ export default class HomePage extends Component {
     </div>
             
 
-      <div className="container-fluid py-5  page-middle">
-        <div className="container-fluid pt-5 pb-3">
-        <h1 className="display-4 text-uppercase text-center mb-5"><font color="#F77D0A">POPULAR</font> <font color="white">CAR LISTING</font></h1>
-            <div className="d-flex row justify-content-center  align-items-center">
-                <div className="col-lg-10 text-center align-items-center" >
-                    <img className="d-flex w-100 mb-4 center" src="images/about.png" alt=""/>
+      <div class="container-fluid py-5  page-middle">
+        <div class="container-fluid pt-5 pb-3">
+        <h1 class="display-4 text-uppercase text-center mb-5"><font color="#F77D0A">POPULAR</font> <font color="white">CAR LISTING</font></h1>
+            <div class="d-flex row justify-content-center  align-items-center">
+                <div class="col-lg-10 text-center align-items-center"  >
+                    <img class="d-flex w-100 mb-4 center align-items-center" src="images/about.png" alt=""/>
                    
                 </div>
                 
@@ -171,10 +169,10 @@ export default class HomePage extends Component {
     <div className="container-fluid py-5">
         <div className="container pt-5 pb-3">
            
-            <h1 className="display-4 text-uppercase text-center mb-5">Contact Us</h1>
-            <div className="row">
-                <div className="col-lg-7 mb-2">
-                    <div className="contact-form bg-light mb-4" styles="padding: 30px;">
+            <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
+            <div class="row">
+                <div class="col-lg-7 mb-2">
+                    <div class="contact-form bg-light mb-4" >
                         <form>
                             <div className="row">
                                 <div className="col-6 form-group">
@@ -191,17 +189,17 @@ export default class HomePage extends Component {
                                 <textarea className="form-control py-3 px-4" rows="5" placeholder="Message" required="required"></textarea>
                             </div>
                             <div>
-                                <button className="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                <button class="btn py-3 px-5 btn-send-msg" type="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div className="col-lg-5 mb-2">
-                    <div className="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" styles="height: 435px;">
-                        <div className="d-flex mb-3">
-                            <i className="glyphicon glyphicon-equalizer"></i>
-                            <div className="mt-n1">
-                                <h3 className="text-light"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
+                <div class="col-lg-5 mb-2 ">
+                    <div class="bg-secondary d-flex flex-column justify-content-center px-5 mb-4" styles="height: 435px;">
+                        <div class="d-flex mb-3">
+                            
+                            <div class="mt-n1">
+                                <h3 class="text-light"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
                                 <p>25 Heng Mui Keng Terrace, Singapore 119615</p>
                             </div>
                         </div>
@@ -240,9 +238,8 @@ export default class HomePage extends Component {
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-plus-sign"></span> Loan Calculator</h3>
                       <p>Calculator your loan here</p>
-                      <p><a className="btn btn-default"><Link to={"/Calculator/"}>
-                 Calculator Now
-                </Link></a></p>
+                      <Link to="/Calculator" className="btn btn-default">Calculator Now</Link>
+                      {/* <p><a class="btn btn-default"><Link to={"/Calculator/"}>Calculator Now</Link></a></p> */}
                     </div>
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-usd"></span> Financial Blog</h3>
@@ -252,9 +249,7 @@ export default class HomePage extends Component {
                     <div className="col-sm-4 footer-blurb-item">
                       <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
                       <p>Calculate car depreciation</p>
-                      <p><a className="btn btn-default"><Link to={"/DepreciationCalculator/"}>
-                 Calculator Now
-                </Link></a></p>
+                      <Link to="/DepreciationCalculator" className="btn btn-default">Calculator Now</Link>
                     </div>
                   </div>
                 </div>
