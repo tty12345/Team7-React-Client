@@ -107,10 +107,14 @@ h1, h2, h3, h4, h5, h6 {
     height: 400px;
     margin-bottom: 90px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 	 background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/about.png);
     background-attachment: fixed;
   
 }
+.form-group{display:flex;flex:0 0 auto;flex-flow:row wrap;align-items:center;margin-bottom:0}
+.form-inline
+.form-control{display:inline-block;width:auto;vertical-align:middle}
+.col-lg-7{flex:0 0 58.33333%;max-width:58.33333%}
