@@ -10,6 +10,7 @@ import CreatePost from './Component/CreatePost'
 import OwnCarPosts from './Component/OwnCarPosts'
 import Calculator from './Component/Calculator'
 import Estimate from './Component/Estimate'
+import DepreciationCalculator from './Component/DepreciationCalculator';
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
@@ -80,7 +81,8 @@ function App() {
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
                         <li><Link to={"/Calculator"}>Loan Calculator</Link></li>
-                        <li><a href="www.google.com">Blog</a></li>
+                        <li><Link to={"/DepreciationCalculator"}>Depreciation Calculator</Link></li>
+                        <li><a href="http://loopholes.sg/">Financial Blog</a></li>
                       </ul>
                     </li>
                     <li>
@@ -113,6 +115,7 @@ function App() {
           <Route exact path='/SavePreference' component={SavePreference}/>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/Estimate' component={Estimate} />
+          <Route exact path='/DepreciationCalculator' component={DepreciationCalculator} />
         </Switch>
       </div>
       </Router>
