@@ -28,7 +28,9 @@ export default class SavePreference extends Component {
           engineCapacityMin: "",
           category: "",
           userId: sessionStorage.getItem("userId"),
-          preferenceStatus: false
+          preferenceStatus: false,        
+          realBrand: "",
+          realCategory: ""
         };
   
       }
@@ -86,12 +88,20 @@ export default class SavePreference extends Component {
             category: this.state.category,
             userId: sessionStorage.getItem("userId"),
         };
-        console.log(data);
         PostService.savePreference(data)
         .then(response => {
           this.setState({
             preferenceStatus: true,
+            realCategory: this.state.category,
+            realBrand: this.state.brand,
+            highestPrice: this.state.highestPrice,
+            lowestPrice: this.state.lowestPrice,
+            brand: this.state.brand,
+            engineCapacityMax: this.state.engineCapacityMax,
+            engineCapacityMin: this.state.engineCapacityMin,
+            category: this.state.category,
           });
+          this.returnBrandHotToReal(this.state.brand);
         })
             .catch(e => {
                 console.log(e);
@@ -99,22 +109,25 @@ export default class SavePreference extends Component {
     }
 
     checkCurrentPreference() {
-      console.log("hi");
       PostService.checkCurrentPreference(sessionStorage.getItem("userId"))
           .then(response => {
 
-            if(response.status == 200)
+            if(response.status === 200)
               this.setState({
                 preferenceStatus: true,
                 model: response.data.model,
                 highestPrice: response.data.highestPrice,
                 lowestPrice : response.data.lowestPrice,
                 brand: response.data.brand,
+                realBrand:response.data.brand,
+                realCategory:response.data.category,
                 engineCapacityMax: response.data.engineCapacityMax,
                 engineCapacityMin: response.data.engineCapacityMin,
                 category: response.data.category
               });
               console.log(response.data);
+              this.setBrandHotToReal(this.state.brand);
+              this.setCategoryHotToReal(this.state.category);
           })
           .catch(e => {
               console.log(e);
@@ -127,19 +140,65 @@ export default class SavePreference extends Component {
 
 }
 
-  Edit(){
-    this.setState({
-      preferenceStatus: false,
-    });
-  }
+      Edit(){
+        this.setState({
+          preferenceStatus: false,
+          
+        });
+      }
 
+      setBrandHotToReal(hotBrand){
+
+        const brands =["Audi", "Austin", "BMW", "Citron","Ferrari", "Fiat", "Honda", "Hyundai", "Kia", "Lexus"
+      ,"Mini","Mercedes-Benz","Mitsubishi","Morris","Nissan","Opel","Peugeot","Porsche","Renault","Subaru","Suzuki"
+      ,"Toyota","Volkswagen","Volvo"];
+
+        for (var i = 0; i < 23; i++){
+          if (brands[i] == hotBrand){
+            this.setState({brand: i+1});
+          }
+        }
+      }
+
+      returnBrandHotToReal(currentBrandCode){
+
+        const brands =["Audi", "Austin", "BMW", "Citron","Ferrari", "Fiat", "Honda", "Hyundai", "Kia", "Lexus"
+      ,"Mini","Mercedes-Benz","Mitsubishi","Morris","Nissan","Opel","Peugeot","Porsche","Renault","Subaru","Suzuki"
+      ,"Toyota","Volkswagen","Volvo"];
+
+        for (var i = 0; i < 23; i++){
+          if (i == currentBrandCode){
+            this.setState({realBrand: brands[i]});
+          }
+        }
+      }
+
+    setCategoryHotToReal(hotCategory){
+
+      const category =["Hatchback", "Luxury", "MPV", "Others","SUV", "Sedan", "Sports", "Stationwagon", "Truck", "Van"];
+
+      for (var i = 0; i < 10; i++){
+        if (category[i] == hotCategory){
+          this.setState({category: i+1});
+        }
+      }
+    }
+    
+    setCategoryHotToReal(currentCategoryCode){
+
+      const category =["Hatchback", "Luxury", "MPV", "Others","SUV", "Sedan", "Sports", "Stationwagon", "Truck", "Van"];
+
+      for (var i = 0; i < 10; i++){
+        if (i == currentCategoryCode){
+          this.setState({realCategory: category[i]});
+        }
+    }
   
+  }
     render(){
-
-
       const {model,highestPrice,
       lowestPrice, brand, engineCapacityMax,
-      engineCapacityMin,category,preferenceStatus}  = this.state;
+      engineCapacityMin,category,preferenceStatus, realBrand, realCategory}  = this.state;
 
       if(!preferenceStatus)
         return(
@@ -150,13 +209,53 @@ export default class SavePreference extends Component {
               <div>Model: <input type="text" onChange={this.onChangeModel} value ={model}/></div>
           </div>
           <br/>
-          <div>
-              <div>Brand: <input type="text" onChange={this.onChangeBrand} value ={brand} /></div>
-          </div>
+          <div className="form-group">
+                <label htmlFor="brand">Brand: </label>
+                <select name="brand" onChange={this.onChangeBrand}>
+                  <option value={this.state.brand}>{this.state.realBrand}</option>
+                  <option value='0'>Audi</option>
+                  <option value='1'>Austin</option>
+                  <option value='2'>BMW</option>
+                  <option value='3'>Citron</option>
+                  <option value='4'>Ferrari</option>
+                  <option value='5'>Fiat</option>
+                  <option value='6'>Honda</option>
+                  <option value='7'>Hyundai</option>
+                  <option value='8'>Kia</option>
+                  <option value='9'>Lexus</option>
+                  <option value='10'>Mini</option>
+                  <option value='11'>Mercedes-Benz</option>
+                  <option value='12'>Mitsubishi</option>
+                  <option value='13'>Morris</option>
+                  <option value='14'>Nissan</option>
+                  <option value='15'>Opel</option>
+                  <option value='16'>Peugeot</option>
+                  <option value='17'>Porsche</option>
+                  <option value='18'>Renault</option>
+                  <option value='19'>Subaru</option>
+                  <option value='20'>Suzuki</option>
+                  <option value='21'>Toyota</option>
+                  <option value='22'>Volkswagen</option>
+                  <option value='23'>Volvo</option>
+                </select>
+              </div>
           <br/>
           <div>
-              <div>Category: <input type="text" onChange={this.onChangeCategory} value ={category}/></div>
-          </div>
+                <label htmlFor="category">Category: </label>
+                <select name="category" onChange={this.onChangeCategory}>
+                  <option value={this.state.category}>{this.state.realCategory}</option>
+                  <option value='1'>Hatchback</option>
+                  <option value='2'>Luxury</option>
+                  <option value='3'>MPV</option>
+                  <option value='4'>Others</option>
+                  <option value='5'>SUV</option>
+                  <option value='6'>Sedan</option>
+                  <option value='7'>Sports</option>
+                  <option value='8'>Stationwagon</option>
+                  <option value='9'>Truck</option>
+                  <option value='10'>Van</option>
+                </select>
+              </div>
           <br/>
           <div>
               <div>Lowest Price: <input type="text" onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
@@ -185,11 +284,11 @@ export default class SavePreference extends Component {
           </div>
           <br/>
           <div>
-            <div><div>Brand: {brand} </div></div>
+            <div><div>Brand: {realBrand} </div></div>
           </div>
           <br/>
           <div>
-            <div><div>Category: {category} </div></div>
+            <div><div>Category: {realCategory} </div></div>
           </div>
           <br/>
           <div>

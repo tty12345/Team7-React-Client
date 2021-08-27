@@ -21,8 +21,11 @@ class UserDataService {
   getCar(id){
     return axios.get("http://localhost:8080/post/getOne/" + id);
   }
-  getNotification(){
-    return axios.get("http://localhost:8080/notification/listNotification");
+  getNotification(userId){
+    return axios.get("http://localhost:8080/notification/listNotification/" + userId);
+  }
+  googleRegister(){
+    return axios.get("http://localhost:8080/post/getOne/")
   }
 }
 

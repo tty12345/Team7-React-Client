@@ -10,10 +10,7 @@ export const NotificationTable = () => {
     const [data1, setData] = useState([]);
 
 
-    useEffect(() => {
-       getData() 
-        function example(){}
-      }, []);
+    useEffect(() => { getData() }, []);
 
     const tableInstance = useTable({
         columns: COLUMNS,
@@ -25,12 +22,13 @@ export const NotificationTable = () => {
 
 
     function getData(){        
-    UserService.getNotification().then(response => {
-        setData(response.data);
-    })
-    .catch(e => {
-        console.log(e);
-    });}    
+        UserService.getNotification(sessionStorage.getItem("userId")).then(response => {
+            setData(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }    
     
     return (
     <div>

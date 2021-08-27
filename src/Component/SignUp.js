@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserService from "../Services/UserService.js";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import '../App.css';
+
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -8,10 +10,12 @@ export default class SignUp extends Component {
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.createUser = this.createUser.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
 
         this.state = {
             username: "",
             password: "",
+            email: "",
             isCreated: false
         };
     }
@@ -28,10 +32,17 @@ export default class SignUp extends Component {
         });
     }
 
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
+
     createUser() {
         var data = {
           username: this.state.username,
           password: this.state.password,
+          email: this.state.email
         };
         UserService.save(data)
         .then(response => {
@@ -39,7 +50,7 @@ export default class SignUp extends Component {
                 this.setState({
                     isCreated: true
                 });
-            } 
+            }
         });
     }
 
@@ -74,7 +85,22 @@ export default class SignUp extends Component {
                                 name="password"
                             />
                         </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                required
+                                onChange={this.onChangeEmail}
+                                name="email"
+                            />
+                        </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
+                        <br/>
+                        <br/>
+                        <a className="btn btn-primary" href="http://localhost:8080/test">Sign up</a>
+                        {/* <button onClick = {this.google}><img className = "google" width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button> */}
                     </div>
                 )}
             </div>
