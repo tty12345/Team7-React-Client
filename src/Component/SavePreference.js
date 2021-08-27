@@ -15,6 +15,7 @@ export default class SavePreference extends Component {
         this.onChangeLowPrice=this.onChangeLowPrice.bind(this);
         this.onChangeMaxEngineCapacity=this.onChangeMaxEngineCapacity.bind(this);
         this.onChangeMinEngineCapacity=this.onChangeMinEngineCapacity.bind(this);
+        this.onChangeDepreciationMax=this.onChangeDepreciationMax.bind(this);
         this.savePreference=this.savePreference.bind(this);
         // this.checkCurrentPreference = this.checkCurrentPreference.bind(this);
         this.Edit = this.Edit.bind(this);
@@ -27,6 +28,7 @@ export default class SavePreference extends Component {
           engineCapacityMax: "",
           engineCapacityMin: "",
           category: "",
+          depreciationMax:"",
           userId: sessionStorage.getItem("userId"),
           preferenceStatus: false,        
           realBrand: "",
@@ -77,6 +79,12 @@ export default class SavePreference extends Component {
         })
       }
 
+      onChangeDepreciationMax(e){
+        this.setState({
+          depreciationMax: e.target.value
+        })
+      }
+
       savePreference() {
         var data = {
             model: this.state.model,
@@ -86,6 +94,7 @@ export default class SavePreference extends Component {
             engineCapacityMax: this.state.engineCapacityMax,
             engineCapacityMin: this.state.engineCapacityMin,
             category: this.state.category,
+            depreciationMax:this.state.depreciationMax,
             userId: sessionStorage.getItem("userId"),
         };
         PostService.savePreference(data)
@@ -100,6 +109,7 @@ export default class SavePreference extends Component {
             engineCapacityMax: this.state.engineCapacityMax,
             engineCapacityMin: this.state.engineCapacityMin,
             category: this.state.category,
+            depreciationMax:this.state.depreciationMax,
           });
           this.returnBrandHotToReal(this.state.brand);
         })
@@ -123,7 +133,8 @@ export default class SavePreference extends Component {
                 realCategory:response.data.category,
                 engineCapacityMax: response.data.engineCapacityMax,
                 engineCapacityMin: response.data.engineCapacityMin,
-                category: response.data.category
+                category: response.data.category,
+                depreciationMax:response.data.depreciationMax
               });
               console.log(response.data);
               this.setBrandHotToReal(this.state.brand);
@@ -198,7 +209,7 @@ export default class SavePreference extends Component {
     render(){
       const {model,highestPrice,
       lowestPrice, brand, engineCapacityMax,
-      engineCapacityMin,category,preferenceStatus, realBrand, realCategory}  = this.state;
+      engineCapacityMin,category,depreciationMax,preferenceStatus, realBrand, realCategory}  = this.state;
 
       if(!preferenceStatus)
         return(
@@ -206,7 +217,7 @@ export default class SavePreference extends Component {
           <h1>Save your Preference</h1>
           <br/>
           <div>
-              <div>Model: <input type="text" onChange={this.onChangeModel} value ={model}/></div>
+              <div className="form-group">Model: <input type="text" className="form-control" onChange={this.onChangeModel} value ={model}/></div>
           </div>
           <br/>
           <div className="form-group">
@@ -240,7 +251,7 @@ export default class SavePreference extends Component {
                 </select>
               </div>
           <br/>
-          <div>
+          <div className="form-group">
                 <label htmlFor="category">Category: </label>
                 <select name="category" onChange={this.onChangeCategory}>
                   <option value={this.state.category}>{this.state.realCategory}</option>
@@ -258,15 +269,18 @@ export default class SavePreference extends Component {
               </div>
           <br/>
           <div>
-              <div>Lowest Price: <input type="text" onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
+              <div className="form-group">Lowest Price: <input type="text" className="form-control"  onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
               <br/>
-              <div>Highest Price: <input type="text"onChange={this.onChangeHighestPrice} value ={highestPrice} /></div>
+              <div className="form-group">Highest Price: <input type="text" className="form-control" onChange={this.onChangeHighestPrice} value ={highestPrice} /></div>
           </div>
           <br/>
           <div>
-              <div>Engine Capacity Min: <input type="text" onChange={this.onChangeMinEngineCapacity} value ={engineCapacityMin}/></div>
+              <div className="form-group">Engine Capacity Min: <input type="text" className="form-control" onChange={this.onChangeMinEngineCapacity} value ={engineCapacityMin}/></div>
               <br/>
-              <div>Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
+              <div className="form-group">Engine Capacity Max: <input type="text" className="form-control" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
+          </div>
+          <div>
+              <div className="form-group">Maximum Depreciation: <input type="text" className="form-control" onChange={this.onChangeDepreciationMax} value ={depreciationMax}/></div>
           </div>
          
 
@@ -301,6 +315,8 @@ export default class SavePreference extends Component {
             <div><div>EngineCapacity Min: {engineCapacityMin} </div></div>
               <br/>
             <div><div>EngineCapacity Max: {engineCapacityMax} </div></div>
+              <br/>
+            <div><div>Depreciation Max: {depreciationMax} </div></div>
           </div>
          
           <button onClick ={this.Edit}> Edit </button>
