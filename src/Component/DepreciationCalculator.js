@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 export default class DepreciationCalculator extends Component {
 
@@ -97,11 +98,11 @@ export default class DepreciationCalculator extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Depreciation Calculator</h2>
-                <h4>Calculate the depreciation on your car</h4>
+            <div className = "main">
+            <p className = "sign" align ="center">Depreciation Calculator</p>
+            <div className = "form1">
+                <h3>Calculate the depreciation on your car</h3>
                 <br></br>
-                <div>
                     <label htmlFor="price">Price</label>
                     <input
                     type="text"
@@ -114,7 +115,7 @@ export default class DepreciationCalculator extends Component {
                     />
                 </div>
                 <br></br>
-                <div>
+                <div className = "form1">
                     <label htmlFor="registeredDate">Registered Date</label>
                     <input
                     type="date"
@@ -127,7 +128,7 @@ export default class DepreciationCalculator extends Component {
                     />
                 </div>
                 <br></br>
-                <div>
+                <div className = "form1">
                     <label htmlFor="arf">ARF</label>
                     <input
                     type="text"
@@ -140,11 +141,11 @@ export default class DepreciationCalculator extends Component {
                     />
                 </div>
                 <br></br>
-                <div>
-                    <button onClick={this.calculateDepreciation} class="btn btn-primary">Calculate</button>
+                <div className = "form1">
+                    <button onClick={this.calculateDepreciation} class="btn btn-success">Calculate</button>
                 </div>
                 <br></br>
-                <div>
+                <div className = "form1">
                     <label>Estimated Depreciation:</label>
                     <p>S${this.state.depreciation}</p>
                     <label>OMV:</label>

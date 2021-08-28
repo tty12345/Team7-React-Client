@@ -285,9 +285,10 @@ export default class CarDetail extends Component {
                             );
                             })}
                             </tbody>
-                        </table>:
-                        <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
-                        <Link to="/CreatePost" className="btn btn-primary" onClick={this.sendToEdit}>Edit</Link>
+                        </table>   
+                        <button onClick={this.deletePost} className="btn btn-danger" >Delete</button>&nbsp;&nbsp;
+                        <Link to="/CreatePost" className="btn btn-edit" onClick={this.sendToEdit}>Edit</Link> 
+                        
                      </div> ) :
                      <div align = "center">
                       <div className="form-group">

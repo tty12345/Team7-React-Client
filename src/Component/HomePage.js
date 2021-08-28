@@ -64,10 +64,8 @@ export default class HomePage extends Component {
              {/* <p className="center"><font color="white">Welcome to CAR EXCHANGE – Singapore’s premier online car dealership since 2001. Get estimate selling price from the calculated large data across the market. Discover the large car models in out website with a remarkable ownership experience like no other.</font></p>  */}
             <h3><span className="glyphicon glyphicon-equalizer"></span><font color = "#ffffff" >Prices Updated Monthly</font></h3>
                 <p><font size="5" color="white">Using algorithms to determine your car's best selling price</font></p>
-                <button><Link to={"/Estimate/"}>
-                  Get Estimate
-                </Link></button>
-                </div>
+                <Link to="/Estimate" className="btn py-3 px-5 btn-send-msg">Get Estimate</Link>
+                </div> 
                <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row mx-0">
@@ -141,17 +139,39 @@ export default class HomePage extends Component {
     </div>
 
   
+    <div className="coe table"> 
+    <h2>{title}</h2>
+    <table class="table table-striped">
+   
+  <thead>
+    
+    <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
+   
+  </thead>
+  <tbody>
+  {Object.keys(categories).map((k, i) => {
+                      let data = categories[k];
+                      return (
+                        <tr key={i}>
+                          <td>{data.name}</td>
+                          <td>{data.quota}</td>
+                          <td>{data.premium}</td>
+                        </tr>
+                      );
+                     })}
+  </tbody>
+</table>  
+</div>  
            
-           
-    <div className="container-fluid">
-              <div className="row">
-                <h2>{title}</h2>
-                <table>
-                    <thead>
+    {/* <div className="container-fluid">
+        <div className="row">
+           <h2>{title}</h2>
+               <table>
+                   <thead>
                     <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
-                    </thead>
-                    <tbody>
-                    {Object.keys(categories).map((k, i) => {
+                     </thead>
+                   <tbody>
+                 {Object.keys(categories).map((k, i) => { 
                       let data = categories[k];
                       return (
                         <tr key={i}>
@@ -164,7 +184,7 @@ export default class HomePage extends Component {
                     </tbody>
                 </table>
               </div>
-              </div> 
+              </div>  */}
     
     <div className="container-fluid py-5">
         <div className="container pt-5 pb-3">

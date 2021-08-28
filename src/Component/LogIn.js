@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import UserDataService from "../Services/UserService";
 import { Redirect } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
-import axios from "axios";
-
+import '../App.css';
 
 
 export default class LogIn extends Component {
@@ -99,56 +97,50 @@ export default class LogIn extends Component {
 
     render() {
         return (
-            <div className="submit-form">
-                {this.state.isLoggedIn ? (
-                  (sessionStorage.getItem("ToWhere") == 'sellcar' ?
-                    <Redirect to='/createpost' /> : <Redirect to='/' /> ) 
-                    // <Redirect to='/carlist' /> 
-                ) : (
-                    <div>
-                        <div className="form-group">
-                            <h4 className="text-danger">{this.state.message}</h4>
-                            <label htmlFor="title">Username:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="username"
-                                required
-                                value={this.state.username}
-                                onChange={this.onChangeUsername}
-                                name="username"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="password"
-                                required
-                                value={this.state.password}
-                                onChange={this.onChangePassword}
-                                name="password"
-                            />
-                        </div>
-                        <button onClick={this.login} className="btn btn-success">Log In</button>
-                        <div>
-                        <div>
-                                <GoogleLogin
-                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
-                                    buttonText = 'Login'
-                                    onSuccess = {this.onSuccess}
-                                    onFailure = {this.onFailure}
-                                    cookiePolicy = {'single_host_origin'}
-                                    style = {{marginTop: '100px'}}
-                                    isSignedIn = {true}
-                                />
-                        </div>
-  
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
+
+        <div className="main">
+        {this.state.isLoggedIn ? (
+                        (sessionStorage.getItem("ToWhere") == 'sellcar' ?
+                            <Redirect to='/createpost' /> : <Redirect to='/' /> ) 
+                            // <Redirect to='/carlist' /> 
+                        ) : (
+                                <div className = "main">
+                                    <p className = "sign" align ="center">Sign In</p>
+                                    <br></br>
+                                    <div className="form1">
+                                        <h4 className="text-danger">{this.state.message}</h4>
+                                        <label htmlFor="title">Username:</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="username"
+                                            required
+                                            value={this.state.username}
+                                            onChange={this.onChangeUsername}
+                                            name="username"
+                                        />
+                                    </div>
+                                <br></br>
+                                    <div className="form1">
+                                        <label htmlFor="password">Password:</label>
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            id="password"
+                                            required
+                                            value={this.state.password}
+                                            onChange={this.onChangePassword}
+                                            name="password"
+                                        />
+                                    </div>
+                                    <br></br>
+                                    <br></br>
+                                    <button onClick={this.login} className="btn btn-success">Log In</button>
+                                </div>
+                            )
+                
+        }
+        </div>
+        )
     }
 }
