@@ -115,7 +115,8 @@ export default class HomePage extends Component {
 
   <div class="container pt-5 pb-3">
     <div className="coe table home-table"> 
-    <h2>{title}</h2>
+    <p class = "coe-title">{title}</p>
+    <br></br>
     <table class="table table-striped home-table">
    
   <thead>
@@ -166,7 +167,7 @@ export default class HomePage extends Component {
     <div className="container-fluid py-5">
         <div className="container pt-5 pb-3 contact-us">
            
-            <h1 class="display-4 text-uppercase text-center mb-5"><font color="#f77d0a">Contact Us</font></h1>
+            <h1 class="display-4 text-uppercase text-center mb-5"><font color="black">Contact Us</font></h1>
             <div class="row">
                 <div class="col-lg-7 mb-2">
                     <div class="contact-form bg-light mb-4 contact-top" >

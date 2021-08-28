@@ -313,7 +313,7 @@ button, input {
 }
 
 .mb-4{
-  height:400px;
+  height:430px;
 }
 .glyphicon-home,.glyphicon-briefcase,.glyphicon-user,.glyphicon-envelope{
   color: #f77d0a;
@@ -436,6 +436,7 @@ cursor: pointer;
 
 .home-table{
   margin:0 auto;
+  color:black;
 }
 
 .copyright{
@@ -446,10 +447,10 @@ a{
   color:#fff;
 }
 .contact-us{
-  margin-top:50px;
+  margin-top:75px;
 }
 .contact-top{
-  padding:20px;
+  padding-top:4px;
 }
 .contact-from{
   width: 100% !important; 
@@ -528,3 +529,8 @@ padding-top:50px;
   font-size: 17px;
 }
 
+.coe-title{
+  color:black;
+  font-size: 20px;
+  font-weight:700;
+}
