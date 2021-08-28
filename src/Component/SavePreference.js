@@ -204,129 +204,119 @@ export default class SavePreference extends Component {
     }
   
   }
-    render(){
-      const {model,highestPrice,
-      lowestPrice, brand, engineCapacityMax,
-      engineCapacityMin,category,depreciationMax,preferenceStatus, realBrand, realCategory}  = this.state;
+  render(){
+    const {model,highestPrice,
+    lowestPrice, brand, engineCapacityMax,
+    engineCapacityMin,category,preferenceStatus, realBrand, realCategory}  = this.state;
 
-      if(!preferenceStatus)
-        return(
-          <div>
-          <div className="container-fluid page-header">
-          <h1>Save your Preference</h1>
-          <br/>
-          <div>
-              <div className="form-group">Model: <input type="text" className="form-control" onChange={this.onChangeModel} value ={model}/></div>
-          </div>
-          <br/>
-          <div>
-                <label htmlFor="brand">Brand: </label>
-                <select name="brand" onChange={this.onChangeBrand}>
-                  <option value={this.state.brand}>{this.state.realBrand}</option>
-                  <option value='0'>Audi</option>
-                  <option value='1'>Austin</option>
-                  <option value='2'>BMW</option>
-                  <option value='3'>Citron</option>
-                  <option value='4'>Ferrari</option>
-                  <option value='5'>Fiat</option>
-                  <option value='6'>Honda</option>
-                  <option value='7'>Hyundai</option>
-                  <option value='8'>Kia</option>
-                  <option value='9'>Lexus</option>
-                  <option value='10'>Mini</option>
-                  <option value='11'>Mercedes-Benz</option>
-                  <option value='12'>Mitsubishi</option>
-                  <option value='13'>Morris</option>
-                  <option value='14'>Nissan</option>
-                  <option value='15'>Opel</option>
-                  <option value='16'>Peugeot</option>
-                  <option value='17'>Porsche</option>
-                  <option value='18'>Renault</option>
-                  <option value='19'>Subaru</option>
-                  <option value='20'>Suzuki</option>
-                  <option value='21'>Toyota</option>
-                  <option value='22'>Volkswagen</option>
-                  <option value='23'>Volvo</option>
-                </select>
-              </div>
-          <br/>
-          <div className="form-group">
-                <label htmlFor="category">Category: </label>
-                <select name="category" onChange={this.onChangeCategory}>
-                  <option value={this.state.category}>{this.state.realCategory}</option>
-                  <option value='1'>Hatchback</option>
-                  <option value='2'>Luxury</option>
-                  <option value='3'>MPV</option>
-                  <option value='4'>Others</option>
-                  <option value='5'>SUV</option>
-                  <option value='6'>Sedan</option>
-                  <option value='7'>Sports</option>
-                  <option value='8'>Stationwagon</option>
-                  <option value='9'>Truck</option>
-                  <option value='10'>Van</option>
-                </select>
-              </div>
-          <br/>
-          <div>
-              <div className="form-group">Lowest Price: <input type="text" className="form-control"  onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
-              <br/>
-              <div className="form-group">Highest Price: <input type="text" className="form-control" onChange={this.onChangeHighestPrice} value ={highestPrice} /></div>
-          </div>
-          <br/>
-          <div>
-              <div className="form-group">Engine Capacity Min: <input type="text" className="form-control" onChange={this.onChangeMinEngineCapacity} value ={engineCapacityMin}/></div>
-              <br/>
-              <div className="form-group">Engine Capacity Max: <input type="text" className="form-control" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
-          </div>
-          <div>
-              <div className="form-group">Maximum Depreciation: <input type="text" className="form-control" onChange={this.onChangeDepreciationMax} value ={depreciationMax}/></div>
-          </div>
-          <br/>
+    if(!preferenceStatus)
+      return(
+          <div className="main">
+          <p className = "sign" align ="center">Save your preference</p>
+        <br/>
+        <div>
+            <div>Model: <input type="text" onChange={this.onChangeModel} value ={model}/></div>
+        </div>
+        <br/>
+        <div className = "form1">
+              <label htmlFor="brand">Brand: </label>
+              <select name="brand" onChange={this.onChangeBrand}>
+                <option value={this.state.brand}>{this.state.realBrand}</option>
+                <option value='0'>Audi</option>
+                <option value='1'>Austin</option>
+                <option value='2'>BMW</option>
+                <option value='3'>Citron</option>
+                <option value='4'>Ferrari</option>
+                <option value='5'>Fiat</option>
+                <option value='6'>Honda</option>
+                <option value='7'>Hyundai</option>
+                <option value='8'>Kia</option>
+                <option value='9'>Lexus</option>
+                <option value='10'>Mini</option>
+                <option value='11'>Mercedes-Benz</option>
+                <option value='12'>Mitsubishi</option>
+                <option value='13'>Morris</option>
+                <option value='14'>Nissan</option>
+                <option value='15'>Opel</option>
+                <option value='16'>Peugeot</option>
+                <option value='17'>Porsche</option>
+                <option value='18'>Renault</option>
+                <option value='19'>Subaru</option>
+                <option value='20'>Suzuki</option>
+                <option value='21'>Toyota</option>
+                <option value='22'>Volkswagen</option>
+                <option value='23'>Volvo</option>
+              </select>
+            </div>
+        <br/>
+        <div className = "form1">
+              <label htmlFor="category">Category: </label>
+              <select name="category" onChange={this.onChangeCategory}>
+                <option value={this.state.category}>{this.state.realCategory}</option>
+                <option value='1'>Hatchback</option>
+                <option value='2'>Luxury</option>
+                <option value='3'>MPV</option>
+                <option value='4'>Others</option>
+                <option value='5'>SUV</option>
+                <option value='6'>Sedan</option>
+                <option value='7'>Sports</option>
+                <option value='8'>Stationwagon</option>
+                <option value='9'>Truck</option>
+                <option value='10'>Van</option>
+              </select>
+            </div>
+        <br/>
+        <div className = "form1">
+            <div>Lowest Price: <input type="text" onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
+            <br/>
+            <div>Highest Price: <input type="text"onChange={this.onChangeHighestPrice} value ={highestPrice} /></div>
+        </div>
+        <br/>
+        <div className = "form1">
+            <div>Engine Capacity Min: <input type="text" onChange={this.onChangeMinEngineCapacity} value ={engineCapacityMin}/></div>
+            <br/>
+            <div>Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
+        </div>
+        <br/>
 
-          <button onClick ={this.savePreference}> Submit </button>
-          </div>
-          </div>
-        );
-        else
-        return (
+        <button onClick ={this.savePreference} class="btn btn-success"> Submit </button>
+        </div>
+      );
+      else
+      return (
 
-          <div>
-          <div className="container-fluid page-header ">
-          <h1>Your Preference</h1>
-          <br/>
-          <div>
-              <div><div>Model: {model} </div></div>
-          </div>
-          <br/>
-          <div>
-            <div><div>Brand: {realBrand} </div></div>
-          </div>
-          <br/>
-          <div>
-            <div><div>Category: {realCategory} </div></div>
-          </div>
-          <br/>
-          <div>
-            <div><div>Highest Price: {highestPrice} </div></div>
-              <br/>
-            <div><div>Lowest Price: {lowestPrice} </div></div>
-          </div>
-          <br/>
-          <div>
-            <div><div>EngineCapacity Min: {engineCapacityMin} </div></div>
-              <br/>
-            <div><div>EngineCapacity Max: {engineCapacityMax} </div></div>
-              <br/>
-            <div><div>Depreciation Max: {depreciationMax} </div></div>
-          </div>
-          <br/>
-         
-          <button onClick ={this.Edit}> Edit </button>
-          </div>
-          </div>
-         
+        <div className="main">
+        <p className = "sign" aligh = "center">Your Preference</p>
+        <br/>
+        <div className = "form1">
+            <div><div>Model: {model} </div></div>
+        </div>
+        <br/>
+        <div className = "form1">
+          <div><div>Brand: {realBrand} </div></div>
+        </div>
+        <br/>
+        <div className = "form1">
+          <div><div>Category: {realCategory} </div></div>
+        </div>
+        <br/>
+        <div className = "form1">
+          <div><div>Highest Price: {highestPrice} </div></div>
+            <br/>
+          <div><div>Lowest Price: {lowestPrice} </div></div>
+        </div>
+        <br/>
+        <div className = "form1">
+          <div><div>EngineCapacity Min: {engineCapacityMin} </div></div>
+            <br/>
+          <div><div>EngineCapacity Max: {engineCapacityMax} </div></div>
+        </div>
+        <br/>
+       
+        <button onClick ={this.Edit} class="btn btn-success"> Edit </button>
+        </div>
 
-        );
-    }
-  
+      );
+  }
+
 }

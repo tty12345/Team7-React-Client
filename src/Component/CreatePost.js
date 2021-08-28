@@ -308,18 +308,19 @@ export default class CreatePost extends Component {
         return (
           <div>
              <div className="container-fluid page-page">
+            <div class="main">
             <div>
-            <h2>Create <font color="#F77D0A">your</font> car post</h2>
+            <p className = "sign createpost" align = "center">Create <font color="#F77D0A">your</font> car post</p>
           </div>
           {this.state.submitted?(<Redirect to='/CarList'/>):(
             
-          <div>
+          <div >
            
               <div className="form-group">
                   <label htmlFor="depreciation">Depreciation (Annual)</label> 
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control depreciation"
                     id="depreciation"
                     required
                     value={this.state.depreciation}
@@ -331,7 +332,7 @@ export default class CreatePost extends Component {
               </div>
 
                 <div className="form-group">
-                  <label htmlFor="brand">Brand</label>
+                  <label htmlFor="brand" >Brand</label>
                   <br></br>
                   <select name="category" onChange={this.onChangeBrand}>
                     <option value={this.state.brand}>{this.state.realBrand}</option>
@@ -361,7 +362,7 @@ export default class CreatePost extends Component {
                     <option value='23'>Volvo</option>
                   </select>
                 </div>
-                <div className="form-group">
+                <div className="form-group ">
                   <label htmlFor="description">Description</label>
                   <input
                     type="text"
@@ -412,7 +413,7 @@ export default class CreatePost extends Component {
                     placeholder="km"
                   />
                 </div>
-                <div>
+                <div className="form-group" >
                   <label htmlFor="category">Category</label>
                   <br></br>
                   <select name="category" onChange={this.onChangeCategory}>
@@ -434,7 +435,7 @@ export default class CreatePost extends Component {
                   <label htmlFor="priceEstimate">Price Estimate</label>
                   <p>${this.state.priceEstimate}</p>
                   <button
-                    onClick={this.onClickPriceEstimate} type="button" className="btn btn-primary">
+                    onClick={this.onClickPriceEstimate} type="button" className="btn btn-success">
                     Get Estimate
                   </button>
                 </div>
@@ -511,7 +512,7 @@ export default class CreatePost extends Component {
               )}
           </div>
           </div>
-        
+        </div>
         );
       }
       else {

@@ -29,16 +29,16 @@ export const COLUMNS = [
         Header: 'Category',
         accessor: 'category'
     },
+    // {
+    //     Header: 'Photo',
+    //     accessor: 'photoUrl',
+    //     Cell: ({ cell: { value }}) => (
+            
+    //           <img src={value} alt=""/>
+    //         )
+    // },
     {
         Header: 'Photo',
-        accessor: 'photoUrl',
-        Cell: ({ cell: { value }}) => (
-            
-              <img src={value} alt=""/>
-            )
-    },
-    {
-        Header: '',
         accessor: 'carPostImage.carpostImage',
         Cell: ({ cell: { value }}) => (
               <img src={"data:image/png;base64," + value} className ="base64Image" alt=""/>

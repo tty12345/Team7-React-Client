@@ -212,18 +212,21 @@ export default class CarDetail extends Component {
         const {car,currentOffer,likeStatus, offers}  = this.state;
        
         return( 
+            <div class="container pt-5 pb-3">
             <div>
+                <div className="container-fluid page-page">
                  
                 { ( car ) ?  (
-              <div>
+              <div className="mydiv" >
                   
                   <br/>
+                  <h2> <font color="#F77D0A">Car Details</font> </h2>
                   <div className = "individualImage"><img alt ="" src={"data:image/png;base64," + car.carPostImage.carpostImage} className ="individualImage" id ="carDetailImage"/>
                   { sessionStorage.getItem("userId") != this.state.ownerId ?
                     (<div>    
                         {likeStatus ?
-                        <img  alt ="" className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png"/>:
-                        <img  alt ="" className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png"/>}
+                        <img  alt ="" className ="base64Image" onClick = {this.unLikePost} src="https://image.flaticon.com/icons/png/128/2107/2107845.png" />:
+                        <img  alt ="" className ="base64Image" onClick = {this.likePost} src="https://image.flaticon.com/icons/png/128/1077/1077035.png" />}
                     </div>):
                     (<div></div>)}
                   </div>
@@ -307,6 +310,8 @@ export default class CarDetail extends Component {
                     </div> )}
 
               </div> ) : ( ( this.state.deleted ) ? <Redirect to='/ownpost' /> : <div></div> ) }
+              </div>
+              </div>
               </div>
         
         ) 

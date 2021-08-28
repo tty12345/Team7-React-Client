@@ -155,7 +155,7 @@ export const BasicTable = () => {
                     </tbody>
                 </table>
             </div>
-            <div align ="center">
+            <div align ="center" class= "page-control">
                 <select value={pageSize} onChange = {e=> setPageSize(Number(e.target.value))}>
                         {
                             [5,10,50,100].map(pageSize => (

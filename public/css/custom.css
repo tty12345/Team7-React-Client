@@ -2,7 +2,7 @@ body {
 	padding-top: 50px;
     padding-left: 5px;
     padding-right: 5px;
-	color: #302d2d;
+	color: #ccb964;
 	}
 	
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 25px;
 }
 
-.footer-blurb {
+.footer-blurb{
     padding: 30px 0;
     background-color: goldenrod;
     color: black;
@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 h1,
 h2,
 .font-weight-bold {
-	height: 100px;
+	height: 70px;
     font-weight: 900 !important;
 }
 .glyphicon-retweet{
@@ -147,3 +147,6 @@ h2,
 .form-inline
 .form-control{display:inline-block;width:auto;vertical-align:middle}
 .col-lg-7{flex:0 0 58.33333%;max-width:58.33333%}
+.mydiv{
+    width: 100%;
+}

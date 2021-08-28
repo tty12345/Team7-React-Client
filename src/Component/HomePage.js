@@ -74,7 +74,7 @@ export default class HomePage extends Component {
                         <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="images/banner-left.png" alt=""/>
                         <div class="text-right">
                             <h3 class="text-uppercase text-light mb-3">Want to sell your car?</h3>
-                            <p class="mb-4">Get a Quote today and sell your car at the best price!</p>
+                            <p class="mb-4 sell-car">Get a Quote today and sell your car at the best price!</p>
                             {/* <p><button class="btn py-3 px-5 btn-send-msg""><button onclick=""createPost()""}>Sell Now</button></p> */}
                             <Link to="/CreatePost" className="btn py-3 px-5 btn-send-msg">Sell Now</Link>
                         </div>
@@ -84,7 +84,7 @@ export default class HomePage extends Component {
                     <div class="px-5 bg-dark d-flex align-items-center justify-content-between" styles="height: 350px;">
                         <div class="text-left">
                             <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
-                            <p class="mb-4">Buy your dream car today!</p>
+                            <p class="mb-4 buy-car">Buy your dream car today!</p>
                             {/* <p><a class="btn btn-primary"><Link to={"/CarList/"}>Buy Now</Link></a></p> */}
                             <Link to="/Carlist" className="btn py-3 px-5 btn-send-msg">Buy Now</Link>
                         </div>
@@ -109,39 +109,14 @@ export default class HomePage extends Component {
             <div>
                 <DefaultCarsTable />
              </div>
-            {/* <div className="row mt-3">
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-headset text-secondary"></i>
-                        </div>
-                        <h4 className="text-uppercase m-0">24/7 Car Sale Support</h4>
-                    </div>
-                </div>
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-secondary p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-car text-secondary"></i>
-                        </div>
-                        <h4 className="text-light text-uppercase m-0">Get estimate selling price</h4>
-                    </div>
-                </div>
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-map-marker-alt text-secondary"></i>
-                        </div>
-                        <h4 className="text-uppercase m-0">Lots of car models</h4>
-                    </div>
-                </div> */}
-            {/* </div> */}
+           
         </div>
     </div>
 
-  
-    <div className="coe table"> 
+  <div class="container pt-5 pb-3">
+    <div className="coe table home-table"> 
     <h2>{title}</h2>
-    <table class="table table-striped">
+    <table class="table table-striped home-table">
    
   <thead>
     
@@ -149,6 +124,7 @@ export default class HomePage extends Component {
    
   </thead>
   <tbody>
+    
   {Object.keys(categories).map((k, i) => {
                       let data = categories[k];
                       return (
@@ -162,6 +138,7 @@ export default class HomePage extends Component {
   </tbody>
 </table>  
 </div>  
+</div>
            
     {/* <div className="container-fluid">
         <div className="row">
@@ -187,29 +164,29 @@ export default class HomePage extends Component {
               </div>  */}
     
     <div className="container-fluid py-5">
-        <div className="container pt-5 pb-3">
+        <div className="container pt-5 pb-3 contact-us">
            
-            <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
+            <h1 class="display-4 text-uppercase text-center mb-5"><font color="#f77d0a">Contact Us</font></h1>
             <div class="row">
                 <div class="col-lg-7 mb-2">
-                    <div class="contact-form bg-light mb-4" >
+                    <div class="contact-form bg-light mb-4 contact-top" >
                         <form>
                             <div className="row">
                                 <div className="col-6 form-group">
-                                    <input type="text" className="form-control p-4" placeholder="Your Name" required="required"/>
+                                    <input type="text" className="form-control p-4 contact-from" placeholder="Your Name" required="required"/>
                                 </div>
                                 <div className="col-6 form-group">
-                                    <input type="email" className="form-control p-4" placeholder="Your Email" required="required"/>
+                                    <input type="email" className="form-control p-4 contact-from" placeholder="Your Email" required="required"/>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control p-4" placeholder="Subject" required="required"/>
+                                <input type="text" className="form-control p-4 contact-from" placeholder="Subject" required="required"/>
                             </div>
                             <div className="form-group">
-                                <textarea className="form-control py-3 px-4" rows="5" placeholder="Message" required="required"></textarea>
+                                <textarea className="form-control py-3 px-4 contact-from" rows="5" placeholder="Message" required="required"></textarea>
                             </div>
                             <div>
-                                <button class="btn py-3 px-5 btn-send-msg" type="submit">Send Message</button>
+                                <button class="btn py-3 px-5 btn-send-msg contact-submit" type="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
@@ -219,28 +196,28 @@ export default class HomePage extends Component {
                         <div class="d-flex mb-3">
                             
                             <div class="mt-n1">
-                                <h3 class="text-light"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
+                                <h3 class="text-light contact-info"><span className="glyphicon glyphicon-home"></span><span> &nbsp;</span><b>Head Office</b></h3>
                                 <p>25 Heng Mui Keng Terrace, Singapore 119615</p>
                             </div>
                         </div>
                         <div className="d-flex mb-3">
                             <i className="fa fa-2x fa-map-marker-alt text-primary flex-shrink-0 mr-3"></i>
                             <div className="mt-n1">
-                                <h3 className="text-light"><span className="glyphicon glyphicon-briefcase"></span><span> &nbsp;</span><b>Branch Office</b></h3>
+                                <h3 className="text-light contact-info"><span className="glyphicon glyphicon-briefcase"></span><span> &nbsp;</span><b>Branch Office</b></h3>
                                 <p>25 Heng Mui Keng Terrace, Singapore 119615</p>
                             </div>
                         </div>
                         <div className="d-flex mb-3">
                             <i className="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
                             <div className="mt-n1">
-                                <h3 className="text-light"><span className="glyphicon glyphicon-user"></span><span> &nbsp;</span><b>Customer Service</b></h3>
+                                <h3 className="text-light contact-info"><span className="glyphicon glyphicon-user"></span><span> &nbsp;</span><b>Customer Service</b></h3>
                                 <p>CarExchangeCS@carexchange.com</p>
                             </div>
                         </div>
                         <div className="d-flex">
                             <i className="fa fa-2x fa-envelope-open text-primary flex-shrink-0 mr-3"></i>
                             <div className="mt-n1">
-                                <h3 className="text-light"><span className="glyphicon glyphicon-envelope"></span><span> &nbsp;</span><b>Return & Refund</b></h3>
+                                <h3 className="text-light contact-info"><span className="glyphicon glyphicon-envelope"></span><span> &nbsp;</span><b>Return & Refund</b></h3>
                                 <p className="m-0">CarExchangeRefund@carexchange.com</p>
                             </div>
                         </div>
