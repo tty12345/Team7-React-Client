@@ -312,6 +312,7 @@ export default class CarDetail extends Component {
               </div> ) : ( ( this.state.deleted ) ? <Redirect to='/ownpost' /> : <div></div> ) }
               </div>
               </div>
+              </div>
         
         ) 
     }
