@@ -15,6 +15,8 @@ import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
 import { GoogleLogout } from 'react-google-login';
+import PrefCarList from './Component/PrefCarList';
+
 
 function App() {
 
@@ -112,6 +114,11 @@ function App() {
                          <Link to={"/SavePreference"} className="nav-link">Preference</Link> } 
                     </li>
                     <li>
+                      { sessionStorage.getItem("status") == null ?
+                         <div></div> :
+                         <Link to={"/PrefCarList"} className="nav-link">Search By Preference</Link> } 
+                    </li>
+                    <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
                         <li><Link to={"/Calculator"}>Loan Calculator</Link></li>
@@ -144,6 +151,7 @@ function App() {
           <Route exact path='/createpost' component={CreatePost}/>
           <Route exact path='/Calculator' component={Calculator}/>
           <Route exact path='/SavePreference' component={SavePreference}/>
+          <Route exact path='/PrefCarList' component={PrefCarList}/>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/Estimate' component={Estimate} />
           <Route exact path='/DepreciationCalculator' component={DepreciationCalculator} />
