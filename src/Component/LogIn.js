@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserDataService from "../Services/UserService";
 import { Redirect } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 
 export default class LogIn extends Component {
@@ -60,6 +61,31 @@ export default class LogIn extends Component {
         });
     }
 
+    onSuccess = (res) => {
+        var data = {
+            username: res.profileObj.name,
+            password: res.profileObj.googleId,
+            email: res.profileObj.email
+          };
+
+          UserDataService.login(data)
+          .then(response => {
+            if (response.status === 200) {      
+                this.setState({
+                    isLoggedIn: true,
+                });
+                sessionStorage.setItem("userId", response.data);
+                window.location.reload();
+            } 
+            sessionStorage.setItem("status", "true");
+        })
+    };
+
+    onFailure = (res) => {
+        console.log("[ Login failed ] res: ", res);
+    };
+
+
     render() {
         return (
             <div className="submit-form">
@@ -95,6 +121,17 @@ export default class LogIn extends Component {
                             />
                         </div>
                         <button onClick={this.login} className="btn btn-success">Log In</button>
+                        <div>
+                            <GoogleLogin
+                                clientId = "626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com"
+                                buttonText = {null}
+                                onSuccess = {this.onSuccess}
+                                onFailure = {this.onFailure}
+                                cookiePolicy = {'single_host_origin'}
+                                style = {{marginTop: '100px'}}
+                                isSignedIn = {true}
+                            />
+                        </div>
                     </div>
                 )}
             </div>
