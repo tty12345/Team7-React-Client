@@ -64,10 +64,8 @@ export default class HomePage extends Component {
              {/* <p className="center"><font color="white">Welcome to CAR EXCHANGE – Singapore’s premier online car dealership since 2001. Get estimate selling price from the calculated large data across the market. Discover the large car models in out website with a remarkable ownership experience like no other.</font></p>  */}
             <h3><span className="glyphicon glyphicon-equalizer"></span><font color = "#ffffff" >Prices Updated Monthly</font></h3>
                 <p><font size="5" color="white">Using algorithms to determine your car's best selling price</font></p>
-                <button><Link to={"/Estimate/"}>
-                  Get Estimate
-                </Link></button>
-                </div>
+                <Link to="/Estimate" className="btn py-3 px-5 btn-send-msg">Get Estimate</Link>
+                </div> 
                <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row mx-0">
@@ -141,17 +139,39 @@ export default class HomePage extends Component {
     </div>
 
   
+    <div className="coe table"> 
+    <h2>{title}</h2>
+    <table class="table table-striped">
+   
+  <thead>
+    
+    <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
+   
+  </thead>
+  <tbody>
+  {Object.keys(categories).map((k, i) => {
+                      let data = categories[k];
+                      return (
+                        <tr key={i}>
+                          <td>{data.name}</td>
+                          <td>{data.quota}</td>
+                          <td>{data.premium}</td>
+                        </tr>
+                      );
+                     })}
+  </tbody>
+</table>  
+</div>  
            
-           
-    <div className="container-fluid">
-              <div className="row">
-                <h2>{title}</h2>
-                <table>
-                    <thead>
+    {/* <div className="container-fluid">
+        <div className="row">
+           <h2>{title}</h2>
+               <table>
+                   <thead>
                     <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
-                    </thead>
-                    <tbody>
-                    {Object.keys(categories).map((k, i) => {
+                     </thead>
+                   <tbody>
+                 {Object.keys(categories).map((k, i) => { 
                       let data = categories[k];
                       return (
                         <tr key={i}>
@@ -164,7 +184,7 @@ export default class HomePage extends Component {
                     </tbody>
                 </table>
               </div>
-              </div> 
+              </div>  */}
     
     <div className="container-fluid py-5">
         <div className="container pt-5 pb-3">
@@ -231,37 +251,7 @@ export default class HomePage extends Component {
     </div>
    
 
-    <footer>
-              <div className="footer-blurb">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-plus-sign"></span> Loan Calculator</h3>
-                      <p>Calculator your loan here</p>
-                      <Link to="/Calculator" className="btn btn-default">Calculator Now</Link>
-                      {/* <p><a class="btn btn-default"><Link to={"/Calculator/"}>Calculator Now</Link></a></p> */}
-                    </div>
-                    <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-usd"></span> Financial Blog</h3>
-                      <p>View tips about finanical knowledge</p>
-                      <p><a className="btn btn-default" href="http://loopholes.sg/">Tour now</a></p>
-                    </div>
-                    <div className="col-sm-4 footer-blurb-item">
-                      <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
-                      <p>Calculate car depreciation</p>
-                      <Link to="/DepreciationCalculator" className="btn btn-default">Calculator Now</Link>
-                    </div>
-                  </div>
-                </div>
-                  </div>
-                  
-                  <div className="small-print">
-                    <div className="container">
-                      <p><a>Terms &amp; Conditions</a> | <a>Privacy Policy</a> | <a>Contact</a></p>
-                      <p>Copyright &copy; Example.com 2015 </p>
-                    </div>
-                  </div>
-            </footer>
+   
           </div>
         
         )

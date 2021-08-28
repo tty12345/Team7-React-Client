@@ -88,12 +88,15 @@ export default class SignUp extends Component {
     render() {
         if(!this.googleClicked)
         return (
-            <div className="submit-form">
+            <div className="main">
                 {this.state.isCreated ? (
                     <Redirect to='/login'  />
                 ) : (
-                    <div>
-                        <div className="form-group">
+                    <div className = "main">
+                                    <p className = "sign" align ="center">Sign Up</p>
+                                    
+                        <br></br>
+                        <div className="form1">
                             <label htmlFor="username">Username:</label>
                             <input
                                 type="text"
@@ -105,7 +108,9 @@ export default class SignUp extends Component {
                                 name="username"
                             />
                         </div>
-                        <div className="form-group">
+                      
+                       <br></br>
+                        <div className="form1">
                             <label htmlFor="password">Password:</label>
                             <input
                                 type="password"
@@ -117,7 +122,8 @@ export default class SignUp extends Component {
                                 name="password"
                             />
                         </div>
-                        <div className="form-group">
+                        <br></br>
+                        <div className="form1">
                             <label htmlFor="email">Email:</label>
                             <input
                                 type="email"
@@ -128,19 +134,12 @@ export default class SignUp extends Component {
                                 name="email"
                             />
                         </div>
+                        
+                        <br></br>
+                        <br></br>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
-                        <div>
-                                <GoogleLogin
-                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
-                                    buttonText = 'Sign Up With Google'
-                                    onSuccess = {this.onSuccess}
-                                    onFailure = {this.onFailure}
-                                    cookiePolicy = {'single_host_origin'}
-                                    style = {{marginTop: '100px'}}
-                                    isSignedIn = {true}
-                                />
-                            </div>
-                    </div>                  
+                       
+                    </div>
                 )}
             </div>
         );

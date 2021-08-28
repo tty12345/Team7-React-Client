@@ -212,13 +212,14 @@ export default class SavePreference extends Component {
       if(!preferenceStatus)
         return(
           <div>
+          <div className="container-fluid page-header">
           <h1>Save your Preference</h1>
           <br/>
           <div>
               <div className="form-group">Model: <input type="text" className="form-control" onChange={this.onChangeModel} value ={model}/></div>
           </div>
           <br/>
-          <div className="form-group">
+          <div>
                 <label htmlFor="brand">Brand: </label>
                 <select name="brand" onChange={this.onChangeBrand}>
                   <option value={this.state.brand}>{this.state.realBrand}</option>
@@ -280,15 +281,17 @@ export default class SavePreference extends Component {
           <div>
               <div className="form-group">Maximum Depreciation: <input type="text" className="form-control" onChange={this.onChangeDepreciationMax} value ={depreciationMax}/></div>
           </div>
-         
+          <br/>
 
           <button onClick ={this.savePreference}> Submit </button>
+          </div>
           </div>
         );
         else
         return (
 
           <div>
+          <div className="container-fluid page-header ">
           <h1>Your Preference</h1>
           <br/>
           <div>
@@ -316,9 +319,12 @@ export default class SavePreference extends Component {
               <br/>
             <div><div>Depreciation Max: {depreciationMax} </div></div>
           </div>
+          <br/>
          
           <button onClick ={this.Edit}> Edit </button>
           </div>
+          </div>
+         
 
         );
     }
