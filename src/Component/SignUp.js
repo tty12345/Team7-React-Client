@@ -45,6 +45,12 @@ export default class SignUp extends Component {
     }
 
     createUser() {
+
+        if (this.state.username === "" || this.state.password === "" || this.state.email === "") 
+        {
+        window.alert("Please fill in all fields");
+        return;}
+
         var data = {
           username: this.state.username,
           password: this.state.password,
@@ -71,9 +77,9 @@ export default class SignUp extends Component {
         axios.post("http://localhost:8080/api/googlelogin",data)
         .then( response => {
             if ( response.status === 200){
+                window.alert("LOG IN SUCESS");
                 sessionStorage.setItem("userId", response.data);
-                this.setState({
-                });
+                return (<Redirect to='/' /> );
             }
         });
     };
@@ -133,7 +139,6 @@ export default class SignUp extends Component {
                             />
                         </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
-                        {this.state.googleClicked?
                         <div>
                             <GoogleLogin
                                 clientId = "626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com"
@@ -144,10 +149,6 @@ export default class SignUp extends Component {
                                 isSignedIn = {true}
                             />
                         </div>
-                        :<div>
-                        {/* <img onClick = {this.googleClicked} alt="" src="https://aws1.discourse-cdn.com/business5/uploads/webflow1/original/3X/2/4/24bc102eccbabdb30b5ec93447732ead235d5549.png"/> */}
-                        </div>}
-                        <button onClick={this.googleClicked} className="btn btn-success">Sign Up With Google</button>
                     </div>                  
                 )}
             </div>

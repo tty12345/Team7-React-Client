@@ -76,8 +76,8 @@ export default class LogIn extends Component {
                 });
                 sessionStorage.setItem("userId", response.data);
                 window.location.reload();
+                sessionStorage.setItem("status", "true");
             } 
-            sessionStorage.setItem("status", "true");
         })
     };
 
