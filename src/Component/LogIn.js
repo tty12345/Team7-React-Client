@@ -51,8 +51,8 @@ export default class LogIn extends Component {
                 sessionStorage.setItem("userId", response.data);
                 window.location.reload();
             } 
-            console.log(response.data);
-            console.log(sessionStorage.getItem('ToWhere'));
+            // console.log(response.data);
+            // console.log(sessionStorage.getItem('ToWhere'));
         })
         .catch(e => {
             this.setState({
@@ -82,7 +82,14 @@ export default class LogIn extends Component {
                 console.log(response.data);
                 window.location.reload();
             } 
-        })
+        }).catch(e => {
+            this.setState({
+                isLoggedIn: false,
+                message: "Invalid username or password. Please try again"
+            })
+            console.log(e);
+        });
+        
     };
 
     onFailure = (res) => {

@@ -37,7 +37,17 @@ function App() {
     )
   }
 
-  // const clearall(){}
+  const customStyle = {
+    color: '#9d9d9d',
+    display: 'block',
+    fontsize: 13,
+    padding: 14,
+    cursor:"pointer",
+    '&:hover' : {
+      color: "#fff",
+      backgroundcolor: "transparent"
+  }};
+  
   
   return (
     <div className="App">
@@ -68,15 +78,20 @@ function App() {
                     <li>
                     <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
                     </li>
-                    <li>
+                    <li className="nav-link">
                      { sessionStorage.getItem("status") == null ?
                         <Link to={"/login"} className="nav-link">Log In</Link>
                         :(sessionStorage.getItem("googleLogin")=="true"?
                         <div>
                         <GoogleLogout
+                            render={renderProps => (
+                              <li onClick={renderProps.onClick} className = "nav-link" style={customStyle}>Log Out</li>
+                            )}
+                            className="nav-link"
                             clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
                             buttonText = 'Logout'
                             onLogoutSuccess = {onSuccess}
+                            type ="darl"
                         />
                     </div>:
                        <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link>) }
@@ -95,13 +110,6 @@ function App() {
                       { sessionStorage.getItem("status") == null ?
                          <div></div> :
                          <Link to={"/SavePreference"} className="nav-link">Preference</Link> } 
-                    </li>
-                    <li>
-                    <GoogleLogout
-                            clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
-                            buttonText = 'Logout'
-                            onLogoutSuccess = {onSuccess}
-                        />
                     </li>
                     <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
