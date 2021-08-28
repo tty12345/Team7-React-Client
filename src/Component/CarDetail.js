@@ -95,6 +95,7 @@ export default class CarDetail extends Component {
     }
 
     deletePost(){
+        console.log(this.state.id);
         PostService.deletePost(this.state.id)
             .then(response => {
                 if ( response.status === 204)
@@ -277,9 +278,9 @@ export default class CarDetail extends Component {
                             let data = offers[k];
                             return (
                                 <tr key={i}>
-                                <td>{data.user.username}</td>
+                                <td>{data.offererName}</td>
                                 <td>{data.offer}</td>
-                                <td>{data.user.email}</td>
+                                <td>{data.offererEmail}</td>
                                 </tr>
                             );
                             })}
