@@ -14,6 +14,8 @@ import DepreciationCalculator from './Component/DepreciationCalculator';
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
+import { GoogleLogout } from 'react-google-login';
+
 function App() {
 
   function logout(){
@@ -23,6 +25,29 @@ function App() {
           <Redirect to="/"/>
     )
   }
+
+  function onSuccess(){
+    // alert('Successfully logged out');
+    sessionStorage.clear();
+    sessionStorage.setItem("logout", "true");
+    console.log("SOMETHING");
+    window.location.reload()
+    return(
+          <Redirect to="/"/>
+    )
+  }
+
+  const customStyle = {
+    color: '#9d9d9d',
+    display: 'block',
+    fontsize: 13,
+    padding: 14,
+    cursor:"pointer",
+    '&:hover' : {
+      color: "#fff",
+      backgroundcolor: "transparent"
+  }};
+  
   
   return (
     <div className="App">
@@ -53,11 +78,23 @@ function App() {
                     <li>
                     <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
                     </li>
-                    <li>
+                    <li className="nav-link">
                      { sessionStorage.getItem("status") == null ?
                         <Link to={"/login"} className="nav-link">Log In</Link>
-                        :
-                       <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link> }
+                        :(sessionStorage.getItem("googleLogin")=="true"?
+                        <div>
+                        <GoogleLogout
+                            render={renderProps => (
+                              <li onClick={renderProps.onClick} className = "nav-link" style={customStyle}>Log Out</li>
+                            )}
+                            className="nav-link"
+                            clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                            buttonText = 'Logout'
+                            onLogoutSuccess = {onSuccess}
+                            type ="darl"
+                        />
+                    </div>:
+                       <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link>) }
                     </li>
                     <li>
                       { sessionStorage.getItem("status") == null ?
@@ -81,9 +118,6 @@ function App() {
                         <li><Link to={"/DepreciationCalculator"}>Depreciation Calculator</Link></li>
                         <li><a href="http://loopholes.sg/">Financial Blog</a></li>
                       </ul>
-                    </li>
-                    <li>
-                     <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
                     {sessionStorage.getItem("status") ?(
                     <li>

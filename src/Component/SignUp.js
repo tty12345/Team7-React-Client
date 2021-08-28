@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import UserService from "../Services/UserService.js";
-import { Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import '../App.css';
+import { GoogleLogin } from 'react-google-login';
+import axios from "axios";
 
 
 export default class SignUp extends Component {
@@ -39,6 +41,12 @@ export default class SignUp extends Component {
     }
 
     createUser() {
+
+        if (this.state.username === "" || this.state.password === "" || this.state.email === "") 
+        {
+        window.alert("Please fill in all fields");
+        return;}
+
         var data = {
           username: this.state.username,
           password: this.state.password,
@@ -54,7 +62,31 @@ export default class SignUp extends Component {
         });
     }
 
+    onSuccess = (res) => {
+
+            var data = {
+                username: res.profileObj.name,
+                password: res.profileObj.googleId,
+                email: res.profileObj.email
+              };
+
+        axios.post("http://localhost:8080/api/googlelogin",data)
+        .then( response => {
+            if ( response.status === 200){
+                this.setState({
+                    isCreated: true
+                });
+            }
+        });
+    };
+
+    onFailure = (res) => {
+        console.log("[ Login failed ] res: ", res);
+    };
+    
+
     render() {
+        if(!this.googleClicked)
         return (
             <div className="submit-form">
                 {this.state.isCreated ? (
@@ -97,11 +129,18 @@ export default class SignUp extends Component {
                             />
                         </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
-                        <br/>
-                        <br/>
-                        <a className="btn btn-primary" href="http://localhost:8080/test">Sign up</a>
-                        {/* <button onClick = {this.google}><img className = "google" width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button> */}
-                    </div>
+                        <div>
+                                <GoogleLogin
+                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                                    buttonText = 'Sign Up With Google'
+                                    onSuccess = {this.onSuccess}
+                                    onFailure = {this.onFailure}
+                                    cookiePolicy = {'single_host_origin'}
+                                    style = {{marginTop: '100px'}}
+                                    isSignedIn = {true}
+                                />
+                            </div>
+                    </div>                  
                 )}
             </div>
         );

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import UserDataService from "../Services/UserService";
 import { Redirect } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
+import axios from "axios";
+
 
 
 export default class LogIn extends Component {
@@ -48,8 +51,8 @@ export default class LogIn extends Component {
                 sessionStorage.setItem("userId", response.data);
                 window.location.reload();
             } 
-            console.log(response.data);
-            console.log(sessionStorage.getItem('ToWhere'));
+            // console.log(response.data);
+            // console.log(sessionStorage.getItem('ToWhere'));
         })
         .catch(e => {
             this.setState({
@@ -59,6 +62,40 @@ export default class LogIn extends Component {
             console.log(e);
         });
     }
+
+    onSuccess = (res) => {
+        var data = {
+            username: res.profileObj.name,
+            password: res.profileObj.googleId,
+            email: res.profileObj.email
+          };
+
+          UserDataService.login(data)
+          .then(response => {
+            if (response.status === 200) {  
+                sessionStorage.setItem("status", "true");
+                sessionStorage.setItem("googleLogin", "true");
+                sessionStorage.setItem("userId", response.data);    
+                this.setState({
+                    isLoggedIn: true,
+                });
+                console.log(response.data);
+                window.location.reload();
+            } 
+        }).catch(e => {
+            this.setState({
+                isLoggedIn: false,
+                message: "Invalid username or password. Please try again"
+            })
+            console.log(e);
+        });
+        
+    };
+
+    onFailure = (res) => {
+        console.log("[ Login failed ] res: ", res);
+    };
+
 
     render() {
         return (
@@ -95,6 +132,20 @@ export default class LogIn extends Component {
                             />
                         </div>
                         <button onClick={this.login} className="btn btn-success">Log In</button>
+                        <div>
+                        <div>
+                                <GoogleLogin
+                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                                    buttonText = 'Login'
+                                    onSuccess = {this.onSuccess}
+                                    onFailure = {this.onFailure}
+                                    cookiePolicy = {'single_host_origin'}
+                                    style = {{marginTop: '100px'}}
+                                    isSignedIn = {true}
+                                />
+                        </div>
+  
+                        </div>
                     </div>
                 )}
             </div>

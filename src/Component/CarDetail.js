@@ -82,6 +82,7 @@ export default class CarDetail extends Component {
             };
             UserDataService.submitOffer(data, this.state.id)
             .then(response => {
+                console.log(response)
                 this.setState({
                     currentOffer: response.data,
                     currentOfferStatus: true
@@ -182,6 +183,7 @@ export default class CarDetail extends Component {
                     currentOfferStatus: true
                 });}
                 else{
+                    console.log(response.data)
                 this.setState({
                     currentOffer: null,
                     currentOfferStatus: false,
@@ -261,27 +263,29 @@ export default class CarDetail extends Component {
                   </div>
                   ):(  ( sessionStorage.getItem("userId") == this.state.ownerId ) ? (
                      <div>
+                         
                         <table>
+                        {offers.length>0?
                             <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th>Offer</th>
                                     <th>Contact</th>
                                 </tr>
-                            </thead>
+                            </thead>:<thead></thead>}
                             <tbody>
                             {Object.keys(offers).map((k, i) => {
                             let data = offers[k];
                             return (
                                 <tr key={i}>
-                                {/* <td>{data.user.username}</td> */}
+                                <td>{data.user.username}</td>
                                 <td>{data.offer}</td>
-                                {/* <td>{data.user.mobileNumber}</td> */}
+                                <td>{data.user.email}</td>
                                 </tr>
                             );
                             })}
                             </tbody>
-                        </table>   
+                        </table>:
                         <button onClick={this.deletePost} className="btn btn-success" >Delete</button> 
                         <Link to="/CreatePost" className="btn btn-primary" onClick={this.sendToEdit}>Edit</Link>
                      </div> ) :

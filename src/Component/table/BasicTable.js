@@ -43,9 +43,10 @@ export const BasicTable = () => {
         var data = {
         //postId: this.state.postId,
         brand: brand,
-        priceLabel: priceLabel,
+        price: priceLabel,
         description: description
     };
+    console.log(data);
     PostService.search(data).then(response => {
         setData(response.data);
     })
@@ -61,13 +62,30 @@ export const BasicTable = () => {
                     <tr>
                         <th>Brand<select name = "brand" onChange = {onChangeBrand}>
                             <option></option>
-                            <option value = "toyota">Toyota</option>
-                            <option value = "honda">Honda</option>
-                            <option value = "Mercedes-Benz">Mercedes</option>
-                            <option value = "porsche">Porsche</option>
-                            <option value = "mazda">Mazda</option>
-                            <option value = "suzuki">Suzuki</option>
-                            <option value = "others">Others</option>
+                                <option value='Audi'>Audi</option>
+                                <option value='Austin'>Austin</option>
+                                <option value='BMW'>BMW</option>
+                                <option value='Citron'>Citron</option>
+                                <option value='Ferrari'>Ferrari</option>
+                                <option value='Fiat'>Fiat</option>
+                                <option value='Honda'>Honda</option>
+                                <option value='Hyundai'>Hyundai</option>
+                                <option value='Kia'>Kia</option>
+                                <option value='Lexus'>Lexus</option>
+                                <option value='Mini'>Mini</option>
+                                <option value='Mercedes-Benz'>Mercedes-Benz</option>
+                                <option value='Mitsubishi'>Mitsubishi</option>
+                                <option value='Morris'>Morris</option>
+                                <option value='Nissan'>Nissan</option>
+                                <option value='Opel'>Opel</option>
+                                <option value='Peugeot'>Peugeot</option>
+                                <option value='Porsche'>Porsche</option>
+                                <option value='Renault'>Renault</option>
+                                <option value='Subaru'>Subaru</option>
+                                <option value='Suzuki'>Suzuki</option>
+                                <option value='Toyota'>Toyota</option>
+                                <option value='Volkswagen'>Volkswagen</option>
+                                <option value='Volvo'>Volvo</option>
                         </select></th>
                         <th>Price<select name = "priceLabel" onChange = {onChangePriceLabel}>
                             <option></option>
