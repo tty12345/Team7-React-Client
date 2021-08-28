@@ -410,10 +410,12 @@ body {
 
 form.form1 {
   padding-top: 40px;
+  color:black;
 }
 
 .form1 {
   padding-top: 40px;
+  color:black;
 }
 
 
@@ -487,4 +489,42 @@ footer{
 padding-top:50px;
 }
 
+.preference{
+  padding-top:50px !important;
+}
+
+.create{
+  color:black;
+  font-size: 17px;
+  font-weight:700;
+  
+}
+
+.price{
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color:black;
+  font-size: 20px;
+  
+}
+
+.pref{
+  color:black;
+  font-size: 20px;
+  padding-top:33px;
+  font-weight:700;
+}
+
+.input{
+  color:rgb(44, 44, 44);
+  font-size: 15px;
+  border: 1px solid #ccc;
+}
+
+.input2{
+  color:rgb(63, 62, 62);
+  font-size: 17px;
+}
 

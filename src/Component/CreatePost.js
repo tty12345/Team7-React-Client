@@ -316,7 +316,7 @@ export default class CreatePost extends Component {
             
           <div >
            
-              <div className="form-group">
+              <div className="form-group create">
                   <label htmlFor="depreciation">Depreciation (Annual)</label> 
                   <input
                     type="text"
@@ -331,7 +331,7 @@ export default class CreatePost extends Component {
                   <Link to="/DepreciationCalculator" className="btn btn-default"><b>Depreciation Calculator</b></Link>
               </div>
 
-                <div className="form-group">
+                <div className="form-group create">
                   <label htmlFor="brand" >Brand</label>
                   <br></br>
                   <select name="category" onChange={this.onChangeBrand}>
@@ -362,7 +362,7 @@ export default class CreatePost extends Component {
                     <option value='23'>Volvo</option>
                   </select>
                 </div>
-                <div className="form-group ">
+                <div className="form-group create ">
                   <label htmlFor="description">Description</label>
                   <input
                     type="text"
@@ -375,7 +375,7 @@ export default class CreatePost extends Component {
                     placeholder="Car Model"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group create">
                   <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
                   <input
                     type="text"
@@ -388,7 +388,7 @@ export default class CreatePost extends Component {
                     placeholder="cc"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group create">
                   <label htmlFor="registeredDate">Registered Date</label>
                   <input
                     type="date"
@@ -400,7 +400,7 @@ export default class CreatePost extends Component {
                     name="registeredDate"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group create">
                   <label htmlFor="mileage">Mileage</label>
                   <input
                     type="text"
@@ -413,10 +413,10 @@ export default class CreatePost extends Component {
                     placeholder="km"
                   />
                 </div>
-                <div className="form-group" >
+                <div className="form-group create" >
                   <label htmlFor="category">Category</label>
                   <br></br>
-                  <select name="category" onChange={this.onChangeCategory}>
+                 <span><select name="category" onChange={this.onChangeCategory}>
                     <option value={this.state.category}>{this.state.realCategory}</option>
                     <option value='1'>Hatchback</option>
                     <option value='2'>Luxury</option>
@@ -429,11 +429,14 @@ export default class CreatePost extends Component {
                     <option value='9'>Truck</option>
                     <option value='10'>Van</option>
                   </select>
+                  </span> 
                 </div>
                 <br></br>
                 <div>
-                  <label htmlFor="priceEstimate">Price Estimate</label>
-                  <p>${this.state.priceEstimate}</p>
+                  <label htmlFor="priceEstimate" class = "price">Price Estimate</label>
+                  <br></br>
+                  <p class="price">${this.state.priceEstimate}</p>
+                  <br></br>
                   <button
                     onClick={this.onClickPriceEstimate} type="button" className="btn btn-success">
                     Get Estimate
@@ -441,8 +444,8 @@ export default class CreatePost extends Component {
                 </div>
                 <br></br>
               <form>
-                <div className="form-group">
-                  <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label>
+                <div className="form-group create">
+                  <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label><span>
                   <input
                     type="text"
                     className="form-control"
@@ -453,10 +456,11 @@ export default class CreatePost extends Component {
                     name="price"
                     placeholder="S$"
                   />
+                  </span>
               </div>
 
-                <div className="form-group">
-                  <label htmlFor="photoUrl">Photo URL</label>
+                <div className="form-group create">
+                  <label htmlFor="photoUrl">Photo URL</label> <span>
                   <input 
                     type="text"
                     className="form-control"
@@ -465,6 +469,7 @@ export default class CreatePost extends Component {
                     onChange={this.onChangePhotoUrl}
                     name="photoUrl"
                   />
+                  </span>
                 </div>
               </form>
           
@@ -473,7 +478,7 @@ export default class CreatePost extends Component {
                 <div>
                 <span>Upload Sucessful!</span>
                 </div>):(
-                <div className="form-group">
+                <div className="form-group create">
                   {this.state.IMAGE?
                   <div>
                   <label htmlFor="photoByte">Current Image:</label>
@@ -482,8 +487,8 @@ export default class CreatePost extends Component {
                   <div>
                   <label htmlFor="photoByte">Upload Photo</label>
                   <img src = {this.state.currentPhoto}/>
+                  
                   </div>}
-
                   <input 
                     type="file"
                     className="form-control"
