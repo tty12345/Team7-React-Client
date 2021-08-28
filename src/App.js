@@ -178,7 +178,7 @@ function App() {
                   <div className="small-print">
                     <div className="container">
                       <p><a>Terms &amp; Conditions</a> | <a>Privacy Policy</a> | <a>Contact</a></p>
-                      <p>Copyright &copy; Example.com 2015 </p>
+                      <p>Copyright &copy; Team7AD.com 2021 </p>
                     </div>
                   </div>
             </footer>

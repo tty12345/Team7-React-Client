@@ -109,32 +109,7 @@ export default class HomePage extends Component {
             <div>
                 <DefaultCarsTable />
              </div>
-            {/* <div className="row mt-3">
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-headset text-secondary"></i>
-                        </div>
-                        <h4 className="text-uppercase m-0">24/7 Car Sale Support</h4>
-                    </div>
-                </div>
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-secondary p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-car text-secondary"></i>
-                        </div>
-                        <h4 className="text-light text-uppercase m-0">Get estimate selling price</h4>
-                    </div>
-                </div>
-                <div className="col-lg-4 mb-2">
-                    <div className="d-flex align-items-center bg-light p-4 mb-4" styles="height: 150px;">
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary ml-n4 mr-4" styles="width: 100px; height: 100px;">
-                            <i className="fa fa-2x fa-map-marker-alt text-secondary"></i>
-                        </div>
-                        <h4 className="text-uppercase m-0">Lots of car models</h4>
-                    </div>
-                </div> */}
-            {/* </div> */}
+           
         </div>
     </div>
 
@@ -189,7 +164,7 @@ export default class HomePage extends Component {
     <div className="container-fluid py-5">
         <div className="container pt-5 pb-3">
            
-            <h1 class="display-4 text-uppercase text-center mb-5">Contact Us</h1>
+            <h1 class="display-4 text-uppercase text-center mb-5"><font color="#f77d0a">Contact Us</font></h1>
             <div class="row">
                 <div class="col-lg-7 mb-2">
                     <div class="contact-form bg-light mb-4" >
