@@ -200,14 +200,14 @@ export default class SavePreference extends Component {
 
       if(!preferenceStatus)
         return(
-            <div className="container-fluid page-preference">
-          <h1>Save your Preference</h1>
+            <div className="main">
+            <p className = "sign" align ="center">Save your preference</p>
           <br/>
           <div>
               <div>Model: <input type="text" onChange={this.onChangeModel} value ={model}/></div>
           </div>
           <br/>
-          <div>
+          <div className = "form1">
                 <label htmlFor="brand">Brand: </label>
                 <select name="brand" onChange={this.onChangeBrand}>
                   <option value={this.state.brand}>{this.state.realBrand}</option>
@@ -238,7 +238,7 @@ export default class SavePreference extends Component {
                 </select>
               </div>
           <br/>
-          <div>
+          <div className = "form1">
                 <label htmlFor="category">Category: </label>
                 <select name="category" onChange={this.onChangeCategory}>
                   <option value={this.state.category}>{this.state.realCategory}</option>
@@ -255,13 +255,13 @@ export default class SavePreference extends Component {
                 </select>
               </div>
           <br/>
-          <div>
+          <div className = "form1">
               <div>Lowest Price: <input type="text" onChange={this.onChangeLowPrice} value ={lowestPrice}/></div>
               <br/>
               <div>Highest Price: <input type="text"onChange={this.onChangeHighestPrice} value ={highestPrice} /></div>
           </div>
           <br/>
-          <div>
+          <div className = "form1">
               <div>Engine Capacity Min: <input type="text" onChange={this.onChangeMinEngineCapacity} value ={engineCapacityMin}/></div>
               <br/>
               <div>Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
