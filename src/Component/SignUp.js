@@ -83,6 +83,19 @@ export default class SignUp extends Component {
     onFailure = (res) => {
         console.log("[ Login failed ] res: ", res);
     };
+
+    customStyle = {
+        color: 'white',
+        background: '#E040FB',
+        fontsize: 13,
+        padding: 14,
+        display:"block",
+        margin:"auto",
+        width:"max-content",
+        backgroundImage: `linear-gradient(to right, #9C27B0, #E040FB)`,
+        borderRadius:17,
+        marginTop: 15
+      };
     
 
     render() {
@@ -138,6 +151,17 @@ export default class SignUp extends Component {
                         <br></br>
                         <br></br>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
+                        <GoogleLogin
+                            render={renderProps => (
+                            <li onClick={renderProps.onClick} className = "nav-link" style={this.customStyle}>Sign Up With Google</li>)}
+                            clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                            buttonText = 'Sign Up With Google'
+                            onSuccess = {this.onSuccess}
+                            onFailure = {this.onFailure}
+                            cookiePolicy = {'single_host_origin'}
+                            style = {{marginTop: '100px'}}
+                            isSignedIn = {true}
+                        />
                        
                     </div>
                 )}
