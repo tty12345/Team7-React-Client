@@ -56,12 +56,15 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div className="submit-form">
+            <div className="main">
                 {this.state.isCreated ? (
                     <Redirect to='/login'  />
                 ) : (
-                    <div>
-                        <div className="form-group">
+                    <div className = "main">
+                                    <p className = "sign" align ="center">Sign Up</p>
+                                    
+                        <br></br>
+                        <div className="form1">
                             <label htmlFor="username">Username:</label>
                             <input
                                 type="text"
@@ -73,7 +76,9 @@ export default class SignUp extends Component {
                                 name="username"
                             />
                         </div>
-                        <div className="form-group">
+                      
+                       <br></br>
+                        <div className="form1">
                             <label htmlFor="password">Password:</label>
                             <input
                                 type="password"
@@ -85,7 +90,8 @@ export default class SignUp extends Component {
                                 name="password"
                             />
                         </div>
-                        <div className="form-group">
+                        <br></br>
+                        <div className="form1">
                             <label htmlFor="email">Email:</label>
                             <input
                                 type="email"
@@ -96,11 +102,11 @@ export default class SignUp extends Component {
                                 name="email"
                             />
                         </div>
+                        
+                        <br></br>
+                        <br></br>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
-                        <br/>
-                        <br/>
-                        <a className="btn btn-primary" href="http://localhost:8080/test">Sign up</a>
-                        {/* <button onClick = {this.google}><img className = "google" width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button> */}
+                       
                     </div>
                 )}
             </div>

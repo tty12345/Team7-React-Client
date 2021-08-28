@@ -51,7 +51,7 @@ function App() {
                     <Link to={"/CarList"} className="nav-link">Buy</Link>
                     </li>
                     <li>
-                    <Link to={"/CreatePost"} className="nav-link">Sell Car</Link>
+                    <Link to={"/CreatePost"} className="nav-link">Sell</Link>
                     </li>
                     <li>
                      { sessionStorage.getItem("status") == null ?
@@ -99,6 +99,7 @@ function App() {
             </div>
         </nav>
         </div>
+          
         <div >
         <Switch>
           {/* <Route path='/students/:id' component={EditStudent} /> */}
@@ -117,6 +118,10 @@ function App() {
       </div>
       </Router>
     </div>
+
+
+        
   );
 }
 export default App;  
+

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 export default class Calculator extends Component {
 
@@ -61,11 +62,11 @@ export default class Calculator extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Car Installment Calculator</h2>
-                <h4>Calculate the monthly installment on your car here!</h4>
+            <div className = "main">
+                <p className = "sign" align ="center">Car Installment Calculator</p>
+                <div className = "form1">
+                <h3>Calculate the monthly installment on your car here!</h3>
                 <br></br>
-                <div>
                     <label htmlFor="loanAmount">Loan Amount</label>
                     <input
                     type="text"
@@ -77,7 +78,8 @@ export default class Calculator extends Component {
                     placeholder="S$"
                     />
                 </div>
-                <div>
+                <br></br>
+                <div className = "form1">
                     <label htmlFor="interestRate">Interest Rate</label>
                     <input
                     type="text"
@@ -89,7 +91,8 @@ export default class Calculator extends Component {
                     placeholder="%"
                     />
                 </div>
-                <div>
+                <br></br>
+                <div className = "form1">
                     <label htmlFor="loanPeriod">Loan Period</label>
                     <input
                     type="range"
@@ -104,15 +107,16 @@ export default class Calculator extends Component {
                     <p>{this.state.loanPeriod}</p>
                 </div>
                 <div>
-                    <button onClick={this.calculateLoan} class="btn btn-primary">Calculate</button>
+                    <button onClick={this.calculateLoan} class="btn btn-success">Calculate</button>
                 </div>
                 <br></br>
                 <div>
                     <label>Monthly Installment:</label>
                     <p>S${this.state.monthlyInstallment}</p>
                 </div>
+                <br></br>
                 <div>
-                    <button onClick={this.onClear} class="btn btn-secondary">Clear</button>
+                    <button onClick={this.onClear} class="btn btn-success">Clear</button>
                 </div>
             </div>
         )

@@ -326,15 +326,9 @@ export default class CreatePost extends Component {
                     name="depreciation"
                     placeholder="S$"
                   />
-                  <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
-                 Depreciation Calculator
-                </Link></a></p>
+                  <Link to="/DepreciationCalculator" className="btn btn-default"><b>Depreciation Calculator</b></Link>
               </div>
-{/* <div>
-              <p><a class="btn btn-default"><Link to={"/DepreciationCalculator/"}>
-                    Calculate your car depreciation
-                   </Link></a></p>
-</div> */}
+
                 <div className="form-group">
                   <label htmlFor="brand">Brand</label>
                   <br></br>
@@ -502,7 +496,6 @@ export default class CreatePost extends Component {
                   Submit
               </button>):(
                 <div>
-                <span>Please Upload an Image only in png format beacause we are noobs</span>
 
                 {this.state.imageExist?
                 <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}

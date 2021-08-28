@@ -200,14 +200,14 @@ export default class SavePreference extends Component {
 
       if(!preferenceStatus)
         return(
-          <div>
+            <div className="container-fluid page-preference">
           <h1>Save your Preference</h1>
           <br/>
           <div>
               <div>Model: <input type="text" onChange={this.onChangeModel} value ={model}/></div>
           </div>
           <br/>
-          <div className="form-group">
+          <div>
                 <label htmlFor="brand">Brand: </label>
                 <select name="brand" onChange={this.onChangeBrand}>
                   <option value={this.state.brand}>{this.state.realBrand}</option>
@@ -266,7 +266,7 @@ export default class SavePreference extends Component {
               <br/>
               <div>Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} value ={engineCapacityMax}/></div>
           </div>
-         
+          <br/>
 
           <button onClick ={this.savePreference}> Submit </button>
           </div>
@@ -300,6 +300,7 @@ export default class SavePreference extends Component {
               <br/>
             <div><div>EngineCapacity Max: {engineCapacityMax} </div></div>
           </div>
+          <br/>
          
           <button onClick ={this.Edit}> Edit </button>
           </div>
