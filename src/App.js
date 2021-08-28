@@ -96,11 +96,6 @@ function App() {
                       <Link to={"/SavePreference"} className="nav-link">Preference</Link>}
                   </li>
                   <li>
-                    {sessionStorage.getItem("status") == null ?
-                      <div></div> :
-                      <Link to={"/PrefCarList"} className="nav-link">Search By Preference</Link>}
-                  </li>
-                  <li>
                     <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                     <ul className="dropdown-menu" aria-labelledby="about-us">
                       <li><Link to={"/Calculator"}>Loan Calculator</Link></li>
