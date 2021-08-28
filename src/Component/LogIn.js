@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import UserDataService from "../Services/UserService";
 import { Redirect } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import axios from "axios";
+
 
 
 export default class LogIn extends Component {
@@ -70,13 +72,15 @@ export default class LogIn extends Component {
 
           UserDataService.login(data)
           .then(response => {
-            if (response.status === 200) {      
+            if (response.status === 200) {  
+                sessionStorage.setItem("status", "true");
+                sessionStorage.setItem("googleLogin", "true");
+                sessionStorage.setItem("userId", response.data);    
                 this.setState({
                     isLoggedIn: true,
                 });
-                sessionStorage.setItem("userId", response.data);
+                console.log(response.data);
                 window.location.reload();
-                sessionStorage.setItem("status", "true");
             } 
         })
     };
@@ -122,15 +126,18 @@ export default class LogIn extends Component {
                         </div>
                         <button onClick={this.login} className="btn btn-success">Log In</button>
                         <div>
-                            <GoogleLogin
-                                clientId = "626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com"
-                                buttonText = {null}
-                                onSuccess = {this.onSuccess}
-                                onFailure = {this.onFailure}
-                                cookiePolicy = {'single_host_origin'}
-                                style = {{marginTop: '100px'}}
-                                isSignedIn = {true}
-                            />
+                        <div>
+                                <GoogleLogin
+                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                                    buttonText = 'Login'
+                                    onSuccess = {this.onSuccess}
+                                    onFailure = {this.onFailure}
+                                    cookiePolicy = {'single_host_origin'}
+                                    style = {{marginTop: '100px'}}
+                                    isSignedIn = {true}
+                                />
+                        </div>
+  
                         </div>
                     </div>
                 )}

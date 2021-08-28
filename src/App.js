@@ -14,6 +14,8 @@ import DepreciationCalculator from './Component/DepreciationCalculator';
 import{ NotificationTable } from "./Component/table/NotificationTable"
 import { FaBell } from 'react-icons/fa';
 import SavePreference from './Component/SavePreference';
+import { GoogleLogout } from 'react-google-login';
+
 function App() {
 
   function logout(){
@@ -23,6 +25,19 @@ function App() {
           <Redirect to="/"/>
     )
   }
+
+  function onSuccess(){
+    // alert('Successfully logged out');
+    sessionStorage.clear();
+    sessionStorage.setItem("logout", "true");
+    console.log("SOMETHING");
+    window.location.reload()
+    return(
+          <Redirect to="/"/>
+    )
+  }
+
+  // const clearall(){}
   
   return (
     <div className="App">
@@ -56,8 +71,15 @@ function App() {
                     <li>
                      { sessionStorage.getItem("status") == null ?
                         <Link to={"/login"} className="nav-link">Log In</Link>
-                        :
-                       <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link> }
+                        :(sessionStorage.getItem("googleLogin")=="true"?
+                        <div>
+                        <GoogleLogout
+                            clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                            buttonText = 'Logout'
+                            onLogoutSuccess = {onSuccess}
+                        />
+                    </div>:
+                       <Link to ={'/'} onClick={logout} className="nav-link">Log Out</Link>) }
                     </li>
                     <li>
                       { sessionStorage.getItem("status") == null ?
@@ -75,15 +97,19 @@ function App() {
                          <Link to={"/SavePreference"} className="nav-link">Preference</Link> } 
                     </li>
                     <li>
+                    <GoogleLogout
+                            clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                            buttonText = 'Logout'
+                            onLogoutSuccess = {onSuccess}
+                        />
+                    </li>
+                    <li>
                       <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                       <ul className="dropdown-menu" aria-labelledby="about-us">
                         <li><Link to={"/Calculator"}>Loan Calculator</Link></li>
                         <li><Link to={"/DepreciationCalculator"}>Depreciation Calculator</Link></li>
                         <li><a href="http://loopholes.sg/">Financial Blog</a></li>
                       </ul>
-                    </li>
-                    <li>
-                     <Link to={"/GetUsers"} className="nav-link">See Users</Link>
                     </li>
                     {sessionStorage.getItem("status") ?(
                     <li>

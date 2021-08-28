@@ -304,7 +304,7 @@ export default class CreatePost extends Component {
     render() {
       //condition
       //it not logged direct to login
-      if (sessionStorage.getItem("status") == 'true'){
+      if (sessionStorage.getItem("status") == 'true' || sessionStorage.getItem("googleLogin") == "true"){
         return (
           <div>
             <div className="container-fluid page-otherpages">

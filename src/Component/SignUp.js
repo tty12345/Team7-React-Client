@@ -13,16 +13,12 @@ export default class SignUp extends Component {
         this.onChangePassword = this.onChangePassword.bind(this);
         this.createUser = this.createUser.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onFailure = this.onFailure(this);
-        this.googleClicked = this.googleClicked(this);
 
         this.state = {
             username: "",
             password: "",
             email: "",
-            isCreated: false,
-            googleClicked:false
+            isCreated: false
         };
     }
 
@@ -67,19 +63,19 @@ export default class SignUp extends Component {
     }
 
     onSuccess = (res) => {
-        console.log("WTF")
-        var data = {
-            username: res.profileObj.name,
-            password: res.profileObj.googleId,
-            email: res.profileObj.email
-          };
+
+            var data = {
+                username: res.profileObj.name,
+                password: res.profileObj.googleId,
+                email: res.profileObj.email
+              };
 
         axios.post("http://localhost:8080/api/googlelogin",data)
         .then( response => {
             if ( response.status === 200){
-                window.alert("LOG IN SUCESS");
-                sessionStorage.setItem("userId", response.data);
-                return (<Redirect to='/' /> );
+                this.setState({
+                    isCreated: true
+                });
             }
         });
     };
@@ -87,16 +83,10 @@ export default class SignUp extends Component {
     onFailure = (res) => {
         console.log("[ Login failed ] res: ", res);
     };
-
-    googleClicked(){
-        this.setState({
-            googleClicked:true
-        })
-    }
-
     
 
     render() {
+        if(!this.googleClicked)
         return (
             <div className="submit-form">
                 {this.state.isCreated ? (
@@ -140,15 +130,16 @@ export default class SignUp extends Component {
                         </div>
                         <button onClick={this.createUser} className="btn btn-success">Sign Up</button>
                         <div>
-                            <GoogleLogin
-                                clientId = "626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com"
-                                onSuccess = {this.onSuccess}
-                                onFailure = {this.onFailure}
-                                cookiePolicy = {'single_host_origin'}
-                                style = {{marginTop: '100px'}}
-                                isSignedIn = {true}
-                            />
-                        </div>
+                                <GoogleLogin
+                                    clientId = '626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                                    buttonText = 'Sign Up With Google'
+                                    onSuccess = {this.onSuccess}
+                                    onFailure = {this.onFailure}
+                                    cookiePolicy = {'single_host_origin'}
+                                    style = {{marginTop: '100px'}}
+                                    isSignedIn = {true}
+                                />
+                            </div>
                     </div>                  
                 )}
             </div>
