@@ -10,10 +10,10 @@ export const BasicTable = () => {
     const [brand, setBrand] = useState("");
     const [priceLabel, setPriceLabel] = useState("");
     const [description, setDescription] = useState("");
+    const [criteria, setCriteria] = useState(0);
     
     useEffect(() => { 
-        getData() 
-
+        getData()
     }, []);
 
     const tableInstance = useTable({
@@ -29,6 +29,7 @@ export const BasicTable = () => {
 
     function onChangeBrand(e) {
         setBrand(e.target.value);
+        console.log(brand);
     }
 
     function onChangePriceLabel(e) {
@@ -39,12 +40,23 @@ export const BasicTable = () => {
         setDescription(e.target.value);
     }
 
-    function getData(){        
+    function onChangeCriteria(e){
+        setCriteria(e.target.value);
+        if(e.target.value == 0){
+            setBrand("");
+            setPriceLabel("");
+            setDescription("");
+        }
+    }
+
+    function getData(){       
+
         var data = {
-        //postId: this.state.postId,
+        criteria: criteria,
         brand: brand,
         price: priceLabel,
-        description: description
+        description: description,
+        userId: sessionStorage.getItem("userId")
     };
     console.log(data);
     PostService.search(data).then(response => {
@@ -56,12 +68,24 @@ export const BasicTable = () => {
     
     return (
         <div>
+            <div>
+            <table>
+                <select onChange = {onChangeCriteria}> 
+                    <option value ="0" >All Cars</option>
+                    <option value ="1" >Recommended</option>
+                    <option value ="2">WishList</option>
+                </select>
+                <button onClick = {getData}>Get List</button>
+            </table>
+            </div>
         <br/>
             <div>
+            {criteria == 0?(
                 <table>
                     <tr>
+                        <th><a2>Search Our Cars: </a2></th>
                         <th>Brand<select name = "brand" onChange = {onChangeBrand}>
-                            <option></option>
+                                <option></option>
                                 <option value='Audi'>Audi</option>
                                 <option value='Austin'>Austin</option>
                                 <option value='BMW'>BMW</option>
@@ -97,7 +121,7 @@ export const BasicTable = () => {
                         <th>Model<input type="text" name = "description" onChange = {onChangeDescription}/></th>
                         <th><input type="submit" value = "Submit" onClick={getData}/></th>
                     </tr>
-                </table>
+                </table>):(<div></div>)}
             </div>
             <br/>
             <div>

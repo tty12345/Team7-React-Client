@@ -1,18 +1,20 @@
 
 import {useTable, usePagination } from 'react-table'
 import {COLUMNS} from './columns'
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PostService from "../../Services/PostService";
 
-export const PrefCarsTable = () => {
+export const WatchListTable = () => {
 
     const [data1, setData] = useState([]);
     const [brand, setBrand] = useState("");
     const [priceLabel, setPriceLabel] = useState("");
     const [description, setDescription] = useState("");
     
-    useEffect(() => { getData() }, []);
+    useEffect(() => { 
+        getData() 
+
+    }, []);
 
     const tableInstance = useTable({
         columns: COLUMNS,
@@ -37,19 +39,8 @@ export const PrefCarsTable = () => {
         setDescription(e.target.value);
     }
 
-    // this.state={ userId: sessionStorage.getItem("userId")};
-
     function getData(){        
-        var data = {
-        //postId: this.state.postId,
-        brand: brand,
-        priceLabel: priceLabel,
-        description: description,
-        // userId:sessionStorage.getItem("userId")
-        
-
-    };
-    PostService.searchByPref(sessionStorage.getItem("userId"),data).then(response => {
+    PostService.getWatchList(sessionStorage.getItem("userId")).then(response => {
         setData(response.data);
     })
     .catch(e => {
@@ -59,8 +50,8 @@ export const PrefCarsTable = () => {
     return (
         <div>
         <br/>
-        <h1>Search All our Cars</h1>
-            <div>
+        <div>
+            <a>Search All our Cars</a>
                 <table>
                     <tr>
                         <th>Brand<select name = "brand" onChange = {onChangeBrand}>

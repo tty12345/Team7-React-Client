@@ -244,14 +244,14 @@ export default class CarDetail extends Component {
                   <tr>
                       <td><div id="attribute-type">Registration Date:</div></td>
                       <td><div id="attribute-value">{car.registeredDate}</div></td>
-                      <td><div id="attribute-type">Engine Capacity:</div></td>
-                      <td><div id="attribute-value">{car.engineCapacity}</div></td>
-                  </tr>
-                  <tr>
                       <td><div id="attribute-type">Mileage:</div></td>
                       <td><div id="attribute-value">{car.mileage}</div></td>
+                  </tr>
+                  <tr>
                       <td><div id="attribute-type">Category:</div></td>
                       <td><div id="attribute-value">{car.category}</div></td>
+                      <td><div id="attribute-type">Views:</div></td>
+                      <td><div id="attribute-value">{car.views}</div></td>
                   </tr>
                   </table>
                   <br/>
