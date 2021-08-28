@@ -28,6 +28,10 @@ class PostDataService {
       return axios.post(CARPOST_API_BASE_URL+"/listPost",searchobject);
     }
 
+    searchByPref(id,searchobject){
+      return axios.post(CARPOST_API_BASE_URL+"/listPostByPref/"+id,searchobject);
+    }
+
     getEstimate(to_estimate) {
       const formData = new FormData();
 
