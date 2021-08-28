@@ -99,7 +99,7 @@ export default class DepreciationCalculator extends Component {
     render() {
         return (
             <div className = "main">
-            <p className = "sign" align ="center">Depreciation Calculator</p>
+            <p className = "sign depreciationcalculation" align ="center">Depreciation Calculator</p>
             <div className = "form1">
                 <h3>Calculate the depreciation on your car</h3>
                 <br></br>
@@ -114,7 +114,6 @@ export default class DepreciationCalculator extends Component {
                     placeholder="S$"
                     />
                 </div>
-                <br></br>
                 <div className = "form1">
                     <label htmlFor="registeredDate">Registered Date</label>
                     <input
@@ -127,7 +126,6 @@ export default class DepreciationCalculator extends Component {
                     name="registeredDate"
                     />
                 </div>
-                <br></br>
                 <div className = "form1">
                     <label htmlFor="arf">ARF</label>
                     <input

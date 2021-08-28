@@ -269,6 +269,7 @@ img {
 }
 .form-group {
   margin-bottom: 1rem;
+  margin-left: 50px;
 }
 .col-6 {
   flex: 0 0 50%;
@@ -317,12 +318,20 @@ button, input {
 .glyphicon-home,.glyphicon-briefcase,.glyphicon-user,.glyphicon-envelope{
   color: #f77d0a;
 }
-h1,h2{
-  color:white;
+.contact-info{
+ text-align: left;
 }
 
+h1,h2{
+  color:black;
+}
 
-
+.sell-car,.buy-car{
+  height:auto;
+}
+.buy-car{
+  padding-bottom:50px;
+}
 body {
 	background: #eee !important;	
 }
@@ -403,6 +412,9 @@ form.form1 {
   padding-top: 40px;
 }
 
+.form1 {
+  padding-top: 40px;
+}
 
 
 .btn-success {
@@ -420,5 +432,59 @@ cursor: pointer;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
-  
+.home-table{
+  margin:0 auto;
+}
+
+.copyright{
+  color:#fff;
+}
+
+a{
+  color:#fff;
+}
+.contact-us{
+  margin-top:50px;
+}
+.contact-top{
+  padding:20px;
+}
+.contact-from{
+  width: 100% !important; 
+}
+
+.contact-submit{
+  padding:12px 40px;
+  font-size: 24px;;
+}
+
+.page-control
+{
+  padding: 20px 0px 20px 0;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  margin-top: auto;
+}
+.log-in-out{
+  padding-left: 120px;
+}
+
+.depreciation{
+  width:50%;
+}
+
+.createpost{
+  padding-top:40px;
+  padding-bottom: 25px;
+}
+
+.depreciationcalculation{
+padding-top:50px;
+}
+
 

@@ -212,6 +212,7 @@ export default class CarDetail extends Component {
         const {car,currentOffer,likeStatus, offers}  = this.state;
        
         return( 
+            <div class="container pt-5 pb-3">
             <div>
                  
                 { ( car ) ?  (
@@ -307,6 +308,7 @@ export default class CarDetail extends Component {
                     </div> )}
 
               </div> ) : ( ( this.state.deleted ) ? <Redirect to='/ownpost' /> : <div></div> ) }
+              </div>
               </div>
         
         ) 
