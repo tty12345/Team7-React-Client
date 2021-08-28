@@ -44,17 +44,35 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 100%;
 	overflow-x: scroll;
 } */
-.page-header {
-    height: 400px;
+.page-page {
+    height: 600px;
     margin-bottom: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/bg-banner.jpg);
+    background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)), url(/images/carousel-2.jpg);
     background-attachment: fixed;
 }
 
+@media (max-width: 991.98px) {
+    .page-page{
+        height: 300px;
+    }
+}
+.page-header {
+    height: 600px;
+    width:1200px;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  /* background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)); */
+  background: linear-gradient(rgba(28, 30, 50, 0.5), rgba(28, 30, 50, 0.5)), url(/images/carousel-2.jpg);
+  /* background-image: url("/images/carousel-2.jpg"); */
+    background-attachment: fixed;
+}
 @media (max-width: 991.98px) {
     .page-header {
         height: 300px;
@@ -123,14 +141,32 @@ h1, h2, h3, h4, h5, h6 {
 font-family: 'Rampart One', cursive;
 }
 
-.page-otherpages {
-    height: 100%;
+/* .page-footer{
+    height:400px;
+    width:1200px;
     margin-bottom: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(28, 30, 50, .5), rgba(28, 30, 50, .5)), url(/images/bg-banner.jpg);
+  /* background: linear-gradient(rgba(28, 30, 50, .9), rgba(28, 30, 50, .9)); */
+  /* background: linear-gradient(rgba(28, 30, 50, 0.5), rgba(28, 30, 50, 0.5)), url(/images/carousel-2.jpg); */
+  /* background-image: url("/images/carousel-2.jpg"); */
+    /* background-attachment: fixed;
+}
+@media (max-width: 991.98px) {
+    .page-footer{
+        height: 300px;
+    }
+}  */
+/* .page-preference {
+    height: 1200px;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(28, 30, 50, .5), rgba(28, 30, 50, .5)), url(/images/carousel-2.jpg);
     background-attachment: fixed;
     opacity: 0.8;
-}
+} */

@@ -210,6 +210,7 @@ export default class CarDetail extends Component {
        
         return( 
             <div>
+                 
                 { ( car ) ?  (
               <div>
                   
@@ -300,7 +301,8 @@ export default class CarDetail extends Component {
                     </div> )}
 
               </div> ) : ( ( this.state.deleted ) ? <Redirect to='/ownpost' /> : <div></div> ) }
-            </div>
+              </div>
+        
         ) 
     }
 }

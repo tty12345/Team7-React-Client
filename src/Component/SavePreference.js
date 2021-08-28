@@ -201,6 +201,7 @@ export default class SavePreference extends Component {
       if(!preferenceStatus)
         return(
           <div>
+          <div className="container-fluid page-header">
           <h1>Save your Preference</h1>
           <br/>
           <div>
@@ -270,11 +271,13 @@ export default class SavePreference extends Component {
 
           <button onClick ={this.savePreference}> Submit </button>
           </div>
+          </div>
         );
         else
         return (
 
           <div>
+          <div className="container-fluid page-header ">
           <h1>Your Preference</h1>
           <br/>
           <div>
@@ -303,6 +306,8 @@ export default class SavePreference extends Component {
          
           <button onClick ={this.Edit}> Edit </button>
           </div>
+          </div>
+         
 
         );
     }

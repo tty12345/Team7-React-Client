@@ -115,7 +115,39 @@ function App() {
           <Route exact path='/DepreciationCalculator' component={DepreciationCalculator} />
         </Switch>
       </div>
-      </Router>
+     
+      <footer>
+              <div className="footer-blurb">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-4 footer-blurb-item">
+                      <h3><span className="glyphicon glyphicon-plus-sign"></span> Loan Calculator</h3>
+                      <p>Calculator your loan here</p>
+                      <Link to="/Calculator" className="btn btn-default">Calculator Now</Link>
+                      {/* <p><a class="btn btn-default"><Link to={"/Calculator/"}>Calculator Now</Link></a></p> */}
+                    </div>
+                    <div className="col-sm-4 footer-blurb-item">
+                      <h3><span className="glyphicon glyphicon-usd"></span> Financial Blog</h3>
+                      <p>View tips about finanical knowledge</p>
+                      <p><a className="btn btn-default" href="http://loopholes.sg/">Tour now</a></p>
+                    </div>
+                    <div className="col-sm-4 footer-blurb-item">
+                      <h3><span className="glyphicon glyphicon-check"></span> Depreciation Calculator</h3>
+                      <p>Calculate car depreciation</p>
+                      <Link to="/DepreciationCalculator" className="btn btn-default">Calculator Now</Link>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+                  
+                  <div className="small-print">
+                    <div className="container">
+                      <p><a>Terms &amp; Conditions</a> | <a>Privacy Policy</a> | <a>Contact</a></p>
+                      <p>Copyright &copy; Example.com 2015 </p>
+                    </div>
+                  </div>
+            </footer>
+            </Router>
     </div>
   );
 }

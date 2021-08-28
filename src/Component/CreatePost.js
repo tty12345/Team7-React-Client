@@ -307,13 +307,14 @@ export default class CreatePost extends Component {
       if (sessionStorage.getItem("status") == 'true'){
         return (
           <div>
-            <div className="container-fluid page-otherpages">
+             <div className="container-fluid page-page">
             <div>
             <h2>Create <font color="#F77D0A">your</font> car post</h2>
           </div>
           {this.state.submitted?(<Redirect to='/CarList'/>):(
             
           <div>
+           
               <div className="form-group">
                   <label htmlFor="depreciation">Depreciation (Annual)</label> 
                   <input
@@ -509,11 +510,15 @@ export default class CreatePost extends Component {
 
 
                 </div>
+                 
                 )}
-              </div>
+                </div>
+              
+             
               )}
           </div>
           </div>
+        
         );
       }
       else {
