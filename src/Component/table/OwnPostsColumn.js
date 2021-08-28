@@ -31,7 +31,7 @@ export const OWNPOSTCOLUMNS = [
     },
     {
         Header: 'Photo',
-        accessor: 'photoUrl',
+        accessor: 'photo',
         Cell: ({ cell: { value }}) => (
             
               <img src={value}/>
@@ -39,7 +39,7 @@ export const OWNPOSTCOLUMNS = [
     },
     {
         Header: '',
-        accessor: 'carPostImage.carpostImage',
+        accessor: 'photo.carpostImage',
         Cell: ({ cell: { value }}) => (
               <img src={"data:image/png;base64," + value} className ="base64Image"/>
             )
