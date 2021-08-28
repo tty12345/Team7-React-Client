@@ -307,8 +307,9 @@ export default class CreatePost extends Component {
       if (sessionStorage.getItem("status") == 'true'){
         return (
           <div>
+            <div className="container-fluid page-otherpages">
             <div>
-            <h2>Create your car post</h2>
+            <h2>Create <font color="#F77D0A">your</font> car post</h2>
           </div>
           {this.state.submitted?(<Redirect to='/CarList'/>):(
             
@@ -511,6 +512,7 @@ export default class CreatePost extends Component {
                 )}
               </div>
               )}
+          </div>
           </div>
         );
       }

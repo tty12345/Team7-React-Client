@@ -1,6 +1,6 @@
 body {
 	padding-top: 50px;
-	color: #959595;
+	color: #111111;
 	}
 	
 h1, h2, h3, h4, h5, h6 {
@@ -123,3 +123,14 @@ h1, h2, h3, h4, h5, h6 {
 font-family: 'Rampart One', cursive;
 }
 
+.page-otherpages {
+    height: 100%;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(28, 30, 50, .5), rgba(28, 30, 50, .5)), url(/images/bg-banner.jpg);
+    background-attachment: fixed;
+    opacity: 0.8;
+}
