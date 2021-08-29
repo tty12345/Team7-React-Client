@@ -464,6 +464,7 @@ a{
 .page-control
 {
   padding: 20px 0px 20px 0;
+  color:black;
 }
 body{
   min-height: 100vh;

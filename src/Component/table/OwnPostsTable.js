@@ -65,7 +65,7 @@ export const OwnPostsTable = () => {
                     </tbody>
                 </table>
             </div>
-            <div align ="center">
+            <div className = "page-control" align ="center">
                 <select value={pageSize} onChange = {e=> setPageSize(Number(e.target.value))}>
                         {
                             [5,10,50,100].map(pageSize => (
