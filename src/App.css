@@ -540,7 +540,7 @@ padding-top:50px;
 
 .createcar{
   background-color: #FFFFFF;
-  width: 800px;
+  width: fit-content;
   height: 100%;
   margin: 7em auto;
   border-radius: 1.5em;
