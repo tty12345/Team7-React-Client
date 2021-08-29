@@ -12,7 +12,7 @@ export default class CarList extends Component {
           <div>
             <br/>
           <div></div>
-              <div>
+              <div className = "table-heading">
                 <BasicTable/>
               </div>
           </div>

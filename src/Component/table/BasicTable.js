@@ -4,6 +4,7 @@ import {COLUMNS} from './columns'
 import React, { useState, useEffect } from "react";
 import PostService from "../../Services/PostService";
 
+
 export const BasicTable = () => {
 
     const [data1, setData] = useState([]);
@@ -84,7 +85,7 @@ export const BasicTable = () => {
                 <table>
                     <tr>
                         <th><a2>Search Our Cars: </a2></th>
-                        <th>Brand<select name = "brand" onChange = {onChangeBrand}>
+                      <th>Brand<select name = "brand" onChange = {onChangeBrand}>
                                 <option></option>
                                 <option value='Audi'>Audi</option>
                                 <option value='Austin'>Austin</option>
