@@ -17,6 +17,7 @@ import SavePreference from './Component/SavePreference';
 import { GoogleLogout } from 'react-google-login';
 
 
+
 function App() {
 
   function logout() {
@@ -31,6 +32,7 @@ function App() {
     // alert('Successfully logged out');
     sessionStorage.clear();
     sessionStorage.setItem("logout", "true");
+    console.log("SOMETHING");
     window.location.reload()
     return (
       <Redirect to="/" />
@@ -80,11 +82,7 @@ function App() {
                     <Link to={"/CreatePost"} className="nav-link">Post</Link>
                   </li>
 
-                  <li>
-                    {sessionStorage.getItem("status") == null ?
-                      <Link to={"/signup"} className="nav-link">Sign Up</Link>
-                      : <div></div>}
-                  </li>
+                  
                   <li>
                     {sessionStorage.getItem("status") == null ?
                       <div></div> :
@@ -95,6 +93,7 @@ function App() {
                       <div></div> :
                       <Link to={"/SavePreference"} className="nav-link">Preference</Link>}
                   </li>
+        
                   <li>
                     <a href="www.google.com" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                     <ul className="dropdown-menu" aria-labelledby="about-us">
@@ -111,6 +110,12 @@ function App() {
                       </ul>
                     </li>) :
                     (<li></li>)}
+
+                   <li>
+                    {sessionStorage.getItem("status") == null ?
+                      <Link to={"/signup"} className="nav-link">Sign Up</Link>
+                      : <div></div>}
+                  </li>
 
                   <li className="nav-link log-in-out">
                     {sessionStorage.getItem("status") == null ?
@@ -152,7 +157,9 @@ function App() {
             <Route exact path='/Estimate' component={Estimate} />
             <Route exact path='/DepreciationCalculator' component={DepreciationCalculator} />
           </Switch>
+          
         </div>
+        
 
 
         <footer>
@@ -175,23 +182,23 @@ function App() {
                   <p>Calculate car depreciation</p>
                   <Link to="/DepreciationCalculator" className="btn btn-default">Calculator Now</Link>
                 </div>
-              </div>
+                  </div>
+                  </div>
+                  
+                  <div className="small-print">
+                    <div className="container">
+                      <p><a>Terms &amp; Conditions</a> | <a>Privacy Policy</a> | <a>Contact</a></p>
+                      <p>Copyright &copy; Team7AD.com 2021 </p>
+                    </div>
+                  </div>
+                  </div>
+            </footer>
+            </Router>
             </div>
-          </div>
-
-          <div className="small-print">
-            <div className="container">
-              <p><a>Terms &amp; Conditions</a> | <a>Privacy Policy</a> | <a>Contact</a></p>
-              <p class="copyright">Copyright &copy; Example.com 2015 </p>
-            </div>
-          </div>
-        </footer>
-      </Router>
-    </div>
+            
 
 
 
   );
 }
 export default App;
-
