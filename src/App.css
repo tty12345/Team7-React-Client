@@ -313,7 +313,7 @@ button, input {
 }
 
 .mb-4{
-  height:400px;
+  height:430px;
 }
 .glyphicon-home,.glyphicon-briefcase,.glyphicon-user,.glyphicon-envelope{
   color: #f77d0a;
@@ -436,6 +436,7 @@ cursor: pointer;
 
 .home-table{
   margin:0 auto;
+  color:black;
 }
 
 .copyright{
@@ -446,10 +447,10 @@ a{
   color:#fff;
 }
 .contact-us{
-  margin-top:50px;
+  margin-top:75px;
 }
 .contact-top{
-  padding:20px;
+  padding-top:4px;
 }
 .contact-from{
   width: 100% !important; 
@@ -463,6 +464,7 @@ a{
 .page-control
 {
   padding: 20px 0px 20px 0;
+  color:black;
 }
 body{
   min-height: 100vh;
@@ -470,7 +472,7 @@ body{
   flex-direction: column;
 }
 footer{
-  margin-top: auto;
+  margin: auto 0;
 }
 .log-in-out{
   padding-left: 120px;
@@ -497,6 +499,10 @@ padding-top:50px;
   color:black;
   font-size: 17px;
   font-weight:700;
+  padding-bottom:15px;
+  /* min-height:100vh;
+  display:flex;
+  flex-direction: column; */
   
 }
 
@@ -527,4 +533,32 @@ padding-top:50px;
   color:rgb(63, 62, 62);
   font-size: 17px;
 }
+
+.coe-title{
+  color:black;
+  font-size: 20px;
+  font-weight:700;
+}
+
+.createcar{
+  background-color: #FFFFFF;
+  width: fit-content;
+  height: 100%;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  padding-bottom:20px;
+}
+
+.table-heading{
+  color:black;
+  font-weight:400;
+  font-size:15px；
+}
+
+
+.get-estimate{
+  padding-top:30px;
+}
+
 

@@ -5,7 +5,6 @@ import UserDataService from "../Services/UserService";
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-
 export default class CreatePost extends Component {
     constructor(props) {
       super(props);
@@ -308,7 +307,7 @@ export default class CreatePost extends Component {
         return (
           <div>
              <div className="container-fluid page-page">
-            <div class="main">
+            <div class="main createcar">
             <div>
             <p className = "sign createpost" align = "center">Create <font color="#F77D0A">your</font> car post</p>
           </div>
@@ -401,7 +400,7 @@ export default class CreatePost extends Component {
                   />
                 </div>
                 <div className="form-group create">
-                  <label htmlFor="mileage">Mileage</label>
+                  <label htmlFor="mileage">Mileage (in km)</label>
                   <input
                     type="text"
                     className="form-control"
@@ -482,11 +481,11 @@ export default class CreatePost extends Component {
                   {this.state.IMAGE?
                   <div>
                   <label htmlFor="photoByte">Current Image:</label>
-                  <img alt ="" src = {"data:image/png;base64,"+this.state.IMAGE}/>
+                  <img alt ="" src = {"data:image/png;base64,"+this.state.IMAGE} styles="width:550px;"/>
                   </div>:
                   <div>
                   <label htmlFor="photoByte">Upload Photo</label>
-                  <img src = {this.state.currentPhoto}/>
+                  <img src = {this.state.currentPhoto} styles="width:550px;"/>
                   
                   </div>}
                   <input 
@@ -499,13 +498,13 @@ export default class CreatePost extends Component {
                   />
                   <br/>
                 </div>)}
-                {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
+                {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-success" >
                   Submit
               </button>):(
                 <div>
 
                 {this.state.imageExist?
-                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}
+                <button onClick={this.saveImage} className="btn btn-success" >Upload Image</button>:<div></div>}
 
 
                 </div>
