@@ -308,7 +308,7 @@ export default class CreatePost extends Component {
         return (
           <div>
              <div className="container-fluid page-page">
-            <div class="main">
+            <div class="main createcar">
             <div>
             <p className = "sign createpost" align = "center">Create <font color="#F77D0A">your</font> car post</p>
           </div>
@@ -499,13 +499,13 @@ export default class CreatePost extends Component {
                   />
                   <br/>
                 </div>)}
-                {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-primary" >
+                {this.state.imageUploadStatus?(<button onClick={this.savePost} className="btn btn-success" >
                   Submit
               </button>):(
                 <div>
 
                 {this.state.imageExist?
-                <button onClick={this.saveImage} className="btn btn-primary" >Upload Image</button>:<div></div>}
+                <button onClick={this.saveImage} className="btn btn-success" >Upload Image</button>:<div></div>}
 
 
                 </div>

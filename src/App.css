@@ -471,7 +471,7 @@ body{
   flex-direction: column;
 }
 footer{
-  margin-top: auto;
+  margin: auto 0;
 }
 .log-in-out{
   padding-left: 120px;
@@ -498,6 +498,9 @@ padding-top:50px;
   color:black;
   font-size: 17px;
   font-weight:700;
+  /* min-height:100vh;
+  display:flex;
+  flex-direction: column; */
   
 }
 
@@ -533,4 +536,14 @@ padding-top:50px;
   color:black;
   font-size: 20px;
   font-weight:700;
+}
+
+.createcar{
+  background-color: #FFFFFF;
+  width: 800px;
+  height: 100%;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  padding-bottom:20px;
 }
