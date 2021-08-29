@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PostService from "../Services/PostService";
-
-
+import '../App.css';
+import { Link } from 'react-router-dom';
 export default class Estimate extends Component {
     constructor(props) {
       super(props);
@@ -207,139 +207,149 @@ export default class Estimate extends Component {
             photoByte: null
           });
     }
-  
-    render() {
-      return (
-        <div>
-          <div>
-          <h2>Estimate the price of your car</h2>
-        </div>          
-            <div className="form-group">
-                <label htmlFor="depreciation">Depreciation (Annual)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="depreciation"
-                  required
-                  value={this.state.depreciation}
-                  onChange={this.onChangeDepreciation}
-                  name="depreciation"
-                  placeholder="S$"
-                />
-            </div>
 
-              <div className="form-group">
-                <label htmlFor="brand">Brand</label>
+
+  
+  render(){
+    return(
+      <div>
+        <div class="main">
+            <div>
+            <p className = "sign get-estimate" align = "center">Get Estimate</p>
+          </div>
+          <div className = "create get-caption">
+          <h2>Estimate the price of your car</h2>
+        </div>       
+              <div className="form-group create">
+                  <label htmlFor="depreciation">Depreciation (Annual)</label> 
+                  <input
+                    type="text"
+                    className="form-control depreciation"
+                    id="depreciation"
+                    required
+                    value={this.state.depreciation}
+                    onChange={this.onChangeDepreciation}
+                    name="depreciation"
+                    placeholder="S$"
+                  />
+                  <Link to="/DepreciationCalculator" className="btn btn-default"><b>Depreciation Calculator</b></Link>
+              </div>
+
+                <div className="form-group create">
+                  <label htmlFor="brand" >Brand</label>
+                  <br></br>
+                  <select name="category" onChange={this.onChangeBrand}>
+                    <option value={this.state.brand}>{this.state.realBrand}</option>
+                    <option value='0'>Audi</option>
+                    <option value='1'>Austin</option>
+                    <option value='2'>BMW</option>
+                    <option value='3'>Citron</option>
+                    <option value='4'>Ferrari</option>
+                    <option value='5'>Fiat</option>
+                    <option value='6'>Honda</option>
+                    <option value='7'>Hyundai</option>
+                    <option value='8'>Kia</option>
+                    <option value='9'>Lexus</option>
+                    <option value='10'>Mini</option>
+                    <option value='11'>Mercedes-Benz</option>
+                    <option value='12'>Mitsubishi</option>
+                    <option value='13'>Morris</option>
+                    <option value='14'>Nissan</option>
+                    <option value='15'>Opel</option>
+                    <option value='16'>Peugeot</option>
+                    <option value='17'>Porsche</option>
+                    <option value='18'>Renault</option>
+                    <option value='19'>Subaru</option>
+                    <option value='20'>Suzuki</option>
+                    <option value='21'>Toyota</option>
+                    <option value='22'>Volkswagen</option>
+                    <option value='23'>Volvo</option>
+                  </select>
+                </div>
+                <div className="form-group create ">
+                  <label htmlFor="description">Description</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="description"
+                    required
+                    value={this.state.description}
+                    onChange={this.onChangeDescription}
+                    name="description"
+                    placeholder="Car Model"
+                  />
+                </div>
+                <div className="form-group create">
+                  <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="engineCapacity"
+                    required
+                    value={this.state.engineCapacity}
+                    onChange={this.onChangeEngineCapacity}
+                    name="brand"
+                    placeholder="cc"
+                  />
+                </div>
+                <div className="form-group create">
+                  <label htmlFor="registeredDate">Registered Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="registeredDate"
+                    required
+                    value={this.state.registeredDate}
+                    onChange={this.onChangeRegisteredDate}
+                    name="registeredDate"
+                  />
+                </div>
+                <div className="form-group create">
+                  <label htmlFor="mileage">Mileage</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="mileage"
+                    required
+                    value={this.state.mileage}
+                    onChange={this.onChangeMileage}
+                    name="mileage"
+                    placeholder="km"
+                  />
+                </div>
+                <div className="form-group create" >
+                  <label htmlFor="category">Category</label>
+                  <br></br>
+                 <span><select name="category" onChange={this.onChangeCategory}>
+                    <option value={this.state.category}>{this.state.realCategory}</option>
+                    <option value='1'>Hatchback</option>
+                    <option value='2'>Luxury</option>
+                    <option value='3'>MPV</option>
+                    <option value='4'>Others</option>
+                    <option value='5'>SUV</option>
+                    <option value='6'>Sedan</option>
+                    <option value='7'>Sports</option>
+                    <option value='8'>Stationwagon</option>
+                    <option value='9'>Truck</option>
+                    <option value='10'>Van</option>
+                  </select>
+                  </span> 
+                </div>
                 <br></br>
-                <select name="category" onChange={this.onChangeBrand}>
-                  <option value='null'>Choose one</option>
-                  <option value='0'>Audi</option>
-                  <option value='1'>Austin</option>
-                  <option value='2'>BMW</option>
-                  <option value='3'>Citron</option>
-                  <option value='4'>Ferrari</option>
-                  <option value='5'>Fiat</option>
-                  <option value='6'>Honda</option>
-                  <option value='7'>Hyundai</option>
-                  <option value='8'>Kia</option>
-                  <option value='9'>Lexus</option>
-                  <option value='10'>Mini</option>
-                  <option value='11'>Mercedes-Benz</option>
-                  <option value='12'>Mitsubishi</option>
-                  <option value='13'>Morris</option>
-                  <option value='14'>Nissan</option>
-                  <option value='15'>Opel</option>
-                  <option value='16'>Peugeot</option>
-                  <option value='17'>Porsche</option>
-                  <option value='18'>Renault</option>
-                  <option value='19'>Subaru</option>
-                  <option value='20'>Suzuki</option>
-                  <option value='21'>Toyota</option>
-                  <option value='22'>Volkswagen</option>
-                  <option value='23'>Volvo</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="description"
-                  required
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  name="description"
-                  placeholder="Car Model"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="engineCapacity">Engine Capacity</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="engineCapacity"
-                  required
-                  value={this.state.engineCapacity}
-                  onChange={this.onChangeEngineCapacity}
-                  name="brand"
-                  placeholder="cc"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="registeredDate">Registered Date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="registeredDate"
-                  required
-                  value={this.state.registeredDate}
-                  onChange={this.onChangeRegisteredDate}
-                  name="registeredDate"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="mileage">Mileage</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="mileage"
-                  required
-                  value={this.state.mileage}
-                  onChange={this.onChangeMileage}
-                  name="mileage"
-                  placeholder="km"
-                />
-              </div>
-              <div>
-                <label htmlFor="category">Category</label>
+                <div>
+                  <label htmlFor="priceEstimate" class = "price">Price Estimate</label>
+                  <br></br>
+                  <p class="price">${this.state.priceEstimate}</p>
+                  <br></br>
+                  <button
+                    onClick={this.onClickPriceEstimate} type="button" className="btn btn-success">
+                    Get Estimate
+                  </button>
+                </div>
                 <br></br>
-                <select name="category" onChange={this.onChangeCategory}>
-                  <option value='null'>Choose one</option>
-                  <option value='1'>Hatchback</option>
-                  <option value='2'>Luxury</option>
-                  <option value='3'>MPV</option>
-                  <option value='4'>Others</option>
-                  <option value='5'>SUV</option>
-                  <option value='6'>Sedan</option>
-                  <option value='7'>Sports</option>
-                  <option value='8'>Stationwagon</option>
-                  <option value='9'>Truck</option>
-                  <option value='10'>Van</option>
-                </select>
-              </div>
-              <br></br>
-              <div>
-                <label htmlFor="priceEstimate">Price Estimate</label>
-                <p>${this.state.priceEstimate}</p>
-                <button
-                  onClick={this.onClickPriceEstimate} type="button" class="btn btn-primary">
-                  Get Estimate
-                </button>
-              </div>
-              <br></br>
-            <br></br>
-            <br></br>
-            </div>
-        )
-    }
+                
+      </div>
+      </div>
+    )
+  }
 }

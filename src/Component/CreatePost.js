@@ -5,7 +5,6 @@ import UserDataService from "../Services/UserService";
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-
 export default class CreatePost extends Component {
     constructor(props) {
       super(props);
