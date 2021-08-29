@@ -94,7 +94,8 @@ export default class SignUp extends Component {
         width:"max-content",
         backgroundImage: `linear-gradient(to right, #9C27B0, #E040FB)`,
         borderRadius:17,
-        marginTop: 15
+        marginTop: 15,   
+        cursor: "pointer",
       };
     
 
