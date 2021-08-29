@@ -482,11 +482,11 @@ export default class CreatePost extends Component {
                   {this.state.IMAGE?
                   <div>
                   <label htmlFor="photoByte">Current Image:</label>
-                  <img alt ="" src = {"data:image/png;base64,"+this.state.IMAGE}/>
+                  <img alt ="" src = {"data:image/png;base64,"+this.state.IMAGE} styles="width:550px;"/>
                   </div>:
                   <div>
                   <label htmlFor="photoByte">Upload Photo</label>
-                  <img src = {this.state.currentPhoto}/>
+                  <img src = {this.state.currentPhoto} styles="width:550px;"/>
                   
                   </div>}
                   <input 
