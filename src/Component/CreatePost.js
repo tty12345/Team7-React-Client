@@ -400,7 +400,7 @@ export default class CreatePost extends Component {
                   />
                 </div>
                 <div className="form-group create">
-                  <label htmlFor="mileage">Mileage</label>
+                  <label htmlFor="mileage">Mileage (in km)</label>
                   <input
                     type="text"
                     className="form-control"
