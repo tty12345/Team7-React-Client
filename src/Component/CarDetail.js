@@ -214,7 +214,7 @@ export default class CarDetail extends Component {
         return( 
             <div class="container pt-5 pb-3">
             <div>
-                <div className="container-fluid page-page">
+                <div className="container-fluid page-page" styles="padding-left=5px;padding-right=5px">
                  
                 { ( car ) ?  (
               <div className="mydiv" >
