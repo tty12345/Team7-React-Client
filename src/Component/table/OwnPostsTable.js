@@ -2,7 +2,7 @@
 import { useTable, usePagination } from 'react-table'
 import { OWNPOSTCOLUMNS } from './OwnPostsColumn'
 import React, { useState, useEffect } from "react";
-import CarPostDataService from "../../Services/CarPostService";
+import CarPostDataService from "../../Services/PostService";
 
 export const OwnPostsTable = () => {
 

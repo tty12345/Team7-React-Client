@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CARPOST_API_BASE_URL = "http://localhost:8080/post";
+const CARPOST_API_BASE_URL = "https://teamsevenad.herokuapp.com/post";
 
 class PostDataService {
 
@@ -35,13 +35,6 @@ class PostDataService {
     getEstimate(to_estimate) {
       const formData = new FormData();
 
-      // console.log(to_estimate[0]);
-      // console.log(to_estimate[1]);
-      // console.log(to_estimate[2]);
-      // console.log(to_estimate[3]);
-      // console.log(to_estimate[4]);
-      // console.log(to_estimate[5]);
-
       formData.append("depreciation", to_estimate[0]);
       formData.append('age', to_estimate[1]);
       formData.append('mileage', to_estimate[2]);
@@ -49,7 +42,7 @@ class PostDataService {
       formData.append('brand', to_estimate[4]);
       formData.append('category', to_estimate[5]);
 
-      return axios.post("http://localhost:8080/data/estimate", formData, {
+      return axios.post("https://teamsevenad.herokuapp.com/data/estimate", formData, {
         headers: {
           'content-type': 'multipart/form-data'
         }});
@@ -60,23 +53,23 @@ class PostDataService {
     }
 
     likePost(user,id){
-      return axios.post("http://localhost:8080/like/addLike/" + id, user);
+      return axios.post("https://teamsevenad.herokuapp.com/like/addLike/" + id, user);
     }
 
     unLikePost(user,id){
-      return axios.post("http://localhost:8080/like/deleteLike/" + id,user);
+      return axios.post("https://teamsevenad.herokuapp.com/like/deleteLike/" + id,user);
     }
 
     checkLikeStatus(user,id){
-      return axios.post("http://localhost:8080/like/checkLike/" + id,user);
+      return axios.post("https://teamsevenad.herokuapp.com/like/checkLike/" + id,user);
     }
 
     savePreference(preferences){
-      return axios.post("http://localhost:8080/preference/save", preferences);
+      return axios.post("https://teamsevenad.herokuapp.com/preference/save", preferences);
     }
 
     checkCurrentPreference(userId){
-      return axios.get("http://localhost:8080/preference/checkPreference/"+ userId);
+      return axios.get("https://teamsevenad.herokuapp.com/preference/checkPreference/"+ userId);
     }
 
     getOffer(carpostId){
@@ -85,6 +78,16 @@ class PostDataService {
 
     getWatchList(userId){
       return axios.get(CARPOST_API_BASE_URL + "/watchList/" + userId);
+    }
+
+    getCarPost() {
+      return axios.get(CARPOST_API_BASE_URL + "/listPost");
+    }
+    getOwnCars(ownerId){
+      return axios.get(CARPOST_API_BASE_URL + "/getowncars/" + ownerId);
+    }
+    getTopCars() {
+      return axios.get(CARPOST_API_BASE_URL + "/hotcars");
     }
 }
 

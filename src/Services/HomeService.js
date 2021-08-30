@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const FLASK_API_BASE_URL = "http://localhost:8080/data";
+const FLASK_API_BASE_URL = "https://teamsevenad.herokuapp.com/data";
 
 class HomeService {
 
