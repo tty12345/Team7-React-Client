@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com/api";
-const MAIN_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com";
+const USER_API_BASE_URL = "https://teamsevenad.herokuapp.com/api";
+const MAIN_URL = "https://teamsevenad.herokuapp.com";
 
 class UserDataService {
   login(user) {

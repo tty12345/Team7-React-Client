@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const CARPOST_API_BASE_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com/post";
-const MAIN_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com";
+const CARPOST_API_BASE_URL = "https://teamsevenad.herokuapp.com/post";
+const MAIN_URL = "https://teamsevenad.herokuapp.com";
 
 class PostDataService {
 
