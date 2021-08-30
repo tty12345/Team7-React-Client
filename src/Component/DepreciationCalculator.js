@@ -99,46 +99,72 @@ export default class DepreciationCalculator extends Component {
     render() {
         return (
             <div className = "main">
-            <p className = "sign depreciationcalculation" align ="center">Depreciation Calculator</p>
+            <p className = "sign depreciationcalculati  on" align ="center">Depreciation Calculator</p>
             <div className = "form1">
-                <h3>Calculate the depreciation on your car</h3>
+                <h3>Calculate the depreciation on a used car</h3>
                 <br></br>
-                    <label htmlFor="price">Price</label>
-                    <input
-                    type="text"
-                    className="form-control"
-                    id="price"
-                    required
-                    name="price"
-                    onChange={this.onChangePrice}
-                    placeholder="S$"
-                    />
-                </div>
-                <div className = "form1">
-                    <label htmlFor="registeredDate">Registered Date</label>
-                    <input
-                    type="date"
-                    className="form-control"
-                    id="registeredDate"
-                    required
-                    value={this.state.registeredDate}
-                    onChange={this.onChangeRegisteredDate}
-                    name="registeredDate"
-                    />
-                </div>
-                <div className = "form1">
-                    <label htmlFor="arf">ARF</label>
-                    <input
-                    type="text"
-                    className="form-control"
-                    id="arf"
-                    required
-                    onChange={this.onChangeArf}
-                    name="arf"
-                    placeholder="S$"
-                    />
-                </div>
-                <br></br>
+                <table align="center">
+                    <tr>
+                        <td><label htmlFor="price">Price</label></td>
+                        <td>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="price"
+                                required
+                                name="price"
+                                onChange={this.onChangePrice}
+                                placeholder="S$"
+                                size="50"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p> </p></td>
+                        <td><p> </p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label htmlFor="registeredDate">Registered Date</label>
+                        </td>
+                        <td>
+                            <input
+                                type="date"
+                                className="form-control"
+                                id="registeredDate"
+                                required
+                                value={this.state.registeredDate}
+                                onChange={this.onChangeRegisteredDate}
+                                name="registeredDate"
+                                size="50"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p> </p></td>
+                        <td><p> </p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <label htmlFor="arf">ARF</label>
+                        </td>
+                        <td>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="arf"
+                            required
+                            onChange={this.onChangeArf}
+                            name="arf"
+                            placeholder="S$"
+                            size="50"
+                            />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br></br>
+
                 <div className = "form1">
                     <button onClick={this.calculateDepreciation} class="btn btn-success">Calculate</button>
                 </div>

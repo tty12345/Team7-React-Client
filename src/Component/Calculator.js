@@ -13,10 +13,10 @@ export default class Calculator extends Component {
 
   
         this.state = {
-            loanAmount: 0,
-            interestRate: 0,
+            loanAmount: "",
+            interestRate: "",
             loanPeriod: 1,
-            monthlyInstallment: 0
+            monthlyInstallment: ""
         };
     }
 
@@ -42,6 +42,10 @@ export default class Calculator extends Component {
         // console.log(this.state.loanAmount);
         // console.log(this.state.interestRate);
         // console.log(this.state.loanPeriod);
+        if (this.state.loanAmount < 10000) {
+            window.alert("Minimum loan amount is S$10,000");
+            return;
+        }
 
         var totalInterest = ((this.state.interestRate / 100) * this.state.loanAmount) * this.state.loanPeriod;
         var totalLoan = Number(this.state.loanAmount) + totalInterest;
@@ -53,10 +57,10 @@ export default class Calculator extends Component {
 
     onClear() {
         this.setState({
-            loanAmount: 0,
-            interestRate: 0,
+            loanAmount: "",
+            interestRate: "",
             loanPeriod: 1,
-            monthlyInstallment: 0
+            monthlyInstallment: ""
         })
     }
 
@@ -67,44 +71,78 @@ export default class Calculator extends Component {
                 <div className = "form1">
                 <h3>Calculate the monthly installment on your car here!</h3>
                 <br></br>
-                    <label htmlFor="loanAmount">Loan Amount</label>
-                    <input
-                    type="text"
-                    className="form-control"
-                    id="loanAmount"
-                    required
-                    name="loanAmount"
-                    onChange={this.onChangeLoanAmount}
-                    placeholder="S$"
-                    />
-                </div>
+                <table align="center">
+                    <tr>
+                        <td>
+                            <label htmlFor="loanAmount">Loan Amount</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="loanAmount"
+                                required
+                                name="loanAmount"
+                                onChange={this.onChangeLoanAmount}
+                                value={this.state.loanAmount}
+                                placeholder="S$"
+                                size="50"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p> </p></td>
+                        <td><p> </p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label htmlFor="interestRate">Interest Rate</label>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="interestRate"
+                                required
+                                name="interestRate"
+                                onChange={this.onChangeInterestRate}
+                                value={this.state.interestRate}
+                                placeholder="%"
+                                size="50"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p> </p></td>
+                        <td><p> </p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <label htmlFor="loanPeriod">Loan Period</label>
+                        </td>
+                        <td>
+                            <input
+                                type="range"
+                                min="1"
+                                max="7"
+                                value={this.state.loanPeriod}
+                                onChange={this.onChangeLoanPeriod}
+                                id="loanPeriod"
+                                required
+                                name="loanPeriod"
+                                size="50"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p> </p></td>
+                        <td>
+                            <p>{this.state.loanPeriod}</p>
+                        </td>
+                    </tr>
+                </table>
                 <br></br>
-                <div className = "form1">
-                    <label htmlFor="interestRate">Interest Rate</label>
-                    <input
-                    type="text"
-                    className="form-control"
-                    id="interestRate"
-                    required
-                    name="interestRate"
-                    onChange={this.onChangeInterestRate}
-                    placeholder="%"
-                    />
-                </div>
-                <br></br>
-                <div className = "form1">
-                    <label htmlFor="loanPeriod">Loan Period</label>
-                    <input
-                    type="range"
-                    min="1"
-                    max="7"
-                    value={this.state.loanPeriod}
-                    onChange={this.onChangeLoanPeriod}
-                    id="loanPeriod"
-                    required
-                    name="loanPeriod"
-                    />
-                    <p>{this.state.loanPeriod}</p>
+                                    
                 </div>
                 <div>
                     <button onClick={this.calculateLoan} class="btn btn-success">Calculate</button>
@@ -114,9 +152,14 @@ export default class Calculator extends Component {
                     <label>Monthly Installment:</label>
                     <p>S${this.state.monthlyInstallment}</p>
                 </div>
-                <br></br>
                 <div>
                     <button onClick={this.onClear} class="btn btn-success">Clear</button>
+                </div>
+                <br></br>
+                <br></br>
+                <div>
+                    <p>Minimum loan amount is S$10,000.</p>
+                    <p>The maximum loan period is 7 years.</p>
                 </div>
             </div>
         )
