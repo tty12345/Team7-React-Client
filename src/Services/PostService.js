@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const CARPOST_API_BASE_URL = "http://localhost:8080/post";
+const CARPOST_API_BASE_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com/post";
+const MAIN_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com";
 
 class PostDataService {
 
@@ -49,7 +50,7 @@ class PostDataService {
       formData.append('brand', to_estimate[4]);
       formData.append('category', to_estimate[5]);
 
-      return axios.post("http://localhost:8080/data/estimate", formData, {
+      return axios.post(MAIN_URL+"/data/estimate", formData, {
         headers: {
           'content-type': 'multipart/form-data'
         }});
@@ -60,23 +61,23 @@ class PostDataService {
     }
 
     likePost(user,id){
-      return axios.post("http://localhost:8080/like/addLike/" + id, user);
+      return axios.post(MAIN_URL +"/like/addLike/" + id, user);
     }
 
     unLikePost(user,id){
-      return axios.post("http://localhost:8080/like/deleteLike/" + id,user);
+      return axios.post(MAIN_URL + "/like/deleteLike/" + id,user);
     }
 
     checkLikeStatus(user,id){
-      return axios.post("http://localhost:8080/like/checkLike/" + id,user);
+      return axios.post(MAIN_URL +"/like/checkLike/" + id,user);
     }
 
     savePreference(preferences){
-      return axios.post("http://localhost:8080/preference/save", preferences);
+      return axios.post(MAIN_URL +"/preference/save", preferences);
     }
 
     checkCurrentPreference(userId){
-      return axios.get("http://localhost:8080/preference/checkPreference/"+ userId);
+      return axios.get(MAIN_URL +"/preference/checkPreference/"+ userId);
     }
 
     getOffer(carpostId){
