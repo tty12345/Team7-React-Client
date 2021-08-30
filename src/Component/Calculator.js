@@ -98,7 +98,7 @@ export default class Calculator extends Component {
                         <td>
                             <label htmlFor="interestRate">Interest Rate</label>
                         </td>
-                        <td>
+                        <td className = "scroller">
                             <input
                                 type="text"
                                 className="form-control"
@@ -130,7 +130,7 @@ export default class Calculator extends Component {
                                 id="loanPeriod"
                                 required
                                 name="loanPeriod"
-                                size="50"
+                                style = {{width: "66%"}}
                             />
                         </td>
                     </tr>
