@@ -86,6 +86,16 @@ class PostDataService {
     getWatchList(userId){
       return axios.get(CARPOST_API_BASE_URL + "/watchList/" + userId);
     }
+
+    getCarPost() {
+      return axios.get(CARPOST_API_BASE_URL + "/listPost");
+    }
+    getOwnCars(ownerId){
+      return axios.get(CARPOST_API_BASE_URL + "/getowncars/" + ownerId);
+    }
+    getTopCars() {
+      return axios.get(CARPOST_API_BASE_URL + "/hotcars");
+    }
 }
 
 export default new PostDataService();
