@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const FLASK_API_BASE_URL = "http://localhost:8080/data";
+const FLASK_API_BASE_URL = "http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com/data";
 
 class HomeService {
 

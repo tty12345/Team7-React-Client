@@ -70,7 +70,7 @@ export default class SignUp extends Component {
                 email: res.profileObj.email
               };
 
-        axios.post("http://localhost:8080/api/googlelogin",data)
+        axios.post("http://springbootbackend-env.eba-b2jcsvnv.us-east-1.elasticbeanstalk.com/api/googlelogin",data)
         .then( response => {
             if ( response.status === 200){
                 this.setState({
