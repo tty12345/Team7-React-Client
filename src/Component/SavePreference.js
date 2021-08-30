@@ -207,18 +207,17 @@ export default class SavePreference extends Component {
   render(){
     const {model,highestPrice,
     lowestPrice, brand, engineCapacityMax,
-    engineCapacityMin,category,preferenceStatus, realBrand, realCategory}  = this.state;
+    engineCapacityMin,category,preferenceStatus, realBrand, realCategory,depreciationMax}  = this.state;
 
     if(!preferenceStatus)
       return(
-          <div className="main">
-          <p className = "sign preference" align ="center">Save your preference</p>
-        <div>
-            <div className = "form1 pref">Model: <input type="text" onChange={this.onChangeModel} class = "input" value ={model}/></div>
-        </div>
-        <br></br>
+        <div className="main">
+          <p className = "sign preference" align="center">Save your preference</p>
+        
+        <div className = "form1 pref">Preferred Model: <input type="text" onChange={this.onChangeModel} class = "input" value ={model}/></div>
+        
         <div className = "form1 pref">
-              <label htmlFor="brand">Brand: </label>
+              <label htmlFor="brand" >*Preferred Brand: </label>
               <select name="brand" onChange={this.onChangeBrand} class = "input">
                 <option value={this.state.brand}>{this.state.realBrand}</option>
                 <option value='0'>Audi</option>
@@ -246,10 +245,9 @@ export default class SavePreference extends Component {
                 <option value='22'>Volkswagen</option>
                 <option value='23'>Volvo</option>
               </select>
-            </div>
-        <br/>
-        <div className = "form1 pref">
-              <label htmlFor="category">Category: </label>
+        </div>
+        <div className = "form1 pref" >
+              <label htmlFor="category">*Preferred Category: </label>
               <select name="category" onChange={this.onChangeCategory} class = "input">
                 <option value={this.state.category}>{this.state.realCategory}</option>
                 <option value='1'>Hatchback</option>
@@ -263,20 +261,22 @@ export default class SavePreference extends Component {
                 <option value='9'>Truck</option>
                 <option value='10'>Van</option>
               </select>
-            </div>
-        <br/>
+        </div>
         <div className = "form1 pref">
             <div>Lowest Price: <input type="text" onChange={this.onChangeLowPrice} class = "input" value ={lowestPrice}/></div>
             <br/>
-            <div>Highest Price: <input type="text"onChange={this.onChangeHighestPrice} class = "input" value ={highestPrice} /></div>
+            <div>*Highest Price: <input type="text"onChange={this.onChangeHighestPrice} class = "input" required value ={highestPrice} /></div>
         </div>
-        <br/>
         <div className = "form1 pref">
-            <div>Engine Capacity Min: <input type="text" onChange={this.onChangeMinEngineCapacity} class = "input" value ={engineCapacityMin}/></div>
+            <div>*Engine Capacity Min: <input type="text" onChange={this.onChangeMinEngineCapacity} class = "input" required value ={engineCapacityMin}/></div>
             <br/>
-            <div>Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} class = "input" value ={engineCapacityMax}/></div>
+            <div>*Engine Capacity Max: <input type="text" onChange={this.onChangeMaxEngineCapacity} class = "input" required value ={engineCapacityMax}/></div>
         </div>
+        
+        <div className = "form1 pref">*Maximum Depreciation: <input type="text" onChange={this.onChangeDepreciationMax} class = "input" required value ={depreciationMax}/></div>
         <br/>
+        <br/>
+
 
         <button onClick ={this.savePreference} class="btn btn-success"> Submit </button>
         </div>
@@ -287,15 +287,15 @@ export default class SavePreference extends Component {
         <div className="main">
         <p className = "sign preference" aligh = "center">Your Preference</p>
         <div className = "form1 pref">
-            <div><div>Model: <span class = "input2">{model}</span> </div></div>
+            <div><div>Preferred Model: <span class = "input2">{model}</span> </div></div>
         </div>
         <br/>
         <div className = "form1 pref">
-          <div><div>Brand: <span class = "input2">{realBrand}</span> </div></div>
+          <div><div>Preferred Brand: <span class = "input2">{realBrand}</span> </div></div>
         </div>
         <br/>
         <div className = "form1 pref">
-          <div><div>Category: <span class = "input2">{realCategory}</span> </div></div>
+          <div><div>Preferred Category: <span class = "input2">{realCategory}</span> </div></div>
         </div>
         <br/>
         <div className = "form1 pref">
@@ -309,6 +309,7 @@ export default class SavePreference extends Component {
             <br/>
           <div><div>EngineCapacity Max: <span class = "input2">{engineCapacityMax} </span></div></div>
         </div>
+        <div className = "form1 pref"><div>Max Depreciation: <span class = "input2">{depreciationMax} </span></div></div>
         <br/>
         <br></br>
        
