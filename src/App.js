@@ -65,7 +65,7 @@ function App() {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="www.google.com">
+                <a className="navbar-brand" href="http://localhost:3000">
                   <span className="glyphicon glyphicon-retweet"></span>
                   CarExchange
                 </a>
@@ -132,9 +132,11 @@ function App() {
                             onLogoutSuccess={onSuccess}
                             type="darl"
                           />
+                          
                         </div> :
                         <Link to={'/'} onClick={logout} className="nav-link">Log Out</Link>)}
                   </li>
+                  {sessionStorage.getItem("username")?(<li>{sessionStorage.getItem("username")}</li>):(<li></li>)}
                 </ul>
 
               </div>
