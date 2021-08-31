@@ -40,6 +40,23 @@ export default class DepreciationCalculator extends Component {
     }
 
     calculateDepreciation(e) {
+        // Input validation
+        if (this.state.price <= 0 || this.state.price % 1 !== 0) {
+            window.alert("Please input a valid price");
+            return;
+        }
+
+        if (this.state.arf <= 0) {
+            window.alert("Please input a valid ARF");
+            return;
+        }
+
+        if (this.state.registeredDate === "" || this.state.registeredDate % 1 !== 0) {
+            window.alert("Please input a registration date");
+            return;
+        }
+
+
         // Calculates the age of the car
         var today = Math.floor(Date.now() / 1000);
         var registered = Math.floor(Date.parse(this.state.registeredDate) / 1000)

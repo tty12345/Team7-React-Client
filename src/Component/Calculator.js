@@ -42,8 +42,13 @@ export default class Calculator extends Component {
         // console.log(this.state.loanAmount);
         // console.log(this.state.interestRate);
         // console.log(this.state.loanPeriod);
-        if (this.state.loanAmount < 10000) {
+        if (this.state.loanAmount < 10000 || this.state.loanAmount % 1 !== 0) {
             window.alert("Minimum loan amount is S$10,000");
+            return;
+        }
+
+        if (this.state.interestRate <= 0 || this.state.interestRate > 100 || this.state.interestRate % 1 !== 0) {
+            window.alert("Please input a valid interest rate");
             return;
         }
 
