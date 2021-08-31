@@ -314,26 +314,45 @@ export default class CreatePost extends Component {
           {this.state.submitted?(<Redirect to='/CarList'/>):(
             
           <div >
-           
-              <div className="form-group create">
+            <table align="center" className="createLabel">
+              <tr>
+                <td>
                   <label htmlFor="depreciation">Depreciation (Annual)</label> 
+                </td>
+                <td>
                   <input
-                    type="text"
-                    className="form-control depreciation"
-                    id="depreciation"
-                    required
-                    value={this.state.depreciation}
-                    onChange={this.onChangeDepreciation}
-                    name="depreciation"
-                    placeholder="S$"
-                  />
-                  <Link to="/DepreciationCalculator" className="btn btn-default"><b>Depreciation Calculator</b></Link>
-              </div>
-
-                <div className="form-group create">
+                      type="text"
+                      className="form-control depreciation"
+                      id="depreciation"
+                      required
+                      value={this.state.depreciation}
+                      onChange={this.onChangeDepreciation}
+                      name="depreciation"
+                      placeholder="S$"
+                      size="40"
+                    />
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                <Link to="/DepreciationCalculator" className="btn btn-default"><b>Depreciation Calculator</b></Link>
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
                   <label htmlFor="brand" >Brand</label>
-                  <br></br>
-                  <select name="category" onChange={this.onChangeBrand}>
+                </td>
+                <td>
+                <select name="category" onChange={this.onChangeBrand}>
                     <option value={this.state.brand}>{this.state.realBrand}</option>
                     <option value='0'>Audi</option>
                     <option value='1'>Austin</option>
@@ -360,10 +379,18 @@ export default class CreatePost extends Component {
                     <option value='22'>Volkswagen</option>
                     <option value='23'>Volvo</option>
                   </select>
-                </div>
-                <div className="form-group create ">
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
                   <label htmlFor="description">Description</label>
-                  <input
+                </td>
+                <td>
+                <input
                     type="text"
                     className="form-control"
                     id="description"
@@ -372,11 +399,19 @@ export default class CreatePost extends Component {
                     onChange={this.onChangeDescription}
                     name="description"
                     placeholder="Car Model"
+                    size="40"
                   />
-                </div>
-                <div className="form-group create">
-                  <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
-                  <input
+                </td>
+              </tr>
+              <tr><td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
+                <label htmlFor="engineCapacity">Engine Capacity (in cc)</label>
+                </td>
+                <td>
+                <input
                     type="text"
                     className="form-control"
                     id="engineCapacity"
@@ -385,37 +420,63 @@ export default class CreatePost extends Component {
                     onChange={this.onChangeEngineCapacity}
                     name="brand"
                     placeholder="cc"
+                    size="40"
                   />
-                </div>
-                <div className="form-group create">
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
                   <label htmlFor="registeredDate">Registered Date</label>
+                </td>
+                <td>
                   <input
-                    type="date"
-                    className="form-control"
-                    id="registeredDate"
-                    required
-                    value={this.state.registeredDate}
-                    onChange={this.onChangeRegisteredDate}
-                    name="registeredDate"
-                  />
-                </div>
-                <div className="form-group create">
+                        type="date"
+                        className="form-control"
+                        id="registeredDate"
+                        required
+                        value={this.state.registeredDate}
+                        onChange={this.onChangeRegisteredDate}
+                        name="registeredDate"
+                        size="40"
+                      />
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
                   <label htmlFor="mileage">Mileage (in km)</label>
+                </td>
+                <td>
                   <input
-                    type="text"
-                    className="form-control"
-                    id="mileage"
-                    required
-                    value={this.state.mileage}
-                    onChange={this.onChangeMileage}
-                    name="mileage"
-                    placeholder="km"
-                  />
-                </div>
-                <div className="form-group create" >
-                  <label htmlFor="category">Category</label>
-                  <br></br>
-                 <span><select name="category" onChange={this.onChangeCategory}>
+                      type="text"
+                      className="form-control"
+                      id="mileage"
+                      required
+                      value={this.state.mileage}
+                      onChange={this.onChangeMileage}
+                      name="mileage"
+                      placeholder="km"
+                      size="40"
+                    />
+                </td>
+              </tr>
+              <tr>
+                <td><p> </p></td>
+                <td><p> </p></td>
+              </tr>
+              <tr>
+                <td>
+                <label htmlFor="category">Category</label>
+                </td>
+                <td>
+                <span><select className="category" onChange={this.onChangeCategory}>
                     <option value={this.state.category}>{this.state.realCategory}</option>
                     <option value='1'>Hatchback</option>
                     <option value='2'>Luxury</option>
@@ -429,7 +490,10 @@ export default class CreatePost extends Component {
                     <option value='10'>Van</option>
                   </select>
                   </span> 
-                </div>
+                </td>
+              </tr>
+            </table>
+
                 <br></br>
                 <div>
                   <label htmlFor="priceEstimate" class = "price">Price Estimate</label>
@@ -442,10 +506,13 @@ export default class CreatePost extends Component {
                   </button>
                 </div>
                 <br></br>
-              <form>
-                <div className="form-group create">
-                  <label htmlFor="price">Asking Price (Get an estimate of your car's price above)</label><span>
-                  <input
+            <table  align="center" className="createLabel">
+              <tr>
+                <td>
+                <label htmlFor="price">Asking Price </label>
+                </td>
+                <td>
+                <input
                     type="text"
                     className="form-control"
                     id="price"
@@ -454,24 +521,12 @@ export default class CreatePost extends Component {
                     onChange={this.onChangePrice}
                     name="price"
                     placeholder="S$"
+                    size = "40"
                   />
-                  </span>
-              </div>
-
-                <div className="form-group create">
-                  <label htmlFor="photoUrl">Photo URL</label> <span>
-                  <input 
-                    type="text"
-                    className="form-control"
-                    id="photoUrl"
-                    value={this.state.photoUrl}
-                    onChange={this.onChangePhotoUrl}
-                    name="photoUrl"
-                  />
-                  </span>
-                </div>
-              </form>
-          
+                </td>
+              </tr>
+            </table>
+            <br/>
 
                 {this.state.imageUploadStatus?(
                 <div>
@@ -527,5 +582,3 @@ export default class CreatePost extends Component {
       }
     }
 }
-
-  //test
