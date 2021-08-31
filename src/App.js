@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import HomePage from './Component/HomePage'
@@ -50,6 +50,12 @@ function App() {
       backgroundcolor: "transparent"
     }
   };
+  
+  const [navbarOpen, setNavbarOpen] = useState(false)
+
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen)
+  }
 
 
   return (
@@ -59,12 +65,50 @@ function App() {
           <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div className="container">
               <div className="navbar-header">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="www.google.comnavbar">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
+              <button onClick={handleToggle} type="button" className="navbar-toggle" data-toggle="collapse" data-target="www.google.comnavbar">
+                  {navbarOpen ? (<ul className="nav-link"><li className="nav-link">
+                      <Link to={"/"} className="nav-link">Home</Link>
+                    </li>
+                    <li>
+                      <Link to={"/CarList"} className="nav-link">Buy</Link>
+                    </li>
+                    <li>
+                      <Link to={"/CreatePost"} className="nav-link">Post</Link>
+                    </li>
+                    {sessionStorage.getItem("status") != null ?(
+                    <li>
+                        <Link to={"/ownpost"} className="nav-link">Your Posts</Link>
+                    </li>):(<a/>)}
+                    {sessionStorage.getItem("status") != null ?(
+                    <li>
+                        <Link to={"/SavePreference"} className="nav-link">Preference</Link>
+                    </li>):(<a/>)}
+                    {sessionStorage.getItem("status") == null ?(
+                    <li>
+                        <Link to={"/signup"} className="nav-link">Sign Up</Link>
+                    </li>):(<a/>)}
+
+                    <li className="nav-link">
+                      {sessionStorage.getItem("status") == null ?
+                        <Link to={"/login"} className="nav-link">Log In</Link>
+                        : (sessionStorage.getItem("googleLogin") == "true" ?
+                          <div>
+                            <GoogleLogout
+                              render={renderProps => (
+                                <li onClick={renderProps.onClick} className="nav-link" style={customStyle}>Log Out</li>
+                              )}
+                              className="nav-link"
+                              clientId='626198155735-d6cl2at1tugtttie9jb2j09o483ncata.apps.googleusercontent.com'
+                              buttonText='Logout'
+                              onLogoutSuccess={onSuccess}
+                              type="darl"
+                            />
+                            
+                          </div> :
+                          <Link to={'/'} onClick={logout} className="nav-link">Log Out</Link>)}
+                    </li>
+                    </ul>):<img src ="https://img.icons8.com/fluency/2x/menu.png" className="navbar-toggle" data-toggle="collapse" data-target="www.google.comnavbar"></img>}
+                  </button>
                 <a className="navbar-brand" href="http://localhost:3000">
                   <span className="glyphicon glyphicon-retweet"></span>
                   CarExchange
